@@ -1221,4 +1221,53 @@ body.v97WardrobeOpen #wardrobe.page.on{
  });
 })();
 </script>
+<style id="v103-wardrobe-categories">
+#wardrobe .v103Wardrobe{width:100%;padding-bottom:8px}
+#wardrobe .v103Portrait{width:100%;aspect-ratio:430/720;overflow:hidden;background:#fff8f5}
+#wardrobe .v103Portrait img{display:block;width:100%;height:auto}
+#wardrobe .v103CategoryTabs{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:10px 8px 7px;background:#fffaf8}
+#wardrobe .v103CategoryTabs button{min-height:42px;border:1px solid #eadde3;border-radius:14px;background:#fff;color:#62576a;font-size:14px;font-weight:900;touch-action:manipulation}
+#wardrobe .v103CategoryTabs button.on{background:#ef7fa8;color:#fff;border-color:#e56596;box-shadow:0 5px 12px rgba(229,101,150,.24)}
+#wardrobe .v103OutfitGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:6px 8px 12px;background:#fffaf8}
+#wardrobe .v103OutfitGrid button{position:relative;min-width:0;height:132px;padding:0;overflow:hidden;border:2px solid #eee1e4;border-radius:16px;background:#fff;touch-action:manipulation}
+#wardrobe .v103OutfitGrid button.on{border-color:#e85d91;box-shadow:0 0 0 3px #ffe4ee}
+#wardrobe .v103OutfitGrid button.on:after{content:'✓';position:absolute;right:5px;top:5px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#e85d91;color:#fff;font-weight:900}
+#wardrobe .v103OutfitGrid img{width:100%;height:100%;object-fit:cover;object-position:center 39%;display:block}
+#wardrobe .v103OutfitGrid span{position:absolute;left:3px;right:3px;bottom:3px;padding:3px;border-radius:8px;background:rgba(255,255,255,.9);font-size:11px;font-weight:900;color:#574b62}
+</style>
+<script id="v103-wardrobe-categories-script">
+(()=>{
+ const categories={
+  daily:{label:'日常',items:[['daily-pink','粉色格紋','assets/wardrobe-v102-pink.jpeg?v=20260917-2'],['daily-latte','奶茶套裝','assets/wardrobe-v101.jpeg?v=20260917-3'],['daily-blue','藍色洋裝','assets/wardrobe-v102-blue.jpeg?v=20260917-2'],['daily-black','黑色洋裝','assets/wardrobe-v102-black.jpeg?v=20260917-2']]},
+  campus:{label:'校園',items:[['campus-sailor','水手制服','assets/wardrobe-campus-sailor.jpeg?v=20260917-1'],['campus-cardigan','針織制服','assets/wardrobe-campus-cardigan.jpeg?v=20260917-1'],['campus-blazer','西裝制服','assets/wardrobe-campus-blazer.jpeg?v=20260917-1'],['campus-sport','運動校服','assets/wardrobe-campus-sport.jpeg?v=20260917-1']]},
+  sweet:{label:'甜美',items:[['sweet-strawberry','草莓甜心','assets/wardrobe-sweet-strawberry.jpeg?v=20260917-1'],['sweet-lavender','薰衣草夢','assets/wardrobe-sweet-lavender.jpeg?v=20260917-1'],['sweet-cream','奶油玫瑰','assets/wardrobe-sweet-cream.jpeg?v=20260917-1'],['sweet-rose','玫瑰茶會','assets/wardrobe-sweet-rose.jpeg?v=20260917-1']]},
+  casual:{label:'休閒',items:[['casual-hoodie','粉色帽T','assets/wardrobe-casual-hoodie.jpeg?v=20260917-1'],['casual-knit','針織長裙','assets/wardrobe-casual-knit.jpeg?v=20260917-1'],['casual-overalls','牛仔吊帶','assets/wardrobe-casual-overalls.jpeg?v=20260917-1'],['casual-cafe','森系洋裝','assets/wardrobe-casual-cafe.jpeg?v=20260917-1']]},
+  special:{label:'特殊',items:[['special-kimono','櫻花和服','assets/wardrobe-special-kimono.jpeg?v=20260917-1'],['special-princess','冰藍公主','assets/wardrobe-special-princess.jpeg?v=20260917-1'],['special-witch','星月魔女','assets/wardrobe-special-witch.jpeg?v=20260917-1'],['special-holiday','冬日節慶','assets/wardrobe-special-holiday.jpeg?v=20260917-1']]}
+ };
+ let category='daily',outfit='daily-latte';
+ try{category=localStorage.getItem('englishQuestWardrobeCategory')||category;outfit=localStorage.getItem('englishQuestWardrobeV103')||outfit}catch{}
+ const findItem=id=>Object.values(categories).flatMap(c=>c.items).find(i=>i[0]===id);
+ const save=()=>{try{localStorage.setItem('englishQuestWardrobeCategory',category);localStorage.setItem('englishQuestWardrobeV103',outfit)}catch{}};
+ const renderOptions=()=>{
+  const box=document.querySelector('#wardrobe .v103OutfitGrid');if(!box)return;
+  box.innerHTML=categories[category].items.map(i=>'<button data-v103-outfit="'+i[0]+'" class="'+(i[0]===outfit?'on':'')+'" aria-label="換上'+i[1]+'"><img src="'+i[2]+'" alt=""><span>'+i[1]+'</span></button>').join('');
+  document.querySelectorAll('[data-v103-category]').forEach(b=>b.classList.toggle('on',b.dataset.v103Category===category));
+ };
+ const showWardrobe=()=>{
+  const sec=document.getElementById('wardrobe');if(!sec)return;
+  if(!categories[category])category='daily';
+  let current=findItem(outfit);if(!current){current=categories[category].items[0];outfit=current[0]}
+  sec.innerHTML='<div class="v103Wardrobe"><div class="v103Portrait"><img src="'+current[2]+'" alt="衣櫥換裝畫面"></div><div class="v103CategoryTabs">'+Object.entries(categories).map(([k,c])=>'<button data-v103-category="'+k+'">'+c.label+'</button>').join('')+'</div><div class="v103OutfitGrid"></div></div>';
+  renderOptions();
+ };
+ renderWard=showWardrobe;
+ document.addEventListener('click',e=>{
+  const tab=e.target.closest('[data-v103-category]');
+  if(tab){category=tab.dataset.v103Category;outfit=categories[category].items[0][0];save();const item=findItem(outfit);document.querySelector('#wardrobe .v103Portrait img').src=item[2];renderOptions();return}
+  const btn=e.target.closest('[data-v103-outfit]');
+  if(!btn)return;
+  outfit=btn.dataset.v103Outfit;const item=findItem(outfit);if(!item)return;save();document.querySelector('#wardrobe .v103Portrait img').src=item[2];renderOptions();
+ });
+})();
+</script>
 </body></html>
