@@ -1118,7 +1118,7 @@ body.v97WardrobeOpen #wardrobe.page.on{
  const showWardrobeArt=()=>{
   const sec=document.getElementById('wardrobe');
   if(!sec)return;
-  sec.innerHTML='<img class="v97WardrobeScreen" src="assets/wardrobe-v97.jpeg?v=20260917-1" alt="衣櫥換裝畫面">';
+  sec.innerHTML='<img class="v97WardrobeScreen" src="assets/wardrobe-v100.jpeg?v=20260917-1" alt="衣櫥換裝畫面">';
  };
  renderWard=showWardrobeArt;
  const goBase=go;
@@ -1171,4 +1171,26 @@ body.v97WardrobeOpen #wardrobe.page.on{
   margin:12px 0 0!important;
 }
 </style>
+<style id="v100-home-actions-separate">
+/* The artwork and its actions are separate blocks, so they can never overlap. */
+#home .artHero{
+  height:auto!important;
+  aspect-ratio:322/336!important;
+  padding:0!important;
+  background-size:100% 100%!important;
+}
+#home>.homeBtns{
+  position:static!important;
+  inset:auto!important;
+  width:100%!important;
+  margin:12px 0 16px!important;
+}
+</style>
+<script id="v100-home-actions-separate-script">
+(()=>{
+ const hero=document.querySelector('#home .artHero');
+ const actions=hero&&hero.querySelector('.homeBtns');
+ if(hero&&actions)hero.insertAdjacentElement('afterend',actions);
+})();
+</script>
 </body></html>
