@@ -1193,4 +1193,32 @@ body.v97WardrobeOpen #wardrobe.page.on{
  if(hero&&actions)hero.insertAdjacentElement('afterend',actions);
 })();
 </script>
+<style id="v102-clickable-outfits">
+#wardrobe .v102WardrobeWrap{position:relative;width:100%!important}
+#wardrobe .v102OutfitHotspots{position:absolute;z-index:4;left:0;right:0;bottom:0;height:15%;display:grid;grid-template-columns:repeat(4,1fr)}
+#wardrobe .v102OutfitHotspots button{display:block;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:pointer;touch-action:manipulation}
+#wardrobe .v102OutfitHotspots button:focus-visible{outline:3px solid #e8528c;outline-offset:-4px;border-radius:14px}
+</style>
+<script id="v102-clickable-outfits-script">
+(()=>{
+ const outfits={pink:'assets/wardrobe-v102-pink.jpeg?v=20260917-1',latte:'assets/wardrobe-v101.jpeg?v=20260917-2',blue:'assets/wardrobe-v102-blue.jpeg?v=20260917-1',black:'assets/wardrobe-v102-black.jpeg?v=20260917-1'};
+ const getSelected=()=>{try{return localStorage.getItem('englishQuestWardrobeOutfit')||'latte'}catch{return 'latte'}};
+ const showInteractiveWardrobe=()=>{
+  const sec=document.getElementById('wardrobe');
+  if(!sec)return;
+  const selected=getSelected();
+  sec.innerHTML='<div class="v102WardrobeWrap"><img class="v97WardrobeScreen" src="'+(outfits[selected]||outfits.latte)+'" alt="衣櫥換裝畫面"><div class="v102OutfitHotspots" aria-label="選擇服裝"><button data-v102-outfit="pink" aria-label="換上粉色洋裝"></button><button data-v102-outfit="latte" aria-label="換上奶茶色套裝"></button><button data-v102-outfit="blue" aria-label="換上藍色洋裝"></button><button data-v102-outfit="black" aria-label="換上黑色洋裝"></button></div></div>';
+ };
+ renderWard=showInteractiveWardrobe;
+ document.addEventListener('click',event=>{
+  const button=event.target.closest('[data-v102-outfit]');
+  if(!button)return;
+  const key=button.dataset.v102Outfit;
+  const image=document.querySelector('#wardrobe .v97WardrobeScreen');
+  if(!image||!outfits[key])return;
+  image.src=outfits[key];
+  try{localStorage.setItem('englishQuestWardrobeOutfit',key)}catch{}
+ });
+})();
+</script>
 </body></html>
