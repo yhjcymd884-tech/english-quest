@@ -1093,4 +1093,39 @@ setTimeout(()=>{if(document.querySelector('#wardrobe.active'))drawWard();if(docu
  const hero=document.querySelector('#home .artHero');
  if(hero)hero.style.setProperty('background-image','url("assets/home-v95.jpeg?v=20260917-2")','important');
 })();
+</script><style id="v97-wardrobe-art-lock">
+/* Show the approved wardrobe mockup only on the wardrobe route. */
+body.v97WardrobeOpen .app>header{display:none!important}
+body.v97WardrobeOpen #wardrobe.page.on{
+  display:grid!important;
+  place-items:center!important;
+  min-height:calc(100dvh - 88px)!important;
+  padding:0!important;
+  background:#fff8f5!important;
+  overflow:hidden!important;
+}
+#wardrobe .v97WardrobeScreen{
+  display:block;
+  width:100%;
+  height:calc(100dvh - 88px);
+  object-fit:contain;
+  object-position:center top;
+  background:#fff8f5;
+}
+</style>
+<script id="v97-wardrobe-art-lock-script">
+(()=>{
+ const showWardrobeArt=()=>{
+  const sec=document.getElementById('wardrobe');
+  if(!sec)return;
+  sec.innerHTML='<img class="v97WardrobeScreen" src="assets/wardrobe-v97.jpeg?v=20260917-1" alt="衣櫥換裝畫面">';
+ };
+ renderWard=showWardrobeArt;
+ const goBase=go;
+ go=function(id){
+  goBase(id);
+  document.body.classList.toggle('v97WardrobeOpen',id==='wardrobe');
+ };
+ document.body.classList.toggle('v97WardrobeOpen',document.getElementById('wardrobe')?.classList.contains('on'));
+})();
 </script></body></html>
