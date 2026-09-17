@@ -1077,4 +1077,20 @@ document.addEventListener('click',e=>{let t=e.target.closest('[data-v94tab]');if
 /* Force refresh of current visible screen after all older renderers have loaded. */
 setTimeout(()=>{if(document.querySelector('#wardrobe.active'))drawWard();if(document.querySelector('#pet.active'))renderPet();},60);
 })();
+</script><style id="v96-home-art-lock">
+/* Keep the approved home artwork as the final visual layer. */
+#home .artHero{
+  background:#fff8f5 url("assets/home-v95.jpeg?v=20260917-2") center top/cover no-repeat!important;
+}
+#home .artHero>.quote,
+#home .artHero>.avatarWrap,
+#home .artHero>.dogWrap{
+  display:none!important;
+}
+</style>
+<script id="v96-home-art-lock-script">
+(()=>{
+ const hero=document.querySelector('#home .artHero');
+ if(hero)hero.style.setProperty('background-image','url("assets/home-v95.jpeg?v=20260917-2")','important');
+})();
 </script></body></html>
