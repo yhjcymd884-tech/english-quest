@@ -1232,6 +1232,19 @@ document.addEventListener('click',event=>{
 .v105ChromeQuote{position:absolute;right:16px;top:205px;width:110px;padding:10px 7px;border-radius:50%;background:rgba(255,255,255,.72);color:#4d4d57;text-align:center;font-size:16px;line-height:1.45;transform:rotate(-5deg)}
 .v105Toast{position:fixed;left:50%;bottom:112px;z-index:80;transform:translateX(-50%);padding:10px 18px;border-radius:22px;background:rgba(69,55,67,.92);color:#fff;font-size:14px;font-weight:900;box-shadow:0 8px 24px rgba(0,0,0,.18)}
 @media(max-width:380px){.v105ChromeTitle{font-size:18px}.v105ChromeSide{width:62px}.v105ChromeSide span{font-size:12px}.v105ChromeQuote{right:10px;width:100px;font-size:14px}}
+/* v106: reuse the approved wardrobe artwork as exact UI sprites. */
+.v103Portrait.v105NeedsChrome .v105ChromeTitle,
+.v103Portrait.v105NeedsChrome .v105ChromeSide,
+.v103Portrait.v105NeedsChrome .v105ChromeQuote{display:none!important}
+.v105ChromeSprite{position:absolute;inset:0;background-image:url("assets/wardrobe-sweet-strawberry-v104.jpeg?v=20260917-2");background-size:100% auto;background-position:left top;background-repeat:no-repeat;pointer-events:none}
+.v105ChromeSprite.title{clip-path:polygon(18.5% .4%,79% .4%,79% 8.2%,18.5% 8.2%)}
+.v105ChromeSprite.back{clip-path:polygon(2.5% 9.1%,17% 9.1%,17% 17.5%,2.5% 17.5%)}
+.v105ChromeSprite.save{clip-path:polygon(72.5% 9.2%,98% 9.2%,98% 17%,72.5% 17%)}
+.v105ChromeSprite.side{clip-path:polygon(1.5% 17.3%,23% 17.3%,23% 85.3%,1.5% 85.3%)}
+.v105ChromeSprite.quote{clip-path:polygon(71% 28.5%,99% 28.5%,99% 48.5%,71% 48.5%)}
+.v103Portrait.v105NeedsChrome .v105ChromeBack,.v103Portrait.v105NeedsChrome .v105ChromeSave{z-index:3;opacity:0;background:transparent!important;box-shadow:none!important}
+.v103Portrait.v105NeedsChrome .v105ChromeBack{left:2.5%;top:9.1%;width:14.5%;height:8.4%}
+.v103Portrait.v105NeedsChrome .v105ChromeSave{right:2%;top:9.2%;width:25.5%;height:7.8%;padding:0}
 </style>
 <script id="v103-wardrobe-categories-script">
 (()=>{
@@ -1246,7 +1259,7 @@ document.addEventListener('click',event=>{
  try{category=localStorage.getItem('englishQuestWardrobeCategory')||category;outfit=localStorage.getItem('englishQuestWardrobeV103')||outfit}catch{}
  const findItem=id=>Object.values(categories).flatMap(c=>c.items).find(i=>i[0]===id);
  const needsChrome=id=>/^(casual|special)-/.test(id||'');
- const chrome='<div class="v105WardrobeChrome" aria-label="衣櫥換裝操作"><div class="v105ChromeTitle">衣櫥・換裝</div><button class="v105ChromeBack" data-v105-back aria-label="返回首頁">‹</button><button class="v105ChromeSave" data-v105-save>儲存</button><div class="v105ChromeSide" aria-hidden="true"><span>套裝</span><span>上衣</span><span>下身</span><span>鞋子</span><span>包包</span><span>飾品</span><span>髮型</span><span>妝容</span><span>寵物</span></div><div class="v105ChromeQuote">今天<br>也要可愛<br>又努力♡</div></div>';
+ const chrome='<div class="v105WardrobeChrome" aria-label="衣櫥換裝操作"><div class="v105ChromeSprite title" aria-hidden="true"></div><div class="v105ChromeSprite back" aria-hidden="true"></div><div class="v105ChromeSprite save" aria-hidden="true"></div><div class="v105ChromeSprite side" aria-hidden="true"></div><div class="v105ChromeSprite quote" aria-hidden="true"></div><button class="v105ChromeBack" data-v105-back aria-label="返回首頁">‹</button><button class="v105ChromeSave" data-v105-save aria-label="儲存穿搭">儲存</button></div>';
  const setPortrait=item=>{const portrait=document.querySelector('#wardrobe .v103Portrait'),image=portrait&&portrait.querySelector('img');if(!portrait||!image||!item)return;image.src=item[2];portrait.classList.toggle('v105NeedsChrome',needsChrome(item[0]))};
  const save=()=>{try{localStorage.setItem('englishQuestWardrobeCategory',category);localStorage.setItem('englishQuestWardrobeV103',outfit)}catch{}};
  const renderOptions=()=>{
