@@ -1128,4 +1128,28 @@ body.v97WardrobeOpen #wardrobe.page.on{
  };
  document.body.classList.toggle('v97WardrobeOpen',document.getElementById('wardrobe')?.classList.contains('on'));
 })();
-</script></body></html>
+</script><style id="v98-artwork-size-fix">
+/* Preserve the approved artwork proportions on mobile. */
+#home .artHero{
+  height:auto!important;
+  aspect-ratio:322/336!important;
+  background-size:contain!important;
+  background-position:center top!important;
+  background-repeat:no-repeat!important;
+}
+body.v97WardrobeOpen #wardrobe.page.on{
+  display:block!important;
+  min-height:calc(100dvh - 88px)!important;
+  padding:0 0 88px!important;
+  overflow:visible!important;
+}
+#wardrobe .v97WardrobeScreen{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  object-fit:fill!important;
+  object-position:center top!important;
+}
+</style>
+</body></html>
