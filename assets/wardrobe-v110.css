@@ -1,0 +1,53 @@
+#wardrobe .v110Wardrobe{width:100%;min-height:calc(100dvh - 88px);padding-bottom:14px;background:#fff8f7;color:#34445d;font-family:inherit}
+#wardrobe .v110Stage{position:relative;width:100%;aspect-ratio:430/720;overflow:hidden;background:#fff4f1}
+#wardrobe .v110SuitImage{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+#wardrobe .v110Room{position:absolute;inset:0;background:url("wardrobe-room-v110.webp?v=20260918-1") center/cover no-repeat}
+#wardrobe .v110Room:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,248,249,.22),transparent 28%,transparent 72%,rgba(255,248,249,.14));pointer-events:none}
+#wardrobe .v110Avatar{position:absolute;z-index:2;left:16%;right:2%;top:5.5%;bottom:0;display:grid;place-items:end center}
+#wardrobe .v110Avatar svg{display:block;width:100%;height:100%;filter:drop-shadow(0 7px 5px rgba(117,75,82,.15))}
+#wardrobe .v110Topbar{position:absolute;z-index:15;top:10px;left:18%;right:3%;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+#wardrobe .v110Title{padding:8px 17px;border:1px solid rgba(235,190,204,.75);border-radius:23px;background:rgba(255,249,250,.92);box-shadow:0 3px 10px rgba(133,86,103,.12);color:#ba4771;font-size:19px;font-weight:1000;line-height:1;white-space:nowrap}
+#wardrobe .v110Save{pointer-events:auto;min-width:72px;height:42px;border:0;border-radius:22px;background:linear-gradient(#f485ae,#e85c91);box-shadow:0 5px 12px rgba(217,76,132,.28);color:#fff;font-size:15px;font-weight:1000;touch-action:manipulation}
+#wardrobe .v110Side{position:absolute;z-index:14;left:8px;top:64px;width:82px;display:grid;gap:6px}
+#wardrobe .v110Side button{height:48px;padding:0 3px;border:1px solid rgba(215,224,235,.92);border-radius:15px;background:rgba(255,255,255,.91);box-shadow:0 3px 9px rgba(93,94,117,.12);color:#224d70;font-size:15px;font-weight:1000;touch-action:manipulation}
+#wardrobe .v110Side button.on{border-color:#ec77a3;background:linear-gradient(#f58ab1,#e86799);color:#fff;box-shadow:0 5px 12px rgba(219,76,128,.25)}
+#wardrobe .v110Back{position:absolute;z-index:16;left:10px;top:10px;width:45px;height:45px;border:1px solid #dce3ea;border-radius:50%;background:rgba(255,255,255,.94);color:#4e6175;font-size:31px;line-height:1;font-weight:700;box-shadow:0 3px 10px rgba(72,77,91,.15);touch-action:manipulation}
+#wardrobe .v110Hint{position:absolute;z-index:4;right:10px;top:133px;width:112px;padding:10px 6px;border-radius:48%;background:rgba(255,255,255,.68);color:#5c5861;text-align:center;font-size:14px;font-weight:900;line-height:1.45;transform:rotate(-4deg)}
+#wardrobe .v110Panel{padding:10px 8px 14px;background:linear-gradient(#fffaf9,#fff5f4)}
+#wardrobe .v110SuitTabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:9px}
+#wardrobe .v110SuitTabs button{height:43px;border:1px solid #eadde3;border-radius:14px;background:#fff;color:#62576a;font-size:14px;font-weight:1000}
+#wardrobe .v110SuitTabs button.on{border-color:#e56696;background:#ef7fa8;color:#fff;box-shadow:0 4px 10px rgba(229,101,150,.2)}
+#wardrobe .v110Grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#wardrobe .v110Card{position:relative;min-width:0;height:132px;padding:4px 4px 28px;overflow:hidden;border:2px solid #eee1e4;border-radius:16px;background:#fff;touch-action:manipulation}
+#wardrobe .v110Card.on{border-color:#e85d91;box-shadow:0 0 0 3px #ffe4ee}
+#wardrobe .v110Card.on:after{content:'✓';position:absolute;z-index:4;right:5px;top:5px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#e85d91;color:#fff;font-weight:1000}
+#wardrobe .v110Card img{width:100%;height:100%;object-fit:contain;display:block}
+#wardrobe .v110Card .v110Mini{width:100%;height:100%;display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#fff9fa,#f9eef3);font-size:44px;line-height:1}
+#wardrobe .v110Card span{position:absolute;z-index:3;left:0;right:0;bottom:0;height:28px;display:grid;place-items:center;padding:0 2px;border-top:1px solid #f1e4e8;background:rgba(255,250,248,.96);color:#574b62;font-size:11px;font-weight:1000;line-height:1.1;text-align:center}
+#wardrobe .v110SectionTitle{display:flex;align-items:center;justify-content:space-between;margin:0 2px 9px;color:#7b5a6b;font-size:14px;font-weight:1000}
+#wardrobe .v110SectionTitle small{color:#aa8d9b;font-size:11px}
+#wardrobe .v110Editor{min-height:calc(100dvh - 88px);padding-bottom:20px;background:linear-gradient(160deg,#fff6f7,#f6effb 58%,#fff7f2);color:#42546c}
+#wardrobe .v110EditorHead{position:relative;height:68px;display:flex;align-items:center;justify-content:center;padding:8px 58px 0}
+#wardrobe .v110EditorHead h2{min-width:190px;margin:0;padding:8px 18px;border:1px solid #efc8d6;border-radius:23px;background:rgba(255,250,251,.9);box-shadow:0 3px 10px rgba(184,118,145,.11);color:#b64370;font-size:21px;text-align:center}
+#wardrobe .v110EditorHead .v110Back{top:12px}
+#wardrobe .v110EditorHead .v110Save{position:absolute;right:10px;top:14px;min-width:60px;height:40px;font-size:13px}
+#wardrobe .v110Segment{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin:0 10px 10px;padding:4px;border-radius:17px;background:rgba(255,255,255,.72)}
+#wardrobe .v110Segment button,#wardrobe .v110MakeTabs button{height:39px;border:0;border-radius:13px;background:transparent;color:#36516e;font-size:15px;font-weight:1000}
+#wardrobe .v110Segment button.on,#wardrobe .v110MakeTabs button.on{background:linear-gradient(#f494b6,#e96f9e);color:#fff;box-shadow:0 3px 8px rgba(218,91,140,.2)}
+#wardrobe .v110HairGrid{grid-template-columns:repeat(3,1fr);padding:0 10px;gap:8px}
+#wardrobe .v110HairGrid .v110Card{height:153px;padding-bottom:29px}
+#wardrobe .v110HeadThumb{width:100%;height:100%;overflow:hidden;border-radius:11px;background:radial-gradient(circle at 50% 35%,#fff,#f8e9ec)}
+#wardrobe .v110HeadThumb svg{width:100%;height:100%;transform:scale(1.55) translateY(12%);transform-origin:center}
+#wardrobe .v110ColorRow{margin:12px 10px 0;padding:11px 10px;border:1px solid #f0e1e7;border-radius:17px;background:rgba(255,255,255,.82);display:flex;justify-content:center;gap:11px}
+#wardrobe .v110Color{width:46px;height:46px;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 7px rgba(92,68,77,.2);touch-action:manipulation}
+#wardrobe .v110Color.on{outline:3px solid #ec699b;outline-offset:2px}
+#wardrobe .v110MakeTabs{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin:0 7px 9px;padding:4px;border-radius:16px;background:rgba(255,255,255,.76)}
+#wardrobe .v110MakeTabs button{height:38px;padding:0 1px;font-size:12px}
+#wardrobe .v110FacePreview{height:315px;margin:0 10px 10px;overflow:hidden;border:1px solid #f0dfe6;border-radius:22px;background:url("wardrobe-room-v110.webp?v=20260918-1") center/cover no-repeat;box-shadow:inset 0 0 45px rgba(255,255,255,.62)}
+#wardrobe .v110FacePreview svg{width:100%;height:100%;transform:scale(1.82) translateY(24%);transform-origin:center}
+#wardrobe .v110MakeGrid{padding:0 10px;grid-template-columns:repeat(4,1fr)}
+#wardrobe .v110MakeGrid .v110Card{height:112px;padding-bottom:29px}
+#wardrobe .v110MakeIcon{height:100%;display:grid;place-items:center;font-size:38px;color:#9a687b}
+#wardrobe .v110Finish{display:block;width:70%;height:48px;margin:13px auto 0;border:1px solid #dc5a8b;border-radius:25px;background:linear-gradient(#f68cb4,#ec6599);box-shadow:0 5px 12px rgba(218,75,128,.23);color:#fff;font-size:17px;font-weight:1000}
+#wardrobe .v110Toast{position:fixed;z-index:90;left:50%;bottom:108px;transform:translateX(-50%);padding:10px 18px;border-radius:22px;background:rgba(71,57,69,.94);box-shadow:0 8px 24px rgba(0,0,0,.18);color:#fff;font-size:14px;font-weight:1000;white-space:nowrap}
+@media(max-width:380px){#wardrobe .v110Side{width:72px;top:61px;gap:4px}#wardrobe .v110Side button{height:45px;font-size:13px}#wardrobe .v110Title{font-size:17px;padding:7px 12px}#wardrobe .v110Save{min-width:62px;height:39px}#wardrobe .v110Grid{gap:5px}#wardrobe .v110Card{height:120px}#wardrobe .v110HairGrid .v110Card{height:140px}#wardrobe .v110MakeTabs button{font-size:11px}}
