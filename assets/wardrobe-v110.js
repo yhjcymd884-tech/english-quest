@@ -1,7 +1,7 @@
 (()=>{
-  const KEY='englishQuestWardrobeSavedV110';
+  const KEY='englishQuestWardrobeSavedV111';
   const clone=o=>JSON.parse(JSON.stringify(o));
-  const defaults={mode:'suit',suit:'daily-latte',previewSuit:'daily-latte',top:'rose',bottom:'pinkSkirt',shoes:'maryPink',bag:'heart',accessory:'bow',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:'cinnamon'};
+  const defaults={mode:'suit',suit:'daily-pink',previewSuit:'daily-pink',top:'rose',bottom:'pinkSkirt',shoes:'maryPink',bag:'heart',accessory:'bow',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:'cinnamon'};
   let saved=clone(defaults),draft=clone(defaults),active='suit',suitGroup='daily',hairPane='style',makeTab='brow';
   try{const x=JSON.parse(localStorage.getItem(KEY)||'null');if(x)saved={...defaults,...x,makeup:{...defaults.makeup,...(x.makeup||{})}}}catch{}
   draft=clone(saved);
