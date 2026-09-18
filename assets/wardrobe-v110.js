@@ -48,7 +48,13 @@
     accessory:{bow:'',pearl:'accessory-pearl.webp',beret:'accessory-beret.webp'},
     pet:{cinnamon:''}
   };
-  const topScenes={rose:'assets/wardrobe-top-scenes/top-rose-v3.webp?v=20260919-1'};
+  const topScenes={
+    rose:'assets/wardrobe-top-scenes/top-rose-v3.webp?v=20260919-2',
+    sailor:'assets/wardrobe-top-scenes/top-sailor-v3.webp?v=20260919-2',
+    cream:'assets/wardrobe-top-scenes/top-cream-v3.webp?v=20260919-2',
+    hoodie:'assets/wardrobe-top-scenes/top-hoodie-v3.webp?v=20260919-2',
+    black:'assets/wardrobe-top-scenes/top-black-v3.webp?v=20260919-2'
+  };
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
   const startPieceMode=kind=>{
     pieceKinds.forEach(key=>{draft[key]=''});
