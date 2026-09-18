@@ -43,7 +43,7 @@
   const layerAssets={
     top:{rose:'top-rose-v2.webp',sailor:'top-sailor-v2.webp',cream:'top-cream-v2.webp',hoodie:'top-hoodie-v2.webp',black:'top-black-v2.webp'},
     bottom:{pinkSkirt:'bottom-pinkSkirt-v2.webp',navySkirt:'bottom-navySkirt-v2.webp',latteSkirt:'bottom-latteSkirt-v2.webp',denimShort:'bottom-denimShort-v2.webp'},
-    shoes:{maryPink:'shoes-maryPink.webp',loafers:'shoes-loafers.webp',sneakers:'shoes-sneakers.webp',boots:'shoes-boots.webp'},
+    shoes:{maryPink:'shoes-maryPink-v2.webp',loafers:'shoes-loafers-v2.webp',sneakers:'shoes-sneakers-v2.webp',boots:'shoes-boots-v2.webp'},
     bag:{heart:'bag-heart.webp',tote:'bag-tote.webp',star:'bag-star.webp'},
     accessory:{bow:'',pearl:'accessory-pearl.webp',beret:'accessory-beret.webp'},
     pet:{cinnamon:''}
@@ -53,7 +53,7 @@
     pieceKinds.forEach(key=>{draft[key]=''});
     draft[kind]=Object.keys(layerAssets[kind]||{})[0]||'';
   };
-  const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260919-9`:''};
+  const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260919-10`:''};
   const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260918-1`:''};
   Object.keys(layerAssets).forEach(kind=>{
     if(lists[kind])lists[kind]=lists[kind].filter(x=>Object.prototype.hasOwnProperty.call(layerAssets[kind],x[0]));
