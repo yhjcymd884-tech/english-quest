@@ -34,6 +34,21 @@
   const labels={suit:'套裝',top:'上衣',bottom:'下身',shoes:'鞋子',bag:'包包',accessory:'飾品',hair:'髮型',makeup:'妝容',pet:'寵物'};
   const get=(list,id)=>list.find(x=>x[0]===id)||list[0];
   const suit=()=>allSuits().find(x=>x[0]===draft.suit)||allSuits()[0];
+  const suitUrl=id=>(allSuits().find(x=>x[0]===id)||allSuits()[0])[2];
+  const pieceSources={
+    top:{rose:'daily-pink',sailor:'campus-sailor',cream:'campus-cardigan',blazer:'campus-blazer',hoodie:'casual-hoodie',mint:'casual-cafe',black:'daily-black',snow:'special-holiday'},
+    bottom:{pinkSkirt:'daily-pink',navySkirt:'campus-sailor',latteSkirt:'daily-latte',denimShort:'casual-hoodie',creamLong:'casual-knit',blackSkirt:'daily-black',mintSkirt:'casual-cafe',redSkirt:'special-holiday'},
+    shoes:{maryPink:'daily-pink',loafers:'daily-latte',sneakers:'casual-overalls',boots:'casual-knit',blueMary:'daily-blue',redBoots:'special-holiday'},
+    bag:{heart:'daily-latte',school:'campus-blazer',cloud:'daily-blue',tote:'casual-cafe',star:'special-witch'},
+    accessory:{bow:'daily-pink',glasses:'campus-cardigan',pearl:'sweet-cream',beret:'casual-knit',snow:'special-princess'},
+    pet:{cinnamon:'daily-latte',bunny:'sweet-rose',kitten:'casual-cafe',bear:'campus-cardigan'}
+  };
+  const pieceUrl=(kind,id)=>{const source=pieceSources[kind]&&pieceSources[kind][id];return source?suitUrl(source):''};
+  const rasterMix=()=>{
+    const base=pieceUrl('bottom',draft.bottom)||suitUrl('daily-latte');
+    const layers=[['top',pieceUrl('top',draft.top)],['shoes',pieceUrl('shoes',draft.shoes)],['bag',pieceUrl('bag',draft.bag)],['accessory',pieceUrl('accessory',draft.accessory)],['pet',pieceUrl('pet',draft.pet)]];
+    return `<div class="v110RasterMix" aria-label="目前混搭造型"><div class="v110RasterLayer" style="background-image:url('${base}')"></div>${layers.filter(x=>x[1]).map(x=>`<div class="v110RasterLayer ${x[0]}" style="background-image:url('${x[1]}')"></div>`).join('')}</div>`;
+  };
   const toast=t=>{document.querySelector('.v110Toast')?.remove();const d=document.createElement('div');d.className='v110Toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1500)};
   const persist=()=>{saved=clone(draft);try{localStorage.setItem(KEY,JSON.stringify(saved));localStorage.setItem('englishQuestWardrobeV103',saved.suit)}catch{}toast('穿搭已儲存 ♡')};
   const hairShape=(style,c)=>{
@@ -55,15 +70,15 @@
   const side=()=>`<button class="v110Back" data-v110-back aria-label="返回首頁">‹</button><div class="v110Topbar"><strong class="v110Title">夢幻衣櫥</strong><button class="v110Save" data-v110-save>儲存</button></div><div class="v110Side">${Object.entries(labels).map(([k,v])=>`<button data-v110-tab="${k}" class="${active===k?'on':''}">${v}</button>`).join('')}</div>`;
   const standard=()=>{
     const isSuit=active==='suit'&&draft.mode==='suit',current=suit();
-    const stage=isSuit?`<img class="v110SuitImage" src="${current[2]}" alt="${current[1]}完整套裝預覽">`:`<div class="v110Room"><div class="v110Avatar">${characterSvg()}</div></div><div class="v110Hint">每天都要可愛<br>又努力 ♡</div>`;
+    const stage=isSuit?`<img class="v110SuitImage" src="${current[2]}" alt="${current[1]}完整套裝預覽">`:rasterMix();
     let panel='';
     if(active==='suit')panel=`<div class="v110SuitTabs">${Object.entries(suits).map(([k,v])=>`<button data-v110-suitgroup="${k}" class="${suitGroup===k?'on':''}">${v.label}</button>`).join('')}</div><div class="v110Grid">${suits[suitGroup].items.map(x=>`<button class="v110Card ${draft.suit===x[0]?'on':''}" data-v110-suit="${x[0]}"><img src="${x[3]}" alt="${x[1]}"><span>${x[1]}</span></button>`).join('')}</div>`;
     else {const list=lists[active]||[];panel=`<div class="v110SectionTitle"><b>${labels[active]}自由搭配</b><small>點一下立即試穿</small></div><div class="v110Grid">${list.map(x=>`<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}"><i class="v110Mini" style="color:${x[3]}">${x[2]}</i><span>${x[1]}</span></button>`).join('')}</div>`}
-    return `<div class="v110Wardrobe"><div class="v110Stage">${stage}${side()}</div><div class="v110Panel">${panel}</div></div>`;
+    return `<div class="v110Wardrobe"><div class="v110Stage v110OriginalUI">${stage}${side()}</div><div class="v110Panel">${panel}</div></div>`;
   };
-  const headSvg=s=>characterSvg({...draft,hair:s});
-  const hairEditor=()=>`<div class="v110Editor"><div class="v110EditorHead"><button class="v110Back" data-v110-editorback>‹</button><h2>髮型 / 髮色</h2><button class="v110Save" data-v110-save>儲存</button></div><div class="v110Segment"><button data-v110-hairpane="style" class="${hairPane==='style'?'on':''}">髮型</button><button data-v110-hairpane="color" class="${hairPane==='color'?'on':''}">髮色</button></div>${hairPane==='style'?`<div class="v110Grid v110HairGrid">${hairs.map(x=>`<button class="v110Card ${draft.hair===x[0]?'on':''}" data-v110-hair="${x[0]}"><i class="v110HeadThumb">${headSvg(x[0])}</i><span>${x[1]}</span></button>`).join('')}</div>`:`<div class="v110FacePreview">${characterSvg()}</div>`}<div class="v110ColorRow">${hairColors.map(x=>`<button class="v110Color ${draft.hairColor===x[0]?'on':''}" style="background:${x[0]}" data-v110-haircolor="${x[0]}" aria-label="${x[1]}"></button>`).join('')}</div></div>`;
-  const makeupEditor=()=>{const m=makeup[makeTab];return `<div class="v110Editor"><div class="v110EditorHead"><button class="v110Back" data-v110-editorback>‹</button><h2>妝容細節</h2><button class="v110Save" data-v110-save>儲存</button></div><div class="v110MakeTabs">${Object.entries(makeup).map(([k,v])=>`<button data-v110-maketab="${k}" class="${makeTab===k?'on':''}">${v.label}</button>`).join('')}</div><div class="v110FacePreview">${characterSvg()}</div><div class="v110Grid v110MakeGrid">${m.items.map(x=>`<button class="v110Card ${draft.makeup[makeTab]===x[0]?'on':''}" data-v110-make="${x[0]}"><i class="v110MakeIcon">${x[2]}</i><span>${x[1]}</span></button>`).join('')}</div><button class="v110Finish" data-v110-makefinish>完成妝容</button></div>`};
+  const hairRefs=['daily-latte','casual-knit','campus-cardigan','campus-sport','sweet-rose','daily-pink','sweet-cream','casual-cafe','sweet-lavender'];
+  const hairEditor=()=>`<div class="v110Editor"><div class="v110EditorHead"><button class="v110Back" data-v110-editorback>‹</button><h2>髮型 / 髮色</h2><button class="v110Save" data-v110-save>儲存</button></div><div class="v110Segment"><button data-v110-hairpane="style" class="${hairPane==='style'?'on':''}">髮型</button><button data-v110-hairpane="color" class="${hairPane==='color'?'on':''}">髮色</button></div>${hairPane==='style'?`<div class="v110Grid v110HairGrid">${hairs.map((x,i)=>`<button class="v110Card ${draft.hair===x[0]?'on':''}" data-v110-hair="${x[0]}"><i class="v110HeadThumb"><img src="${suitUrl(hairRefs[i])}" alt="${x[1]}"></i><span>${x[1]}</span></button>`).join('')}</div>`:`<div class="v110FacePreview"><img src="${suitUrl('daily-latte')}" alt="髮色預覽"></div>`}<div class="v110ColorRow">${hairColors.map(x=>`<button class="v110Color ${draft.hairColor===x[0]?'on':''}" style="background:${x[0]}" data-v110-haircolor="${x[0]}" aria-label="${x[1]}"></button>`).join('')}</div></div>`;
+  const makeupEditor=()=>{const m=makeup[makeTab];return `<div class="v110Editor"><div class="v110EditorHead"><button class="v110Back" data-v110-editorback>‹</button><h2>妝容細節</h2><button class="v110Save" data-v110-save>儲存</button></div><div class="v110MakeTabs">${Object.entries(makeup).map(([k,v])=>`<button data-v110-maketab="${k}" class="${makeTab===k?'on':''}">${v.label}</button>`).join('')}</div><div class="v110FacePreview"><img src="${suitUrl('daily-latte')}" alt="妝容預覽"></div><div class="v110Grid v110MakeGrid">${m.items.map(x=>`<button class="v110Card ${draft.makeup[makeTab]===x[0]?'on':''}" data-v110-make="${x[0]}"><i class="v110MakeIcon">${x[2]}</i><span>${x[1]}</span></button>`).join('')}</div><button class="v110Finish" data-v110-makefinish>完成妝容</button></div>`};
   const render=()=>{const sec=document.getElementById('wardrobe');if(!sec)return;sec.innerHTML=active==='hair'?hairEditor():active==='makeup'?makeupEditor():standard()};
   renderWard=render;
   const goBeforeV110=go;

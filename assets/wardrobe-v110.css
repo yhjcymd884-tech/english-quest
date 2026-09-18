@@ -5,6 +5,13 @@
 #wardrobe .v110Room:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,248,249,.22),transparent 28%,transparent 72%,rgba(255,248,249,.14));pointer-events:none}
 #wardrobe .v110Avatar{position:absolute;z-index:2;left:16%;right:2%;top:5.5%;bottom:0;display:grid;place-items:end center}
 #wardrobe .v110Avatar svg{display:block;width:100%;height:100%;filter:drop-shadow(0 7px 5px rgba(117,75,82,.15))}
+#wardrobe .v110RasterMix{position:absolute;inset:0;overflow:hidden;background:#fff7f5}
+#wardrobe .v110RasterLayer{position:absolute;inset:0;background-size:100% auto;background-position:center top;background-repeat:no-repeat}
+#wardrobe .v110RasterLayer.top{clip-path:polygon(19% 22%,81% 22%,91% 64%,9% 64%)}
+#wardrobe .v110RasterLayer.shoes{clip-path:polygon(23% 78%,77% 78%,82% 100%,18% 100%)}
+#wardrobe .v110RasterLayer.bag{clip-path:polygon(6% 34%,49% 34%,49% 70%,6% 70%)}
+#wardrobe .v110RasterLayer.accessory{clip-path:polygon(17% 6%,76% 6%,76% 33%,17% 33%)}
+#wardrobe .v110RasterLayer.pet{clip-path:polygon(51% 61%,100% 61%,100% 100%,51% 100%)}
 #wardrobe .v110Topbar{position:absolute;z-index:15;top:10px;left:18%;right:3%;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
 #wardrobe .v110Title{padding:8px 17px;border:1px solid rgba(235,190,204,.75);border-radius:23px;background:rgba(255,249,250,.92);box-shadow:0 3px 10px rgba(133,86,103,.12);color:#ba4771;font-size:19px;font-weight:1000;line-height:1;white-space:nowrap}
 #wardrobe .v110Save{pointer-events:auto;min-width:72px;height:42px;border:0;border-radius:22px;background:linear-gradient(#f485ae,#e85c91);box-shadow:0 5px 12px rgba(217,76,132,.28);color:#fff;font-size:15px;font-weight:1000;touch-action:manipulation}
@@ -38,6 +45,7 @@
 #wardrobe .v110HairGrid .v110Card{height:153px;padding-bottom:29px}
 #wardrobe .v110HeadThumb{width:100%;height:100%;overflow:hidden;border-radius:11px;background:radial-gradient(circle at 50% 35%,#fff,#f8e9ec)}
 #wardrobe .v110HeadThumb svg{width:100%;height:100%;transform:scale(1.55) translateY(12%);transform-origin:center}
+#wardrobe .v110HeadThumb img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 13%}
 #wardrobe .v110ColorRow{margin:12px 10px 0;padding:11px 10px;border:1px solid #f0e1e7;border-radius:17px;background:rgba(255,255,255,.82);display:flex;justify-content:center;gap:11px}
 #wardrobe .v110Color{width:46px;height:46px;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 7px rgba(92,68,77,.2);touch-action:manipulation}
 #wardrobe .v110Color.on{outline:3px solid #ec699b;outline-offset:2px}
@@ -45,9 +53,20 @@
 #wardrobe .v110MakeTabs button{height:38px;padding:0 1px;font-size:12px}
 #wardrobe .v110FacePreview{height:315px;margin:0 10px 10px;overflow:hidden;border:1px solid #f0dfe6;border-radius:22px;background:url("wardrobe-room-v110.webp?v=20260918-1") center/cover no-repeat;box-shadow:inset 0 0 45px rgba(255,255,255,.62)}
 #wardrobe .v110FacePreview svg{width:100%;height:100%;transform:scale(1.82) translateY(24%);transform-origin:center}
+#wardrobe .v110FacePreview>img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 16%}
 #wardrobe .v110MakeGrid{padding:0 10px;grid-template-columns:repeat(4,1fr)}
 #wardrobe .v110MakeGrid .v110Card{height:112px;padding-bottom:29px}
 #wardrobe .v110MakeIcon{height:100%;display:grid;place-items:center;font-size:38px;color:#9a687b}
 #wardrobe .v110Finish{display:block;width:70%;height:48px;margin:13px auto 0;border:1px solid #dc5a8b;border-radius:25px;background:linear-gradient(#f68cb4,#ec6599);box-shadow:0 5px 12px rgba(218,75,128,.23);color:#fff;font-size:17px;font-weight:1000}
 #wardrobe .v110Toast{position:fixed;z-index:90;left:50%;bottom:108px;transform:translateX(-50%);padding:10px 18px;border-radius:22px;background:rgba(71,57,69,.94);box-shadow:0 8px 24px rgba(0,0,0,.18);color:#fff;font-size:14px;font-weight:1000;white-space:nowrap}
+/* The approved outfit artwork already contains the wardrobe chrome. In suit
+   mode these controls are click targets only, so the artwork never doubles. */
+#wardrobe .v110Stage.v110OriginalUI .v110Title,
+#wardrobe .v110Stage.v110OriginalUI .v110Hint{display:none}
+#wardrobe .v110Stage.v110OriginalUI .v110Topbar{inset:0;display:block;pointer-events:none}
+#wardrobe .v110Stage.v110OriginalUI .v110Save{position:absolute;right:3.25%;top:9.3%;width:24%;height:7.1%;min-width:0;opacity:0;box-shadow:none}
+#wardrobe .v110Stage.v110OriginalUI .v110Back{left:3.25%;top:9.6%;width:12.3%;height:7.3%;opacity:0;box-shadow:none}
+#wardrobe .v110Stage.v110OriginalUI .v110Side{left:2.8%;top:17.64%;width:19.1%;height:68.3%;grid-template-rows:repeat(9,minmax(0,1fr));gap:.7%}
+#wardrobe .v110Stage.v110OriginalUI .v110Side button{height:auto;opacity:0;box-shadow:none}
 @media(max-width:380px){#wardrobe .v110Side{width:72px;top:61px;gap:4px}#wardrobe .v110Side button{height:45px;font-size:13px}#wardrobe .v110Title{font-size:17px;padding:7px 12px}#wardrobe .v110Save{min-width:62px;height:39px}#wardrobe .v110Grid{gap:5px}#wardrobe .v110Card{height:120px}#wardrobe .v110HairGrid .v110Card{height:140px}#wardrobe .v110MakeTabs button{font-size:11px}}
+@media(max-width:380px){#wardrobe .v110Stage.v110OriginalUI .v110Side{left:2.8%;top:17.64%;width:19.1%;height:68.3%;gap:.7%}#wardrobe .v110Stage.v110OriginalUI .v110Side button{height:auto}#wardrobe .v110Stage.v110OriginalUI .v110Save{right:3.25%;top:9.3%;width:24%;height:7.1%}}
