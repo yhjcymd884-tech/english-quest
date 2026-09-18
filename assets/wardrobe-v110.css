@@ -33,6 +33,7 @@
 #wardrobe .v110Card span{position:absolute;z-index:3;left:0;right:0;bottom:0;height:28px;display:grid;place-items:center;padding:0 2px;border-top:1px solid #f1e4e8;background:rgba(255,250,248,.96);color:#574b62;font-size:11px;font-weight:1000;line-height:1.1;text-align:center}
 #wardrobe .v110SectionTitle{display:flex;align-items:center;justify-content:space-between;margin:0 2px 9px;color:#7b5a6b;font-size:14px;font-weight:1000}
 #wardrobe .v110SectionTitle small{color:#aa8d9b;font-size:11px}
+#wardrobe .v110ReturnSuits{height:36px;padding:0 12px;border:1px solid #e56b99;border-radius:18px;background:#fff;color:#cf4f80;font-size:12px;font-weight:1000;box-shadow:0 3px 8px rgba(218,91,140,.12);white-space:nowrap;touch-action:manipulation}
 #wardrobe .v110Editor{min-height:calc(100dvh - 88px);padding-bottom:20px;background:linear-gradient(160deg,#fff6f7,#f6effb 58%,#fff7f2);color:#42546c}
 #wardrobe .v110EditorHead{position:relative;height:68px;display:flex;align-items:center;justify-content:center;padding:8px 58px 0}
 #wardrobe .v110EditorHead h2{min-width:190px;margin:0;padding:8px 18px;border:1px solid #efc8d6;border-radius:23px;background:rgba(255,250,251,.9);box-shadow:0 3px 10px rgba(184,118,145,.11);color:#b64370;font-size:21px;text-align:center}
