@@ -1,7 +1,7 @@
 (()=>{
   const KEY='englishQuestWardrobeSavedV110';
   const clone=o=>JSON.parse(JSON.stringify(o));
-  const defaults={mode:'suit',suit:'daily-latte',top:'rose',bottom:'pinkSkirt',shoes:'maryPink',bag:'heart',accessory:'bow',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:'cinnamon'};
+  const defaults={mode:'suit',suit:'daily-latte',previewSuit:'daily-latte',top:'rose',bottom:'pinkSkirt',shoes:'maryPink',bag:'heart',accessory:'bow',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:'cinnamon'};
   let saved=clone(defaults),draft=clone(defaults),active='suit',suitGroup='daily',hairPane='style',makeTab='brow';
   try{const x=JSON.parse(localStorage.getItem(KEY)||'null');if(x)saved={...defaults,...x,makeup:{...defaults.makeup,...(x.makeup||{})}}}catch{}
   draft=clone(saved);
@@ -17,9 +17,9 @@
     top:[['rose','玫瑰襯衫','🌸','#ef9eb6'],['sailor','水手上衣','⚓','#8db8db'],['cream','奶油針織','🧶','#f0d3a9'],['blazer','學院西裝','🎓','#9c846e'],['hoodie','粉色帽T','🎀','#e894b2'],['mint','薄荷短衫','🍃','#8fcbbc'],['black','黑色荷葉','♠️','#665963'],['snow','雪花斗篷','❄️','#c7424e']],
     bottom:[['pinkSkirt','粉格短裙','🌷','#eaa1b9'],['navySkirt','海軍百褶裙','🌙','#6683a7'],['latteSkirt','奶茶格裙','🧸','#b69879'],['denimShort','牛仔短褲','🫐','#7699bb'],['creamLong','奶油長裙','🤍','#e5cfb4'],['blackSkirt','黑色百褶裙','♣️','#5c5360'],['mintSkirt','薄荷裙','🍀','#91cabb'],['redSkirt','節慶紅裙','🎄','#bd4650']],
     shoes:[['maryPink','粉色瑪莉珍','👠','#d76f91'],['loafers','棕色樂福鞋','👞','#855f4d'],['sneakers','白色球鞋','👟','#e9e7e5'],['boots','短靴','🥾','#6f554b'],['blueMary','藍色瑪莉珍','👠','#6c95bc'],['redBoots','紅色雪靴','👢','#b9434c']],
-    bag:[['none','不拿包包','－','#eee'],['heart','愛心側背包','💗','#e87ca2'],['school','學院書包','🎒','#8a6557'],['cloud','雲朵小包','☁️','#d6e5ef'],['tote','帆布托特包','👜','#d4b995'],['star','星月包','🌟','#7e68a2']],
-    accessory:[['none','無飾品','－','#eee'],['bow','蝴蝶結','🎀','#e56c94'],['glasses','圓框眼鏡','👓','#8b6c65'],['pearl','珍珠項鍊','📿','#eee1db'],['beret','畫家帽','👒','#b88678'],['snow','雪花髮飾','❄️','#b8d9ed']],
-    pet:[['none','自己逛衣櫥','－','#eee'],['cinnamon','大耳狗','🐶','#d8edf5'],['bunny','粉紅兔兔','🐰','#f2b7c9'],['kitten','小花貓','🐱','#d9b18c'],['bear','奶茶小熊','🧸','#bd9570']]
+    bag:[['heart','黑色蝴蝶結包','👜','#473d43'],['tote','米白肩背包','👜','#d4b995'],['star','棕色斜背包','👜','#87644e']],
+    accessory:[['bow','黑色髮蝴蝶結','🎀','#4b4149'],['pearl','粉色領結','🎀','#eaa0b7'],['beret','星月魔女帽','🌙','#76529b'],['snow','冰晶髮飾','❄️','#b8d9ed']],
+    pet:[['cinnamon','白色長耳狗狗','🐶','#d8edf5']]
   };
   const hairs=[['softLong','柔捲長髮'],['bob','俏麗短髮'],['bun','丸子盤髮'],['pony','高馬尾'],['twin','雙馬尾'],['sideBraid','側編髮'],['princess','公主頭'],['braid','編髮'],['wave','波浪捲']];
   const hairColors=[['#715044','可可棕'],['#9a705f','奶茶棕'],['#c39584','玫瑰棕'],['#e8c2ba','櫻花粉'],['#4f515b','夜幕黑']];
@@ -39,16 +39,13 @@
     top:{rose:'daily-pink',sailor:'campus-sailor',cream:'campus-cardigan',blazer:'campus-blazer',hoodie:'casual-hoodie',mint:'casual-cafe',black:'daily-black',snow:'special-holiday'},
     bottom:{pinkSkirt:'daily-pink',navySkirt:'campus-sailor',latteSkirt:'daily-latte',denimShort:'casual-hoodie',creamLong:'casual-knit',blackSkirt:'daily-black',mintSkirt:'casual-cafe',redSkirt:'special-holiday'},
     shoes:{maryPink:'daily-pink',loafers:'daily-latte',sneakers:'casual-overalls',boots:'casual-knit',blueMary:'daily-blue',redBoots:'special-holiday'},
-    bag:{heart:'daily-latte',school:'campus-blazer',cloud:'daily-blue',tote:'casual-cafe',star:'special-witch'},
-    accessory:{bow:'daily-pink',glasses:'campus-cardigan',pearl:'sweet-cream',beret:'casual-knit',snow:'special-princess'},
+    bag:{heart:'daily-latte',tote:'casual-cafe',star:'casual-knit'},
+    accessory:{bow:'daily-latte',pearl:'daily-pink',beret:'special-witch',snow:'special-princess'},
     pet:{cinnamon:'daily-latte',bunny:'sweet-rose',kitten:'casual-cafe',bear:'campus-cardigan'}
   };
   const pieceUrl=(kind,id)=>{const source=pieceSources[kind]&&pieceSources[kind][id];return source?suitUrl(source):''};
-  const rasterMix=()=>{
-    const base=pieceUrl('bottom',draft.bottom)||suitUrl('daily-latte');
-    const layers=[['top',pieceUrl('top',draft.top)],['shoes',pieceUrl('shoes',draft.shoes)],['bag',pieceUrl('bag',draft.bag)],['accessory',pieceUrl('accessory',draft.accessory)],['pet',pieceUrl('pet',draft.pet)]];
-    return `<div class="v110RasterMix" aria-label="目前混搭造型"><div class="v110RasterLayer" style="background-image:url('${base}')"></div>${layers.filter(x=>x[1]).map(x=>`<div class="v110RasterLayer ${x[0]}" style="background-image:url('${x[1]}')"></div>`).join('')}</div>`;
-  };
+  const outfitForPiece=(kind,id)=>pieceSources[kind]&&pieceSources[kind][id];
+  const outfitThumb=id=>{const x=allSuits().find(y=>y[0]===id);return x?x[3]:''};
   const toast=t=>{document.querySelector('.v110Toast')?.remove();const d=document.createElement('div');d.className='v110Toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1500)};
   const persist=()=>{saved=clone(draft);try{localStorage.setItem(KEY,JSON.stringify(saved));localStorage.setItem('englishQuestWardrobeV103',saved.suit)}catch{}toast('穿搭已儲存 ♡')};
   const hairShape=(style,c)=>{
@@ -69,11 +66,11 @@
   };
   const side=()=>`<button class="v110Back" data-v110-back aria-label="返回首頁">‹</button><div class="v110Topbar"><strong class="v110Title">夢幻衣櫥</strong><button class="v110Save" data-v110-save>儲存</button></div><div class="v110Side">${Object.entries(labels).map(([k,v])=>`<button data-v110-tab="${k}" class="${active===k?'on':''}">${v}</button>`).join('')}</div>`;
   const standard=()=>{
-    const isSuit=active==='suit'&&draft.mode==='suit',current=suit();
-    const stage=isSuit?`<img class="v110SuitImage" src="${current[2]}" alt="${current[1]}完整套裝預覽">`:rasterMix();
+    const isSuit=active==='suit',previewId=isSuit?draft.suit:(draft.previewSuit||outfitForPiece(active,draft[active])||draft.suit),current=allSuits().find(x=>x[0]===previewId)||suit();
+    const stage=`<img class="v110SuitImage" src="${current[2]}" alt="${current[1]}完整造型預覽">`;
     let panel='';
     if(active==='suit')panel=`<div class="v110SuitTabs">${Object.entries(suits).map(([k,v])=>`<button data-v110-suitgroup="${k}" class="${suitGroup===k?'on':''}">${v.label}</button>`).join('')}</div><div class="v110Grid">${suits[suitGroup].items.map(x=>`<button class="v110Card ${draft.suit===x[0]?'on':''}" data-v110-suit="${x[0]}"><img src="${x[3]}" alt="${x[1]}"><span>${x[1]}</span></button>`).join('')}</div>`;
-    else {const list=lists[active]||[];panel=`<div class="v110SectionTitle"><b>${labels[active]}自由搭配</b><small>點一下立即試穿</small></div><div class="v110Grid">${list.map(x=>`<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}"><i class="v110Mini" style="color:${x[3]}">${x[2]}</i><span>${x[1]}</span></button>`).join('')}</div>`}
+    else {const list=lists[active]||[];panel=`<div class="v110SectionTitle"><b>${labels[active]}造型選擇</b><small>縮圖與上方造型一致</small></div><div class="v110Grid">${list.map(x=>{const source=outfitForPiece(active,x[0]),thumb=outfitThumb(source);return `<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}">${thumb?`<img src="${thumb}" alt="${x[1]}">`:`<i class="v110Mini">${x[2]}</i>`}<span>${x[1]}</span></button>`}).join('')}</div>`}
     return `<div class="v110Wardrobe"><div class="v110Stage v110OriginalUI">${stage}${side()}</div><div class="v110Panel">${panel}</div></div>`;
   };
   const hairRefs=['daily-latte','casual-knit','campus-cardigan','campus-sport','sweet-rose','daily-pink','sweet-cream','casual-cafe','sweet-lavender'];
@@ -88,10 +85,10 @@
     if(q('[data-v110-back]')){go('home');return}
     if(q('[data-v110-editorback]')){active='suit';render();return}
     if(q('[data-v110-save]')){persist();return}
-    let b=q('[data-v110-tab]');if(b){active=b.dataset.v110Tab;if(active!=='suit')draft.mode='mix';render();return}
+    let b=q('[data-v110-tab]');if(b){active=b.dataset.v110Tab;if(active==='suit'){draft.mode='suit';draft.previewSuit=draft.suit}else{draft.mode='piece';const source=outfitForPiece(active,draft[active]);if(source)draft.previewSuit=source}render();return}
     b=q('[data-v110-suitgroup]');if(b){suitGroup=b.dataset.v110Suitgroup;render();return}
-    b=q('[data-v110-suit]');if(b){draft.suit=b.dataset.v110Suit;draft.mode='suit';render();return}
-    b=q('[data-v110-item]');if(b){draft[b.dataset.v110Item]=b.dataset.v110Value;draft.mode='mix';render();return}
+    b=q('[data-v110-suit]');if(b){draft.suit=b.dataset.v110Suit;draft.previewSuit=draft.suit;draft.mode='suit';render();return}
+    b=q('[data-v110-item]');if(b){draft[b.dataset.v110Item]=b.dataset.v110Value;const source=outfitForPiece(b.dataset.v110Item,b.dataset.v110Value);if(source)draft.previewSuit=source;draft.mode='piece';render();return}
     b=q('[data-v110-hairpane]');if(b){hairPane=b.dataset.v110Hairpane;render();return}
     b=q('[data-v110-hair]');if(b){draft.hair=b.dataset.v110Hair;draft.mode='mix';render();return}
     b=q('[data-v110-haircolor]');if(b){draft.hairColor=b.dataset.v110Haircolor;draft.mode='mix';render();return}
