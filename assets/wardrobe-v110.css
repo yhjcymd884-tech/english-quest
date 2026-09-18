@@ -6,10 +6,13 @@
 #wardrobe .v110WearLayer{position:absolute;z-index:4;display:block;object-fit:contain;pointer-events:none;transition:opacity .14s ease,transform .14s ease;filter:drop-shadow(0 2px 2px rgba(111,67,79,.12))}
 #wardrobe .v110WearLayer[hidden]{display:none}
 #wardrobe .v110WearTop{left:25%;top:22.5%;width:56%;height:37%;z-index:6}
-#wardrobe .v110WearBottom{left:32%;top:47%;width:46%;height:25%;z-index:7}
-#wardrobe .v110WearShoes{left:34%;top:77%;width:39%;height:23%;z-index:8}
-#wardrobe .v110WearBag{left:29%;top:47%;width:25%;height:25%;z-index:9}
-#wardrobe .v110WearAccessory{left:42%;top:11%;width:35%;height:22%;z-index:10}
+#wardrobe .v110WearTop:not([data-v110-value="rose"]){left:30%;top:23%;width:46%;height:34%}
+#wardrobe .v110WearBottom{left:33.5%;top:42.5%;width:43%;height:25%;z-index:7}
+#wardrobe .v110WearShoes{left:39%;top:78.5%;width:28%;height:21%;z-index:8}
+#wardrobe .v110WearBag{left:34%;top:43%;width:21%;height:25%;z-index:9}
+#wardrobe .v110WearAccessory{z-index:10}
+#wardrobe .v110WearAccessory[data-v110-value="beret"]{left:45%;top:2%;width:25%;height:20%}
+#wardrobe .v110WearAccessory[data-v110-value="pearl"]{left:47%;top:25%;width:17%;height:14%}
 #wardrobe .v110Room{position:absolute;inset:0;background:url("wardrobe-room-v110.webp?v=20260918-1") center/cover no-repeat}
 #wardrobe .v110Room:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,248,249,.22),transparent 28%,transparent 72%,rgba(255,248,249,.14));pointer-events:none}
 #wardrobe .v110Avatar{position:absolute;z-index:2;left:16%;right:2%;top:5.5%;bottom:0;display:grid;place-items:end center}
