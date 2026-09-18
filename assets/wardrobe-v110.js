@@ -1,5 +1,8 @@
 (()=>{
-  const KEY='englishQuestWardrobeSavedV111';
+  const fixedLayerStyle=document.createElement('style');
+  fixedLayerStyle.textContent='#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;pointer-events:none!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
+  document.head.appendChild(fixedLayerStyle);
+  const KEY='englishQuestWardrobeSavedV112';
   const clone=o=>JSON.parse(JSON.stringify(o));
   const defaults={mode:'suit',suit:'daily-pink',previewSuit:'daily-pink',top:'rose',bottom:'pinkSkirt',shoes:'maryPink',bag:'heart',accessory:'bow',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:'cinnamon'};
   let saved=clone(defaults),draft=clone(defaults),active='suit',suitGroup='daily',hairPane='style',makeTab='brow';
@@ -45,7 +48,7 @@
     accessory:{bow:'',pearl:'accessory-pearl.webp',beret:'accessory-beret.webp'},
     pet:{cinnamon:''}
   };
-  const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260919-1`:''};
+  const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260919-2`:''};
   const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260918-1`:''};
   Object.keys(layerAssets).forEach(kind=>{
     if(lists[kind])lists[kind]=lists[kind].filter(x=>Object.prototype.hasOwnProperty.call(layerAssets[kind],x[0]));
@@ -106,14 +109,14 @@
   const render=()=>{const sec=document.getElementById('wardrobe');if(!sec)return;warmWardrobe();sec.innerHTML=active==='hair'?hairEditor():active==='makeup'?makeupEditor():standard()};
   renderWard=render;
   const goBeforeV110=go;
-  go=function(id){if(id==='wardrobe'){draft=clone(saved);active='suit';const found=Object.entries(suits).find(([,v])=>v.items.some(x=>x[0]===draft.suit));suitGroup=found?found[0]:'daily'}goBeforeV110(id)};
+  go=function(id){if(id==='wardrobe'){draft=clone(saved);draft.suit='daily-pink';draft.previewSuit='daily-pink';active='suit';suitGroup='daily'}goBeforeV110(id)};
   document.addEventListener('click',e=>{
     const q=s=>e.target.closest(s);
     if(q('[data-v110-back]')){go('home');return}
     if(q('[data-v110-editorback]')){active='suit';render();return}
     if(q('[data-v110-save]')){persist();return}
     if(q('[data-v110-return-suits]')){active='suit';draft.mode='suit';draft.previewSuit=draft.suit;render();return}
-    let b=q('[data-v110-tab]');if(b){const previous=active;active=b.dataset.v110Tab;if(active==='suit'){draft.mode='suit';draft.previewSuit=draft.suit}else{draft.mode='piece'}if(active==='hair'||active==='makeup'||previous==='suit'||active==='suit'||!document.querySelector('#wardrobe .v110Stage')){render()}else{document.querySelectorAll('[data-v110-tab]').forEach(x=>x.classList.toggle('on',x.dataset.v110Tab===active));updatePanel()}return}
+    let b=q('[data-v110-tab]');if(b){const previous=active;active=b.dataset.v110Tab;if(active==='suit'){draft.mode='suit';draft.suit='daily-pink';draft.previewSuit='daily-pink';suitGroup='daily'}else{draft.mode='piece'}if(active==='hair'||active==='makeup'||previous==='suit'||active==='suit'||!document.querySelector('#wardrobe .v110Stage')){render()}else{document.querySelectorAll('[data-v110-tab]').forEach(x=>x.classList.toggle('on',x.dataset.v110Tab===active));updatePanel()}return}
     b=q('[data-v110-suitgroup]');if(b){suitGroup=b.dataset.v110Suitgroup;updatePanel();return}
     b=q('[data-v110-suit]');if(b){draft.suit=b.dataset.v110Suit;draft.previewSuit=draft.suit;draft.mode='suit';markSelected('[data-v110-suit]',draft.suit,'v110Suit');showPreview(draft.suit);return}
     b=q('[data-v110-item]');if(b){const kind=b.dataset.v110Item;draft[kind]=b.dataset.v110Value;draft.mode='piece';markSelected('[data-v110-item]',b.dataset.v110Value,'v110Value');updateLayer(kind,draft[kind]);return}
