@@ -41,7 +41,7 @@
   const layerRoot='assets/wardrobe-fixed/';
   const layerThumbRoot='assets/wardrobe-layers/';
   const layerAssets={
-    top:{rose:'top-rose.webp',sailor:'top-sailor.webp',cream:'top-cream.webp',hoodie:'top-hoodie.webp',black:'top-black.webp'},
+    top:{rose:'top-rose-v2.webp',sailor:'top-sailor-v2.webp',cream:'top-cream-v2.webp',hoodie:'top-hoodie-v2.webp',black:'top-black-v2.webp'},
     bottom:{pinkSkirt:'bottom-pinkSkirt.webp',navySkirt:'bottom-navySkirt.webp',latteSkirt:'bottom-latteSkirt.webp',denimShort:'bottom-denimShort.webp'},
     shoes:{maryPink:'shoes-maryPink.webp',loafers:'shoes-loafers.webp',sneakers:'shoes-sneakers.webp',boots:'shoes-boots.webp'},
     bag:{heart:'bag-heart.webp',tote:'bag-tote.webp',star:'bag-star.webp'},
@@ -53,7 +53,7 @@
     pieceKinds.forEach(key=>{draft[key]=''});
     draft[kind]=Object.keys(layerAssets[kind]||{})[0]||'';
   };
-  const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260919-7`:''};
+  const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260919-8`:''};
   const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260918-1`:''};
   Object.keys(layerAssets).forEach(kind=>{
     if(lists[kind])lists[kind]=lists[kind].filter(x=>Object.prototype.hasOwnProperty.call(layerAssets[kind],x[0]));
