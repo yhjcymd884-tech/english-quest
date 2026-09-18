@@ -49,11 +49,11 @@
     pet:{cinnamon:''}
   };
   const topScenes={
-    rose:'assets/wardrobe-top-scenes/top-rose-v3.webp?v=20260919-2',
-    sailor:'assets/wardrobe-top-scenes/top-sailor-v4.webp?v=20260919-3',
-    cream:'assets/wardrobe-top-scenes/top-cream-v4.webp?v=20260919-3',
-    hoodie:'assets/wardrobe-top-scenes/top-hoodie-v4.webp?v=20260919-3',
-    black:'assets/wardrobe-top-scenes/top-black-v4.webp?v=20260919-3'
+    rose:'assets/wardrobe-top-scenes/top-rose-v5.webp?v=20260919-4',
+    sailor:'assets/wardrobe-top-scenes/top-sailor-v5.webp?v=20260919-4',
+    cream:'assets/wardrobe-top-scenes/top-cream-v5.webp?v=20260919-4',
+    hoodie:'assets/wardrobe-top-scenes/top-hoodie-v5.webp?v=20260919-4',
+    black:'assets/wardrobe-top-scenes/top-black-v5.webp?v=20260919-4'
   };
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
   const startPieceMode=kind=>{
@@ -88,8 +88,9 @@
   const piecePanelHtml=()=>{const list=lists[active]||[];return `<div class="v110SectionTitle"><b>${labels[active]}造型選擇</b><button class="v110ReturnSuits" data-v110-return-suits>返回完整套裝</button></div><div class="v110Grid">${list.map(x=>{const thumb=layerThumbUrl(active,x[0]);return `<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}">${thumb?`<img src="${thumb}" alt="${x[1]}">`:`<i class="v110Mini">${x[2]}</i>`}<span>${x[1]}</span></button>`}).join('')}</div>`};
   const updatePanel=()=>{const panel=document.querySelector('#wardrobe .v110Panel');if(panel)panel.innerHTML=active==='suit'?suitPanelHtml():piecePanelHtml()};
   const layerImage=(kind,className,label)=>{const url=layerUrl(kind,draft[kind]);return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" data-v110-value="${draft[kind]}" src="${url}" ${url?'':'hidden'} alt="${label}">`};
-  const layeredStageHtml=()=>{const topScene=topScenes[draft.top]||'';return `<div class="v110LayeredStage"><img class="v110LayerBase" src="${topScene||'assets/wardrobe-layers/base-v1.webp?v=20260918-1'}" alt="女孩混搭造型">${topScene?'':layerImage('top','v110WearTop','目前上衣')}${layerImage('bottom','v110WearBottom','目前下身')}${layerImage('shoes','v110WearShoes','目前鞋子')}${layerImage('bag','v110WearBag','目前包包')}${layerImage('accessory','v110WearAccessory','目前飾品')}</div>`};
-  const updateLayer=(kind,id)=>{if(kind==='top'){const base=document.querySelector('#wardrobe .v110LayerBase');const old=document.querySelector('#wardrobe [data-v110-layer="top"]');const scene=topScenes[id]||'';if(base)base.src=scene||'assets/wardrobe-layers/base-v1.webp?v=20260918-1';if(scene){old?.remove();return}if(!old){render();return}}const image=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!image)return;const url=layerUrl(kind,id);image.dataset.v110Value=id;image.src=url;image.hidden=!url};
+  const pieceBase='assets/wardrobe-layers/base-color-v3.webp?v=20260919-4';
+  const layeredStageHtml=()=>{const topScene=topScenes[draft.top]||'';return `<div class="v110LayeredStage"><img class="v110LayerBase" src="${topScene||pieceBase}" alt="女孩混搭造型">${topScene?'':layerImage('top','v110WearTop','目前上衣')}${layerImage('bottom','v110WearBottom','目前下身')}${layerImage('shoes','v110WearShoes','目前鞋子')}${layerImage('bag','v110WearBag','目前包包')}${layerImage('accessory','v110WearAccessory','目前飾品')}</div>`};
+  const updateLayer=(kind,id)=>{if(kind==='top'){const base=document.querySelector('#wardrobe .v110LayerBase');const old=document.querySelector('#wardrobe [data-v110-layer="top"]');const scene=topScenes[id]||'';if(base)base.src=scene||pieceBase;if(scene){old?.remove();return}if(!old){render();return}}const image=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!image)return;const url=layerUrl(kind,id);image.dataset.v110Value=id;image.src=url;image.hidden=!url};
   const toast=t=>{document.querySelector('.v110Toast')?.remove();const d=document.createElement('div');d.className='v110Toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1500)};
   const persist=()=>{saved=clone(draft);try{localStorage.setItem(KEY,JSON.stringify(saved));localStorage.setItem('englishQuestWardrobeV103',saved.suit)}catch{}toast('穿搭已儲存 ♡')};
   const hairShape=(style,c)=>{
