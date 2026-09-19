@@ -299,3 +299,7 @@ body.v97WardrobeOpen .bottom{
 /* v126: match the girl's separated feet and lower the held bag. */
 #wardrobe .v110WearShoes{transform:translate(7.5%,-3.8%) scale(.56) scaleX(1.42)!important;transform-origin:65% 88%!important}
 #wardrobe .v110WearBag{transform:translate(28%,-1.6%) scale(.52) rotate(-3deg)!important;transform-origin:76% 51%!important}
+
+
+/* v127: align the shoe sole with the character's toe line. */
+#wardrobe .v110WearShoes{transform:translate(7.5%,1.2%) scale(.58) scaleX(1.24)!important;transform-origin:65% 91%!important}
