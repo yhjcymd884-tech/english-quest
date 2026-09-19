@@ -5,7 +5,7 @@
   const KEY='englishQuestWardrobeSavedV113';
   const clone=o=>JSON.parse(JSON.stringify(o));
   const defaults={mode:'suit',suit:'daily-pink',previewSuit:'daily-pink',top:'rose',bottom:'pinkSkirt',shoes:'maryPink',bag:'heart',accessory:'bow',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:'cinnamon'};
-  let saved=clone(defaults),draft=clone(defaults),active='suit',suitGroup='daily',hairPane='style',makeTab='brow';
+  let saved=clone(defaults),draft=clone(defaults),active='suit',suitGroup='daily',hairPane='style',makeTab='brow',panelOpen=false;
   try{const x=JSON.parse(localStorage.getItem(KEY)||'null');if(x)saved={...defaults,...x,makeup:{...defaults.makeup,...(x.makeup||{})}}}catch{}
   draft=clone(saved);
   const suits={
@@ -113,8 +113,9 @@
     warmImage(item[2]).then(()=>{if(token!==previewToken||!image.isConnected)return;image.src=item[2];image.alt=item[1]+'完整造型預覽'});
   };
   const markSelected=(selector,value,key)=>document.querySelectorAll(selector).forEach(x=>x.classList.toggle('on',x.dataset[key]===value));
-  const suitPanelHtml=()=>`<div class="v110SuitTabs">${Object.entries(suits).map(([k,v])=>`<button data-v110-suitgroup="${k}" class="${suitGroup===k?'on':''}">${v.label}</button>`).join('')}</div><div class="v110Grid">${suits[suitGroup].items.map(x=>`<button class="v110Card ${draft.suit===x[0]?'on':''}" data-v110-suit="${x[0]}"><img src="${x[3]}" alt="${x[1]}"><span>${x[1]}</span></button>`).join('')}</div>`;
-  const piecePanelHtml=()=>{const list=lists[active]||[];return `<div class="v110SectionTitle"><b>${labels[active]}造型選擇</b><button class="v110ReturnSuits" data-v110-return-suits>返回完整套裝</button></div><div class="v110Grid">${list.map(x=>{const thumb=layerThumbUrl(active,x[0]);return `<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}">${thumb?`<img src="${thumb}" alt="${x[1]}">`:`<i class="v110Mini">${x[2]}</i>`}<span>${x[1]}</span></button>`}).join('')}</div>`};
+  const panelHead=title=>`<div class="v110DrawerHead"><button data-v110-panel-close aria-label="返回分類">‹</button><b>${title}</b></div>`;
+  const suitPanelHtml=()=>`${panelHead('套裝選擇')}<div class="v110SuitTabs">${Object.entries(suits).map(([k,v])=>`<button data-v110-suitgroup="${k}" class="${suitGroup===k?'on':''}">${v.label}</button>`).join('')}</div><div class="v110Grid">${suits[suitGroup].items.map(x=>`<button class="v110Card ${draft.suit===x[0]?'on':''}" data-v110-suit="${x[0]}"><img src="${x[3]}" alt="${x[1]}"><span>${x[1]}</span></button>`).join('')}</div>`;
+  const piecePanelHtml=()=>{const list=lists[active]||[];return `${panelHead(labels[active]+'選擇')}<button class="v110ReturnSuits" data-v110-return-suits>返回完整套裝</button><div class="v110Grid">${list.map(x=>{const thumb=layerThumbUrl(active,x[0]);return `<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}">${thumb?`<img src="${thumb}" alt="${x[1]}">`:`<i class="v110Mini">${x[2]}</i>`}<span>${x[1]}</span></button>`}).join('')}</div>`};
   const updatePanel=()=>{const panel=document.querySelector('#wardrobe .v110Panel');if(panel)panel.innerHTML=active==='suit'?suitPanelHtml():piecePanelHtml()};
   const layerImage=(kind,className,label)=>{const url=layerUrl(kind,draft[kind]);return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" data-v110-value="${draft[kind]}" src="${url}" ${url?'':'hidden'} alt="${label}">`};
   const pieceBase='assets/wardrobe-layers/base-color-v3.webp?v=20260919-4';
@@ -144,7 +145,7 @@
     const isSuit=active==='suit',current=suit();
     const stage=isSuit?`<img class="v110SuitImage" src="${current[2]}" alt="${current[1]}完整造型預覽">`:layeredStageHtml();
     const panel=active==='suit'?suitPanelHtml():piecePanelHtml();
-    return `<div class="v110Wardrobe"><div class="v110Stage v110OriginalUI">${stage}${side()}</div><div class="v110Panel">${panel}</div></div>`;
+    return `<div class="v110Wardrobe ${panelOpen?'v110DrawerOpen':''}"><div class="v110Stage v110OriginalUI">${stage}${side()}<aside class="v110Panel" aria-label="${labels[active]}素材選擇">${panel}</aside></div></div>`;
   };
   const hairRefs=['daily-latte','casual-knit','campus-cardigan','campus-sport','sweet-rose','daily-pink','sweet-cream','casual-cafe','sweet-lavender'];
   const hairEditor=()=>`<div class="v110Editor"><div class="v110EditorHead"><button class="v110Back" data-v110-editorback>‹</button><h2>髮型 / 髮色</h2><button class="v110Save" data-v110-save>儲存</button></div><div class="v110Segment"><button data-v110-hairpane="style" class="${hairPane==='style'?'on':''}">髮型</button><button data-v110-hairpane="color" class="${hairPane==='color'?'on':''}">髮色</button></div>${hairPane==='style'?`<div class="v110Grid v110HairGrid">${hairs.map((x,i)=>`<button class="v110Card ${draft.hair===x[0]?'on':''}" data-v110-hair="${x[0]}"><i class="v110HeadThumb"><img src="${suitUrl(hairRefs[i])}" alt="${x[1]}"></i><span>${x[1]}</span></button>`).join('')}</div>`:`<div class="v110FacePreview"><img src="${suitUrl('daily-latte')}" alt="髮色預覽"></div>`}<div class="v110ColorRow">${hairColors.map(x=>`<button class="v110Color ${draft.hairColor===x[0]?'on':''}" style="background:${x[0]}" data-v110-haircolor="${x[0]}" aria-label="${x[1]}"></button>`).join('')}</div></div>`;
@@ -152,14 +153,15 @@
   const render=()=>{const sec=document.getElementById('wardrobe');if(!sec)return;warmWardrobe();sec.innerHTML=active==='hair'?hairEditor():active==='makeup'?makeupEditor():standard()};
   renderWard=render;
   const goBeforeV110=go;
-  go=function(id){if(id==='wardrobe'){draft=clone(saved);draft.suit='daily-pink';draft.previewSuit='daily-pink';active='suit';suitGroup='daily'}goBeforeV110(id)};
+  go=function(id){if(id==='wardrobe'){draft=clone(saved);draft.suit='daily-pink';draft.previewSuit='daily-pink';active='suit';suitGroup='daily';panelOpen=false}goBeforeV110(id)};
   document.addEventListener('click',e=>{
     const q=s=>e.target.closest(s);
     if(q('[data-v110-back]')){go('home');return}
     if(q('[data-v110-editorback]')){active='suit';render();return}
     if(q('[data-v110-save]')){persist();return}
-    if(q('[data-v110-return-suits]')){active='suit';draft.mode='suit';draft.previewSuit=draft.suit;render();return}
-    let b=q('[data-v110-tab]');if(b){const previous=active;active=b.dataset.v110Tab;if(active==='suit'){draft.mode='suit';draft.suit='daily-pink';draft.previewSuit='daily-pink';suitGroup='daily'}else{draft.mode='piece';if(previous==='suit'&&pieceKinds.includes(active))startPieceMode(active)}if(active==='hair'||active==='makeup'||previous==='suit'||active==='suit'||sceneKinds[active]||!document.querySelector('#wardrobe .v110Stage')){render()}else{document.querySelectorAll('[data-v110-tab]').forEach(x=>x.classList.toggle('on',x.dataset.v110Tab===active));updatePanel()}return}
+    if(q('[data-v110-panel-close]')){panelOpen=false;render();return}
+    if(q('[data-v110-return-suits]')){active='suit';panelOpen=true;draft.mode='suit';draft.previewSuit=draft.suit;render();return}
+    let b=q('[data-v110-tab]');if(b){const previous=active;active=b.dataset.v110Tab;if(active==='suit'){draft.mode='suit';draft.suit='daily-pink';draft.previewSuit='daily-pink';suitGroup='daily'}else{draft.mode='piece';if(previous==='suit'&&pieceKinds.includes(active))startPieceMode(active)}if(active==='hair'||active==='makeup'){panelOpen=false;render()}else{panelOpen=true;render()}return}
     b=q('[data-v110-suitgroup]');if(b){suitGroup=b.dataset.v110Suitgroup;updatePanel();return}
     b=q('[data-v110-suit]');if(b){draft.suit=b.dataset.v110Suit;draft.previewSuit=draft.suit;draft.mode='suit';markSelected('[data-v110-suit]',draft.suit,'v110Suit');showPreview(draft.suit);return}
     b=q('[data-v110-item]');if(b){const kind=b.dataset.v110Item;draft[kind]=b.dataset.v110Value;draft.mode='piece';markSelected('[data-v110-item]',b.dataset.v110Value,'v110Value');updateLayer(kind,draft[kind]);return}
