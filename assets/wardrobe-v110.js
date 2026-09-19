@@ -98,7 +98,13 @@
     whitefrill:'assets/wardrobe-fitted/top-whitefrill-scene-v1.webp?v=20260919-1',
     sage:'assets/wardrobe-fitted/top-sage-scene-v1.webp?v=20260919-1'
   };
-  const sceneKinds={top:fittedTopScenes};
+  const fittedBottomScenes={
+    pinkSkirt:'assets/wardrobe-fitted/bottom-pinkSkirt-scene-v1.webp?v=20260919-1',
+    navySkirt:'assets/wardrobe-fitted/bottom-navySkirt-scene-v1.webp?v=20260919-1',
+    latteSkirt:'assets/wardrobe-fitted/bottom-latteSkirt-scene-v1.webp?v=20260919-1',
+    denimShort:'assets/wardrobe-fitted/bottom-denimShort-scene-v1.webp?v=20260919-1'
+  };
+  const sceneKinds={top:fittedTopScenes,bottom:fittedBottomScenes};
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
   const startPieceMode=kind=>{
     pieceKinds.forEach(key=>{draft[key]=''});
@@ -134,8 +140,8 @@
   const updatePanel=()=>{const panel=document.querySelector('#wardrobe .v110Panel');if(panel)panel.innerHTML=active==='suit'?suitPanelHtml():piecePanelHtml()};
   const layerImage=(kind,className,label)=>{const url=layerUrl(kind,draft[kind]);return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" data-v110-value="${draft[kind]}" src="${url}" ${url?'':'hidden'} alt="${label}">`};
   const pieceBase='assets/wardrobe-base-clean-v120.webp?v=20260919-1';
-  const activeScene=()=>fittedTopScenes[draft.top]||'';
-  const layeredStageHtml=()=>{const scene=activeScene();return `<div class="v110LayeredStage"><img class="v110LayerBase" src="${scene||pieceBase}" alt="女孩混搭造型">${scene?'':layerImage('top','v110WearTop','目前上衣')}${layerImage('bottom','v110WearBottom','目前下身')}${layerImage('shoes','v110WearShoes','目前鞋子')}${layerImage('bag','v110WearBag','目前包包')}${layerImage('accessory','v110WearAccessory','目前飾品')}</div>`};
+  const activeScene=()=>fittedTopScenes[draft.top]||fittedBottomScenes[draft.bottom]||'';
+  const layeredStageHtml=()=>{const scene=activeScene();return `<div class="v110LayeredStage"><img class="v110LayerBase" src="${scene||pieceBase}" alt="女孩混搭造型">${scene?'':`${layerImage('top','v110WearTop','目前上衣')}${layerImage('bottom','v110WearBottom','目前下身')}${layerImage('shoes','v110WearShoes','目前鞋子')}${layerImage('bag','v110WearBag','目前包包')}${layerImage('accessory','v110WearAccessory','目前飾品')}`}</div>`};
   const updateLayer=(kind,id)=>{if(sceneKinds[kind]){render();return}const image=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!image)return;const url=layerUrl(kind,id);image.dataset.v110Value=id;image.src=url;image.hidden=!url};
   const toast=t=>{document.querySelector('.v110Toast')?.remove();const d=document.createElement('div');d.className='v110Toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1500)};
   const persist=()=>{saved=clone(draft);try{localStorage.setItem(KEY,JSON.stringify(saved));localStorage.setItem('englishQuestWardrobeV103',saved.suit)}catch{}toast('穿搭已儲存 ♡')};
