@@ -53,19 +53,19 @@
     sailor:'assets/wardrobe-top-scenes/top-sailor-v7.webp?v=20260919-6',
     cream:'assets/wardrobe-top-scenes/top-cream-v7.webp?v=20260919-6',
     hoodie:'assets/wardrobe-top-scenes/top-hoodie-v7.webp?v=20260919-6',
-    black:'assets/wardrobe-top-scenes/top-black-v7.webp?v=20260919-6',
-    iceblue:'assets/wardrobe-top-scenes/top-iceblue-v1.webp?v=20260919-16',
-    blackvest:'assets/wardrobe-top-scenes/top-blackvest-v1.webp?v=20260919-16',
-    academy:'assets/wardrobe-top-scenes/top-academy-v1.webp?v=20260919-16',
-    varsity:'assets/wardrobe-top-scenes/top-varsity-v1.webp?v=20260919-16',
-    whitefrill:'assets/wardrobe-top-scenes/top-whitefrill-v1.webp?v=20260919-16',
-    sage:'assets/wardrobe-top-scenes/top-sage-v1.webp?v=20260919-16'
+    black:'assets/wardrobe-top-scenes/top-black-v8.webp?v=20260919-17',
+    iceblue:'assets/wardrobe-top-scenes/top-iceblue-v2.webp?v=20260919-17',
+    blackvest:'assets/wardrobe-top-scenes/top-blackvest-v2.webp?v=20260919-17',
+    academy:'assets/wardrobe-top-scenes/top-academy-v2.webp?v=20260919-17',
+    varsity:'assets/wardrobe-top-scenes/top-varsity-v2.webp?v=20260919-17',
+    whitefrill:'assets/wardrobe-top-scenes/top-whitefrill-v2.webp?v=20260919-17',
+    sage:'assets/wardrobe-top-scenes/top-sage-v2.webp?v=20260919-17'
   };
   const bottomScenes={
-    pinkSkirt:'assets/wardrobe-bottom-scenes/bottom-pinkSkirt-v1.webp?v=20260919-12',
-    navySkirt:'assets/wardrobe-bottom-scenes/bottom-navySkirt-v1.webp?v=20260919-12',
-    latteSkirt:'assets/wardrobe-bottom-scenes/bottom-latteSkirt-v1.webp?v=20260919-12',
-    denimShort:'assets/wardrobe-bottom-scenes/bottom-denimShort-v1.webp?v=20260919-12'
+    pinkSkirt:'assets/wardrobe-bottom-scenes/bottom-pinkSkirt-v2.webp?v=20260919-17',
+    navySkirt:'assets/wardrobe-bottom-scenes/bottom-navySkirt-v2.webp?v=20260919-17',
+    latteSkirt:'assets/wardrobe-bottom-scenes/bottom-latteSkirt-v2.webp?v=20260919-17',
+    denimShort:'assets/wardrobe-bottom-scenes/bottom-denimShort-v2.webp?v=20260919-17'
   };
   const shoeScenes={
     maryPink:'assets/wardrobe-shoe-scenes/shoes-maryPink-v1.webp?v=20260919-12',
