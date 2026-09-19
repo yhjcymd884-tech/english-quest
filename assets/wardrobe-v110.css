@@ -3,7 +3,7 @@
 #wardrobe .v110Stage:before,#wardrobe .v110Stage:after{content:"";position:absolute;z-index:13;background-image:url("wardrobe-clean-right-v1.webp?v=20260919-1");background-repeat:no-repeat;pointer-events:none;filter:drop-shadow(0 0 3px rgba(255,247,243,.9))}
 #wardrobe .v110Stage:before{right:0;top:19.5%;width:34%;height:25%;border-radius:48%;background-size:294.12% 400%;background-position:100% 26%}
 #wardrobe .v110Stage:after{right:0;top:54.5%;width:48%;height:24.5%;border-radius:48% 45% 42% 38%;background-size:208.34% 408.17%;background-position:100% 72.19%}
-#wardrobe .v110SuitImage{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+#wardrobe .v110SuitImage{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .18s ease}
 #wardrobe .v110LayeredStage{position:absolute;inset:0;overflow:hidden;background:#fff7f5}
 #wardrobe .v110LayerBase{position:absolute;inset:0;width:100%;height:auto;display:block}
 #wardrobe .v110WearLayer{position:absolute;inset:0;width:100%;height:100%;z-index:4;display:block;object-fit:fill;pointer-events:none;transition:opacity .14s ease;filter:drop-shadow(0 2px 2px rgba(111,67,79,.12))}
@@ -36,6 +36,8 @@
 #wardrobe .v110Panel::-webkit-scrollbar{display:none}
 #wardrobe .v110DrawerOpen .v110Panel{opacity:1;transform:translateX(0);pointer-events:auto}
 #wardrobe .v110DrawerOpen .v110Side{visibility:hidden;pointer-events:none}
+#wardrobe .v110DrawerOpen .v110SuitImage,
+#wardrobe .v110DrawerOpen .v110LayeredStage{transform:translateX(5.5%)}
 #wardrobe .v110DrawerHead{position:sticky;z-index:6;top:-5px;display:grid;grid-template-columns:25px 1fr;align-items:center;gap:2px;min-height:36px;margin:-1px -1px 5px;padding:4px 2px;border-bottom:1px solid #f0dfe5;background:rgba(255,250,249,.98)}
 #wardrobe .v110DrawerHead button{width:25px;height:28px;padding:0;border:0;border-radius:10px;background:#f7e9ee;color:#315776;font-size:24px;font-weight:900;line-height:1}
 #wardrobe .v110DrawerHead b{min-width:0;color:#744e61;font-size:11px;line-height:1.15;text-align:center}
@@ -47,6 +49,7 @@
 #wardrobe .v110Card.on{border-color:#e85d91;box-shadow:0 0 0 3px #ffe4ee}
 #wardrobe .v110Card.on:after{content:'✓';position:absolute;z-index:4;right:5px;top:5px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#e85d91;color:#fff;font-weight:1000}
 #wardrobe .v110Card img{width:100%;height:100%;object-fit:contain;display:block}
+#wardrobe .v110Panel .v110Card img{width:88%;height:92%;margin:0 auto;object-fit:contain;object-position:center center}
 #wardrobe .v110Card .v110Mini{width:100%;height:100%;display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#fff9fa,#f9eef3);font-size:44px;line-height:1}
 #wardrobe .v110Card span{position:absolute;z-index:3;left:0;right:0;bottom:0;height:25px;display:grid;place-items:center;padding:0 1px;border-top:1px solid #f1e4e8;background:rgba(255,250,248,.96);color:#574b62;font-size:9px;font-weight:1000;line-height:1.05;text-align:center}
 #wardrobe .v110SectionTitle{display:flex;align-items:center;justify-content:space-between;margin:0 2px 9px;color:#7b5a6b;font-size:14px;font-weight:1000}
@@ -165,6 +168,6 @@ body.v97WardrobeOpen .bottom{
 }
 #wardrobe .v110Stage:after{
   clip-path:polygon(56% 59%,100% 59%,100% 100%,56% 100%)!important;
-  -webkit-mask-image:linear-gradient(90deg,transparent 55%,rgba(0,0,0,.48) 59%,#000 64%,#000 100%)!important;
-  mask-image:linear-gradient(90deg,transparent 55%,rgba(0,0,0,.48) 59%,#000 64%,#000 100%)!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 56%,rgba(0,0,0,.82) 59%,#000 61%,#000 100%)!important;
+  mask-image:linear-gradient(90deg,transparent 56%,rgba(0,0,0,.82) 59%,#000 61%,#000 100%)!important;
 }
