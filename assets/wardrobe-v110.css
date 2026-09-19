@@ -139,3 +139,12 @@ body.v97WardrobeOpen .bottom{
 #wardrobe .v110Stage:after{
   clip-path:polygon(62% 56%,100% 56%,100% 100%,62% 100%)!important;
 }
+
+
+/* v116 keep the girl's silhouette intact while covering only the removed art. */
+#wardrobe .v110Stage:before{
+  clip-path:polygon(79% 25%,100% 25%,100% 49%,79% 49%)!important;
+}
+#wardrobe .v110Stage:after{
+  clip-path:polygon(63% 62%,100% 62%,100% 96%,63% 96%)!important;
+}
