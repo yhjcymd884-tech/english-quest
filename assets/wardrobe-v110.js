@@ -55,6 +55,19 @@
     hoodie:'assets/wardrobe-top-scenes/top-hoodie-v7.webp?v=20260919-6',
     black:'assets/wardrobe-top-scenes/top-black-v7.webp?v=20260919-6'
   };
+  const bottomScenes={
+    pinkSkirt:'assets/wardrobe-bottom-scenes/bottom-pinkSkirt-v1.webp?v=20260919-12',
+    navySkirt:'assets/wardrobe-bottom-scenes/bottom-navySkirt-v1.webp?v=20260919-12',
+    latteSkirt:'assets/wardrobe-bottom-scenes/bottom-latteSkirt-v1.webp?v=20260919-12',
+    denimShort:'assets/wardrobe-bottom-scenes/bottom-denimShort-v1.webp?v=20260919-12'
+  };
+  const shoeScenes={
+    maryPink:'assets/wardrobe-shoe-scenes/shoes-maryPink-v1.webp?v=20260919-12',
+    loafers:'assets/wardrobe-shoe-scenes/shoes-loafers-v1.webp?v=20260919-12',
+    sneakers:'assets/wardrobe-shoe-scenes/shoes-sneakers-v1.webp?v=20260919-12',
+    boots:'assets/wardrobe-shoe-scenes/shoes-boots-v1.webp?v=20260919-12'
+  };
+  const sceneKinds={top:topScenes,bottom:bottomScenes,shoes:shoeScenes};
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
   const startPieceMode=kind=>{
     pieceKinds.forEach(key=>{draft[key]=''});
@@ -89,8 +102,9 @@
   const updatePanel=()=>{const panel=document.querySelector('#wardrobe .v110Panel');if(panel)panel.innerHTML=active==='suit'?suitPanelHtml():piecePanelHtml()};
   const layerImage=(kind,className,label)=>{const url=layerUrl(kind,draft[kind]);return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" data-v110-value="${draft[kind]}" src="${url}" ${url?'':'hidden'} alt="${label}">`};
   const pieceBase='assets/wardrobe-layers/base-color-v3.webp?v=20260919-4';
-  const layeredStageHtml=()=>{const topScene=topScenes[draft.top]||'';return `<div class="v110LayeredStage"><img class="v110LayerBase" src="${topScene||pieceBase}" alt="女孩混搭造型">${topScene?'':layerImage('top','v110WearTop','目前上衣')}${layerImage('bottom','v110WearBottom','目前下身')}${layerImage('shoes','v110WearShoes','目前鞋子')}${layerImage('bag','v110WearBag','目前包包')}${layerImage('accessory','v110WearAccessory','目前飾品')}</div>`};
-  const updateLayer=(kind,id)=>{if(kind==='top'){const base=document.querySelector('#wardrobe .v110LayerBase');const old=document.querySelector('#wardrobe [data-v110-layer="top"]');const scene=topScenes[id]||'';if(base)base.src=scene||pieceBase;if(scene){old?.remove();return}if(!old){render();return}}const image=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!image)return;const url=layerUrl(kind,id);image.dataset.v110Value=id;image.src=url;image.hidden=!url};
+  const activeScene=()=>sceneKinds[active]?.[draft[active]]||topScenes[draft.top]||bottomScenes[draft.bottom]||shoeScenes[draft.shoes]||'';
+  const layeredStageHtml=()=>{const scene=activeScene();return `<div class="v110LayeredStage"><img class="v110LayerBase" src="${scene||pieceBase}" alt="女孩混搭造型">${scene?'':`${layerImage('top','v110WearTop','目前上衣')}${layerImage('bottom','v110WearBottom','目前下身')}${layerImage('shoes','v110WearShoes','目前鞋子')}`}${layerImage('bag','v110WearBag','目前包包')}${layerImage('accessory','v110WearAccessory','目前飾品')}</div>`};
+  const updateLayer=(kind,id)=>{if(sceneKinds[kind]){render();return}const image=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!image)return;const url=layerUrl(kind,id);image.dataset.v110Value=id;image.src=url;image.hidden=!url};
   const toast=t=>{document.querySelector('.v110Toast')?.remove();const d=document.createElement('div');d.className='v110Toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1500)};
   const persist=()=>{saved=clone(draft);try{localStorage.setItem(KEY,JSON.stringify(saved));localStorage.setItem('englishQuestWardrobeV103',saved.suit)}catch{}toast('穿搭已儲存 ♡')};
   const hairShape=(style,c)=>{
@@ -129,7 +143,7 @@
     if(q('[data-v110-editorback]')){active='suit';render();return}
     if(q('[data-v110-save]')){persist();return}
     if(q('[data-v110-return-suits]')){active='suit';draft.mode='suit';draft.previewSuit=draft.suit;render();return}
-    let b=q('[data-v110-tab]');if(b){const previous=active;active=b.dataset.v110Tab;if(active==='suit'){draft.mode='suit';draft.suit='daily-pink';draft.previewSuit='daily-pink';suitGroup='daily'}else{draft.mode='piece';if(previous==='suit'&&pieceKinds.includes(active))startPieceMode(active)}if(active==='hair'||active==='makeup'||previous==='suit'||active==='suit'||!document.querySelector('#wardrobe .v110Stage')){render()}else{document.querySelectorAll('[data-v110-tab]').forEach(x=>x.classList.toggle('on',x.dataset.v110Tab===active));updatePanel()}return}
+    let b=q('[data-v110-tab]');if(b){const previous=active;active=b.dataset.v110Tab;if(active==='suit'){draft.mode='suit';draft.suit='daily-pink';draft.previewSuit='daily-pink';suitGroup='daily'}else{draft.mode='piece';if(previous==='suit'&&pieceKinds.includes(active))startPieceMode(active)}if(active==='hair'||active==='makeup'||previous==='suit'||active==='suit'||sceneKinds[active]||!document.querySelector('#wardrobe .v110Stage')){render()}else{document.querySelectorAll('[data-v110-tab]').forEach(x=>x.classList.toggle('on',x.dataset.v110Tab===active));updatePanel()}return}
     b=q('[data-v110-suitgroup]');if(b){suitGroup=b.dataset.v110Suitgroup;updatePanel();return}
     b=q('[data-v110-suit]');if(b){draft.suit=b.dataset.v110Suit;draft.previewSuit=draft.suit;draft.mode='suit';markSelected('[data-v110-suit]',draft.suit,'v110Suit');showPreview(draft.suit);return}
     b=q('[data-v110-item]');if(b){const kind=b.dataset.v110Item;draft[kind]=b.dataset.v110Value;draft.mode='piece';markSelected('[data-v110-item]',b.dataset.v110Value,'v110Value');updateLayer(kind,draft[kind]);return}
