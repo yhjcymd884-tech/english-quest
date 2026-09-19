@@ -42,56 +42,6 @@
 #wardrobe .v110DrawerOpen .v110Stage:after{transform:translateX(5.5%)}
 #wardrobe .v110Stage.v110PieceUI:before,
 #wardrobe .v110Stage.v110PieceUI:after{display:none!important}
-
-/* v118: crop the mirror out by shifting the complete dressing-room artwork.
-   The save action is now a small, real control beside the girl's feet. */
-#wardrobe .v110SuitImage,
-#wardrobe .v110LayeredStage{
-  transform:scale(1.14) translateX(10%)!important;
-  transform-origin:center center;
-}
-#wardrobe .v110DrawerOpen .v110SuitImage,
-#wardrobe .v110DrawerOpen .v110LayeredStage{
-  transform:scale(1.14) translateX(14%)!important;
-}
-#wardrobe .v110Stage.v110OriginalUI .v110Save{
-  right:4%!important;
-  top:auto!important;
-  bottom:11.5%!important;
-  width:16%!important;
-  height:5.2%!important;
-  min-width:58px!important;
-  min-height:32px!important;
-  opacity:1!important;
-  border:1px solid rgba(207,64,123,.72)!important;
-  border-radius:18px!important;
-  background:linear-gradient(#f58bb3,#e85f95)!important;
-  box-shadow:0 4px 10px rgba(201,69,119,.25)!important;
-  color:#fff!important;
-  font-size:12px!important;
-  font-weight:1000!important;
-}
-
-/* Keep the transparent navigation over the dressing-room artwork. Extending
-   the stage behind the fixed nav prevents the page's pale base color from
-   looking like a restored white navigation bar. */
-#wardrobe .v110Wardrobe{
-  height:100dvh!important;
-  min-height:100dvh!important;
-  overflow:hidden!important;
-}
-#wardrobe .v110Stage{
-  height:100dvh!important;
-  min-height:100dvh!important;
-  aspect-ratio:auto!important;
-}
-body.v97WardrobeOpen .bottom,
-body.v97WardrobeOpen .bottom button,
-body.v97WardrobeOpen .bottom b{
-  background:transparent!important;
-  border-color:transparent!important;
-  box-shadow:none!important;
-}
 #wardrobe .v110DrawerHead{position:sticky;z-index:6;top:-5px;display:grid;grid-template-columns:25px 1fr;align-items:center;gap:2px;min-height:36px;margin:-1px -1px 5px;padding:4px 2px;border-bottom:1px solid #f0dfe5;background:rgba(255,250,249,.98)}
 #wardrobe .v110DrawerHead button{width:25px;height:28px;padding:0;border:0;border-radius:10px;background:#f7e9ee;color:#315776;font-size:24px;font-weight:900;line-height:1}
 #wardrobe .v110DrawerHead b{min-width:0;color:#744e61;font-size:11px;line-height:1.15;text-align:center}
@@ -226,56 +176,31 @@ body.v97WardrobeOpen .bottom{
   mask-image:linear-gradient(90deg,transparent 53%,rgba(0,0,0,.82) 55%,#000 58%,#000 100%)!important;
 }
 
-/* v118: remove the rectangular repair layers completely. The artwork itself
-   moves right and crops the mirror outside the stage, so no patch can cover
-   the skirt or create visible seams. */
-#wardrobe .v110Stage:before,
-#wardrobe .v110Stage:after{
-  display:none!important;
-  content:none!important;
-}
-#wardrobe .v110Stage{
-  background:#fff7f5 url("wardrobe-room-nomirror-v118.webp?v=20260919-1") center/cover no-repeat!important;
-}
+
+/* v118: crop the mirror out by shifting the complete dressing-room artwork.
+   The save action is now a small, real control beside the girl's feet. */
 #wardrobe .v110SuitImage,
-#wardrobe .v110LayeredStage,
+#wardrobe .v110LayeredStage{
+  transform:scale(1.14) translateX(10%)!important;
+  transform-origin:center center;
+}
 #wardrobe .v110DrawerOpen .v110SuitImage,
 #wardrobe .v110DrawerOpen .v110LayeredStage{
-  transform:translateX(8.5%) scale(1.04)!important;
-  transform-origin:center top!important;
-  -webkit-mask-image:url("wardrobe-character-mask-v118.webp?v=20260919-1")!important;
-  mask-image:url("wardrobe-character-mask-v118.webp?v=20260919-1")!important;
-  -webkit-mask-size:100% 100%!important;
-  mask-size:100% 100%!important;
-  -webkit-mask-repeat:no-repeat!important;
-  mask-repeat:no-repeat!important;
-}
-#wardrobe .v110Stage.v110OriginalUI .v110Title{
-  display:block!important;
-}
-#wardrobe .v110Stage.v110OriginalUI .v110Topbar{
-  top:8px!important;
-  left:18%!important;
-  right:3%!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
+  transform:scale(1.14) translateX(14%)!important;
 }
 #wardrobe .v110Stage.v110OriginalUI .v110Save{
-  position:absolute!important;
-  z-index:22!important;
-  right:3.5%!important;
+  right:4%!important;
   top:auto!important;
-  bottom:7.2%!important;
-  width:auto!important;
-  min-width:54px!important;
-  height:32px!important;
-  padding:0 13px!important;
+  bottom:11.5%!important;
+  width:16%!important;
+  height:5.2%!important;
+  min-width:58px!important;
+  min-height:32px!important;
   opacity:1!important;
-  border:1px solid rgba(255,255,255,.78)!important;
-  border-radius:17px!important;
-  background:linear-gradient(#f485ae,#e85c91)!important;
-  box-shadow:0 4px 10px rgba(217,76,132,.24)!important;
+  border:1px solid rgba(207,64,123,.72)!important;
+  border-radius:18px!important;
+  background:linear-gradient(#f58bb3,#e85f95)!important;
+  box-shadow:0 4px 10px rgba(201,69,119,.25)!important;
   color:#fff!important;
   font-size:12px!important;
   font-weight:1000!important;
