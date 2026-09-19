@@ -155,14 +155,14 @@
     draft[kind]=Object.keys(layerAssets[kind]||{})[0]||'';
   };
   const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260919-11`:''};
-  const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260920-35`:''};
+  const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260920-36`:''};
   Object.keys(layerAssets).forEach(kind=>{
     if(lists[kind])lists[kind]=lists[kind].filter(x=>Object.prototype.hasOwnProperty.call(layerAssets[kind],x[0]));
     const fallback=Object.keys(layerAssets[kind])[0];
     if(!Object.prototype.hasOwnProperty.call(layerAssets[kind],draft[kind]))draft[kind]=fallback;
     if(!Object.prototype.hasOwnProperty.call(layerAssets[kind],saved[kind]))saved[kind]=fallback;
   });
-  const imageCache=new Map();let previewToken=0;
+  const imageCache=new Map();let previewToken=0,sceneToken=0;
   const warmImage=url=>{
     if(!url||typeof Image==='undefined')return Promise.resolve();
     if(imageCache.has(url))return imageCache.get(url).promise;
@@ -186,7 +186,21 @@
   const pieceBase='assets/wardrobe-base-clean-v120.webp?v=20260919-1';
   const activeScene=()=>fittedTopScenes[draft.top]||fittedBottomScenes[draft.bottom]||fittedShoeScenes[draft.shoes]||fittedBagScenes[draft.bag]||fittedAccessoryScenes[draft.accessory]||'';
   const layeredStageHtml=()=>{const scene=activeScene();return `<div class="v110LayeredStage"><img class="v110LayerBase" src="${scene||pieceBase}" alt="女孩混搭造型">${scene?'':`${layerImage('top','v110WearTop','目前上衣')}${layerImage('bottom','v110WearBottom','目前下身')}${layerImage('shoes','v110WearShoes','目前鞋子')}${layerImage('bag','v110WearBag','目前包包')}${layerImage('accessory','v110WearAccessory','目前飾品')}`}</div>`};
-  const updateLayer=(kind,id)=>{if(sceneKinds[kind]){render();return}const image=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!image)return;const url=layerUrl(kind,id);image.dataset.v110Value=id;image.src=url;image.hidden=!url};
+  const updateLayer=(kind,id)=>{
+    if(sceneKinds[kind]){
+      const image=document.querySelector('#wardrobe .v110LayerBase');
+      const url=sceneKinds[kind]?.[id]||activeScene();
+      if(!image||!url){render();return}
+      const token=++sceneToken;
+      warmImage(url).then(()=>{
+        if(token!==sceneToken||!image.isConnected)return;
+        image.src=url;
+        image.alt=`女孩穿上${get(lists[kind]||[],id)[1]}`;
+      });
+      return;
+    }
+    const image=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!image)return;const url=layerUrl(kind,id);image.dataset.v110Value=id;image.src=url;image.hidden=!url
+  };
   const toast=t=>{document.querySelector('.v110Toast')?.remove();const d=document.createElement('div');d.className='v110Toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1500)};
   const persist=()=>{saved=clone(draft);try{localStorage.setItem(KEY,JSON.stringify(saved));localStorage.setItem('englishQuestWardrobeV103',saved.suit)}catch{}toast('穿搭已儲存 ♡')};
   const hairShape=(style,c)=>{
