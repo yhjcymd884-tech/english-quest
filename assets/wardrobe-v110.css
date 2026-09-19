@@ -205,3 +205,12 @@ body.v97WardrobeOpen .bottom{
   font-size:12px!important;
   font-weight:1000!important;
 }
+
+
+/* v119 authoritative cleanup: no title and no repair overlays. */
+#wardrobe .v110Stage:before,
+#wardrobe .v110Stage:after{display:none!important;content:none!important}
+#wardrobe .v110Stage .v110Title{display:none!important}
+body.v97WardrobeOpen .bottom,
+body.v97WardrobeOpen .bottom button,
+body.v97WardrobeOpen .bottom b{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
