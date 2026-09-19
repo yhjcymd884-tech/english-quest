@@ -49,10 +49,10 @@
     pet:{cinnamon:''}
   };
   const topScenes={
-    rose:'assets/wardrobe-top-scenes/top-rose-v7.webp?v=20260919-6',
-    sailor:'assets/wardrobe-top-scenes/top-sailor-v7.webp?v=20260919-6',
-    cream:'assets/wardrobe-top-scenes/top-cream-v7.webp?v=20260919-6',
-    hoodie:'assets/wardrobe-top-scenes/top-hoodie-v7.webp?v=20260919-6',
+    rose:'assets/wardrobe-top-scenes/top-rose-v8.webp?v=20260919-18',
+    sailor:'assets/wardrobe-top-scenes/top-sailor-v8.webp?v=20260919-18',
+    cream:'assets/wardrobe-top-scenes/top-cream-v8.webp?v=20260919-18',
+    hoodie:'assets/wardrobe-top-scenes/top-hoodie-v8.webp?v=20260919-18',
     black:'assets/wardrobe-top-scenes/top-black-v8.webp?v=20260919-17',
     iceblue:'assets/wardrobe-top-scenes/top-iceblue-v2.webp?v=20260919-17',
     blackvest:'assets/wardrobe-top-scenes/top-blackvest-v2.webp?v=20260919-17',
