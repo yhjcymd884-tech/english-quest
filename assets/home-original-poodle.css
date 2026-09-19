@@ -1,0 +1,9 @@
+#home .artHero {
+  background: #fff8f5 url("home-v95.jpeg?v=20260920-1") center top / cover no-repeat !important;
+}
+
+#home .artHero > .quote,
+#home .artHero > .avatarWrap,
+#home .artHero > .dogWrap {
+  display: none !important;
+}
