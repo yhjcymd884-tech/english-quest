@@ -160,11 +160,11 @@ body.v97WardrobeOpen .bottom{
 }
 #wardrobe .v110Stage:before{
   clip-path:polygon(70% 22%,100% 22%,100% 54%,70% 54%)!important;
-  -webkit-mask-image:linear-gradient(90deg,transparent 70%,rgba(0,0,0,.18) 73%,#000 81%,#000 100%)!important;
-  mask-image:linear-gradient(90deg,transparent 70%,rgba(0,0,0,.18) 73%,#000 81%,#000 100%)!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 69%,rgba(0,0,0,.5) 72%,#000 77%,#000 100%)!important;
+  mask-image:linear-gradient(90deg,transparent 69%,rgba(0,0,0,.5) 72%,#000 77%,#000 100%)!important;
 }
 #wardrobe .v110Stage:after{
   clip-path:polygon(56% 59%,100% 59%,100% 100%,56% 100%)!important;
-  -webkit-mask-image:linear-gradient(90deg,transparent 56%,rgba(0,0,0,.12) 60%,#000 68%,#000 100%)!important;
-  mask-image:linear-gradient(90deg,transparent 56%,rgba(0,0,0,.12) 60%,#000 68%,#000 100%)!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 55%,rgba(0,0,0,.48) 59%,#000 64%,#000 100%)!important;
+  mask-image:linear-gradient(90deg,transparent 55%,rgba(0,0,0,.48) 59%,#000 64%,#000 100%)!important;
 }
