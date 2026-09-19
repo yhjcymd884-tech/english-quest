@@ -86,7 +86,7 @@
   /* Pose-fitted tops use the exact clean character as their scene base. Other
      categories remain separate layers so they can still be mixed freely. */
   const fittedTopScenes={
-    rose:'assets/wardrobe-fitted/top-rose-scene-v4.webp?v=20260919-1'
+    rose:'assets/wardrobe-fitted/top-rose-scene-v3.webp?v=20260919-2'
   };
   const sceneKinds={top:fittedTopScenes};
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
