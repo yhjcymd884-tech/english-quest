@@ -175,3 +175,33 @@ body.v97WardrobeOpen .bottom{
   -webkit-mask-image:linear-gradient(90deg,transparent 53%,rgba(0,0,0,.82) 55%,#000 58%,#000 100%)!important;
   mask-image:linear-gradient(90deg,transparent 53%,rgba(0,0,0,.82) 55%,#000 58%,#000 100%)!important;
 }
+
+
+/* v118: crop the mirror out by shifting the complete dressing-room artwork.
+   The save action is now a small, real control beside the girl's feet. */
+#wardrobe .v110SuitImage,
+#wardrobe .v110LayeredStage{
+  transform:scale(1.14) translateX(10%)!important;
+  transform-origin:center center;
+}
+#wardrobe .v110DrawerOpen .v110SuitImage,
+#wardrobe .v110DrawerOpen .v110LayeredStage{
+  transform:scale(1.14) translateX(14%)!important;
+}
+#wardrobe .v110Stage.v110OriginalUI .v110Save{
+  right:4%!important;
+  top:auto!important;
+  bottom:11.5%!important;
+  width:16%!important;
+  height:5.2%!important;
+  min-width:58px!important;
+  min-height:32px!important;
+  opacity:1!important;
+  border:1px solid rgba(207,64,123,.72)!important;
+  border-radius:18px!important;
+  background:linear-gradient(#f58bb3,#e85f95)!important;
+  box-shadow:0 4px 10px rgba(201,69,119,.25)!important;
+  color:#fff!important;
+  font-size:12px!important;
+  font-weight:1000!important;
+}
