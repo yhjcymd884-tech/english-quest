@@ -169,7 +169,7 @@ body.v97WardrobeOpen .bottom{
   mask-image:linear-gradient(90deg,transparent 69%,rgba(0,0,0,.5) 72%,#000 77%,#000 100%)!important;
 }
 #wardrobe .v110Stage:after{
-  clip-path:polygon(56% 59%,100% 59%,100% 100%,56% 100%)!important;
-  -webkit-mask-image:linear-gradient(90deg,transparent 56%,rgba(0,0,0,.82) 59%,#000 61%,#000 100%)!important;
-  mask-image:linear-gradient(90deg,transparent 56%,rgba(0,0,0,.82) 59%,#000 61%,#000 100%)!important;
+  clip-path:polygon(53% 59%,100% 59%,100% 100%,53% 100%)!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 53%,rgba(0,0,0,.82) 55%,#000 58%,#000 100%)!important;
+  mask-image:linear-gradient(90deg,transparent 53%,rgba(0,0,0,.82) 55%,#000 58%,#000 100%)!important;
 }
