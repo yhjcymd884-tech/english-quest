@@ -86,7 +86,17 @@
   /* Pose-fitted tops use the exact clean character as their scene base. Other
      categories remain separate layers so they can still be mixed freely. */
   const fittedTopScenes={
-    rose:'assets/wardrobe-fitted/top-rose-scene-v3.webp?v=20260919-2'
+    rose:'assets/wardrobe-fitted/top-rose-scene-v3.webp?v=20260919-2',
+    sailor:'assets/wardrobe-fitted/top-sailor-scene-v1.webp?v=20260919-1',
+    cream:'assets/wardrobe-fitted/top-cream-scene-v1.webp?v=20260919-1',
+    hoodie:'assets/wardrobe-fitted/top-hoodie-scene-v1.webp?v=20260919-1',
+    black:'assets/wardrobe-fitted/top-black-scene-v1.webp?v=20260919-1',
+    iceblue:'assets/wardrobe-fitted/top-iceblue-scene-v1.webp?v=20260919-1',
+    blackvest:'assets/wardrobe-fitted/top-blackvest-scene-v1.webp?v=20260919-1',
+    academy:'assets/wardrobe-fitted/top-academy-scene-v1.webp?v=20260919-1',
+    varsity:'assets/wardrobe-fitted/top-varsity-scene-v1.webp?v=20260919-1',
+    whitefrill:'assets/wardrobe-fitted/top-whitefrill-scene-v1.webp?v=20260919-1',
+    sage:'assets/wardrobe-fitted/top-sage-scene-v1.webp?v=20260919-1'
   };
   const sceneKinds={top:fittedTopScenes};
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
