@@ -228,3 +228,13 @@ body.v97WardrobeOpen .bottom b{background:transparent!important;border-color:tra
 #wardrobe .v110Stage.v110OriginalUI .v110Side [data-v110-tab="suit"],
 #wardrobe .v110ReturnSuits{display:none!important}
 #wardrobe .v110Stage.v110OriginalUI .v110Save{right:3.5%!important;top:auto!important;bottom:8.5%!important;width:auto!important;min-width:54px!important;height:32px!important;padding:0 13px!important;opacity:1!important}
+
+
+/* v121 per-category fitting for the new clean character base. */
+#wardrobe .v110Stage.v110OriginalUI .v110Side [data-v110-tab="suit"]{display:block!important}
+#wardrobe .v110ReturnSuits{display:block!important}
+#wardrobe .v110WearTop{transform:translate(7%,-4%) scale(.84)!important;transform-origin:65% 44%!important}
+#wardrobe .v110WearBottom{transform:translate(6%,-1%) scale(.86)!important;transform-origin:65% 48%!important}
+#wardrobe .v110WearShoes{transform:translate(7%,2%) scale(.72)!important;transform-origin:65% 82%!important}
+#wardrobe .v110WearBag{transform:translate(32%,4%) scale(.72)!important;transform-origin:66% 56%!important}
+#wardrobe .v110WearAccessory{transform:translate(12%,-22%) scale(.48)!important;transform-origin:65% 27%!important}
