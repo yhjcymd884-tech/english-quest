@@ -378,7 +378,7 @@ nav button .ico{filter:drop-shadow(0 4px 5px #795f6b1c)}
 <button data-v80-action="profile">👤<br>角色狀態</button>
 <button data-v80-action="dex">📖<br>怪獸圖鑑</button>
 <button data-v80-action="gemshop">💎<br>鑽石商店</button>
-<button data-v80-action="battle">⚔️<br>冒險戰鬥</button>
+<button data-v80-action="battle">⚔️<br>英文怪獸戰</button>
 </div></div></section>
 <section id="map" class="page"><div class="worldHead"><div><small>ENGLISH ADVENTURE</small><h2>夢語島冒險地圖</h2><p>一路學習、升級，解鎖新的冒險區域。</p></div><div class="mapMascot">✦</div></div><div class="map"><div class="worldPath"></div><div id="nodes" class="nodes"></div></div><div class="mapLegend"><button data-zone="0">🌿 初學森林</button><button data-zone="1">🏘️ 字彙小鎮</button><button data-zone="2">🌙 月光湖畔</button><button data-zone="3">✨ 星夜城堡</button></div><div id="zoneMsg" class="center"></div></section>
 <section id="quiz" class="page"><div class="card"><button class="big" data-go="map">‹ 返回地圖</button><h2 id="qtitle"></h2><div class="progress"><i id="qbar"></i></div><h2 id="qtext"></h2><div id="answers"></div><h3 id="feedback"></h3><button id="nextQ" class="big hidden">下一題 ›</button></div></section>
@@ -386,7 +386,7 @@ nav button .ico{filter:drop-shadow(0 4px 5px #795f6b1c)}
 <section id="wardrobe" class="page"><div class="tabs" id="wtabs"></div><div class="card"><div class="wardStage"><div class="avatarWrap" id="wardAvatar"></div></div><div class="choices" id="wchoices"></div></div></section>
 
 <section id="pet" class="page"><div class="petScene"><h2>我的白色長耳狗</h2><div class="dogWrap" id="petDog"></div><h2>飽食度 <span id="hunger"></span>/100</h2><div class="progress"><i id="hbar"></i></div><div class="controls"><button class="big" data-pet="feed">🥣 餵食</button><button class="big" data-pet="rest">🌙 休息</button><button class="big" data-pet="work" id="petWorkBtn">⭐ 工作 20 分鐘</button></div><div class="workTimer" id="workTimer"></div><p id="petmsg"></p></div></section>
-<section id="games" class="page"><div class="card adventureHub"><small>ADVENTURE HUB</small><h2>冒險與遊戲</h2><p>學英文、收集裝備，準備下一場冒險。</p><div class="v89ReviewBanner"><button data-v84tool="wrong">📕<b>錯題本＋錯題題庫</b><small>文法／字彙分類・直接重新練習</small></button></div><div class="games"><button class="big game" data-game="rps">✊<br>猜拳</button><button class="big game" data-game="lr">👈👉<br>左右猜</button><button class="big game" data-game="wheel">🎡<br>每日轉盤</button><button class="big game" data-game="spell">🔤<br>拼字冒險</button><button class="big game" data-game="shop">⚔️<br>武器商店</button><button class="big game" data-game="battle">👾<br>怪獸戰鬥</button></div></div><div class="v84StudyTools"><button data-v84tool="wrong">📕<b>錯題本</b><small>集中複習答錯內容</small></button><button data-v84tool="notes">📝<b>文法筆記</b><small>四大時態重點整理</small></button></div><div class="v82SectionTitle">進階挑戰</div><div class="v81ExamHub"><h3>📚 綜合大會考</h3><p>自由選擇複習範圍，再開始 20 題混合測驗。</p>
+<section id="games" class="page"><div class="card adventureHub"><small>ADVENTURE HUB</small><h2>冒險與遊戲</h2><p>學英文、收集裝備，準備下一場冒險。</p><div class="v89ReviewBanner"><button data-v84tool="wrong">📕<b>錯題本＋錯題題庫</b><small>文法／字彙分類・直接重新練習</small></button></div><div class="games"><button class="big game" data-game="rps">✊<br>猜拳</button><button class="big game" data-game="lr">👈👉<br>左右猜</button><button class="big game" data-game="wheel">🎡<br>每日轉盤</button><button class="big game" data-game="spell">🔤<br>拼字冒險</button><button class="big game" data-game="shop">⚔️<br>武器商店</button><button class="big game" data-game="battle">👾<br>英文怪獸戰</button></div></div><div class="v84StudyTools"><button data-v84tool="wrong">📕<b>錯題本</b><small>集中複習答錯內容</small></button><button data-v84tool="notes">📝<b>文法筆記</b><small>四大時態重點整理</small></button></div><div class="v82SectionTitle">進階挑戰</div><div class="v81ExamHub"><h3>📚 綜合大會考</h3><p>自由選擇複習範圍，再開始 20 題混合測驗。</p>
 <div class="v81ExamBtns"><button data-v81exam="grammar">📝<b>文法大會考</b><small>自選範圍・不提示時態</small></button>
 <button data-v81exam="vocab">📖<b>單字大會考</b><small>動詞／千詞表</small></button></div></div><div id="gamebox"></div></section>
 </main><nav class="bottom"><button data-go="home"><b>🏠</b>首頁</button><button data-go="map"><b>🗺️</b>地圖</button><button data-go="wardrobe"><b>👗</b>衣櫥</button><button data-go="pet"><b>🐶</b>寵物</button></nav></div><script>
@@ -1287,4 +1287,6 @@ document.addEventListener('click',event=>{
 </script>
 <link rel="stylesheet" href="assets/wardrobe-v110.css?v=20260919-35">
 <script src="assets/wardrobe-v110.js?v=20260919-20"></script>
+<link rel="stylesheet" href="assets/battle-v118.css?v=20260919-1">
+<script src="assets/battle-v118.js?v=20260919-1"></script>
 </body></html>
