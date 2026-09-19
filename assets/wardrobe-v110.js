@@ -4,8 +4,8 @@
   document.head.appendChild(fixedLayerStyle);
   const KEY='englishQuestWardrobeSavedV113';
   const clone=o=>JSON.parse(JSON.stringify(o));
-  const defaults={mode:'suit',suit:'daily-pink',previewSuit:'daily-pink',top:'rose',bottom:'pinkSkirt',shoes:'maryPink',bag:'heart',accessory:'bow',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:'cinnamon'};
-  let saved=clone(defaults),draft=clone(defaults),active='suit',suitGroup='daily',hairPane='style',makeTab='brow',panelOpen=false;
+  const defaults={mode:'piece',suit:'daily-pink',previewSuit:'daily-pink',top:'rose',bottom:'',shoes:'',bag:'',accessory:'',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:''};
+  let saved=clone(defaults),draft=clone(defaults),active='top',suitGroup='daily',hairPane='style',makeTab='brow',panelOpen=true;
   try{const x=JSON.parse(localStorage.getItem(KEY)||'null');if(x)saved={...defaults,...x,makeup:{...defaults.makeup,...(x.makeup||{})}}}catch{}
   draft=clone(saved);
   const suits={
@@ -83,7 +83,7 @@
     pearl:'assets/wardrobe-accessory-scenes/accessory-bow-pink-v3.webp?v=20260919-15',
     beret:'assets/wardrobe-accessory-scenes/accessory-beret-v2.webp?v=20260919-15'
   };
-  const sceneKinds={top:topScenes,bottom:bottomScenes,shoes:shoeScenes,bag:bagScenes,accessory:accessoryScenes};
+  const sceneKinds={};
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
   const startPieceMode=kind=>{
     pieceKinds.forEach(key=>{draft[key]=''});
@@ -118,7 +118,7 @@
   const piecePanelHtml=()=>{const list=lists[active]||[];return `${panelHead(labels[active]+'選擇')}<button class="v110ReturnSuits" data-v110-return-suits>返回完整套裝</button><div class="v110Grid">${list.map(x=>{const thumb=layerThumbUrl(active,x[0]);return `<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}">${thumb?`<img src="${thumb}" alt="${x[1]}">`:`<i class="v110Mini">${x[2]}</i>`}<span>${x[1]}</span></button>`}).join('')}</div>`};
   const updatePanel=()=>{const panel=document.querySelector('#wardrobe .v110Panel');if(panel)panel.innerHTML=active==='suit'?suitPanelHtml():piecePanelHtml()};
   const layerImage=(kind,className,label)=>{const url=layerUrl(kind,draft[kind]);return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" data-v110-value="${draft[kind]}" src="${url}" ${url?'':'hidden'} alt="${label}">`};
-  const pieceBase='assets/wardrobe-layers/base-color-v3.webp?v=20260919-4';
+  const pieceBase='assets/wardrobe-base-clean-v120.webp?v=20260919-1';
   const activeScene=()=>sceneKinds[active]?.[draft[active]]||'';
   const layeredStageHtml=()=>{const scene=activeScene();return `<div class="v110LayeredStage"><img class="v110LayerBase" src="${scene||pieceBase}" alt="女孩混搭造型">${scene?'':`${layerImage('top','v110WearTop','目前上衣')}${layerImage('bottom','v110WearBottom','目前下身')}${layerImage('shoes','v110WearShoes','目前鞋子')}${layerImage('bag','v110WearBag','目前包包')}${layerImage('accessory','v110WearAccessory','目前飾品')}`}</div>`};
   const updateLayer=(kind,id)=>{if(sceneKinds[kind]){render();return}const image=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!image)return;const url=layerUrl(kind,id);image.dataset.v110Value=id;image.src=url;image.hidden=!url};
@@ -153,7 +153,7 @@
   const render=()=>{const sec=document.getElementById('wardrobe');if(!sec)return;warmWardrobe();sec.innerHTML=active==='hair'?hairEditor():active==='makeup'?makeupEditor():standard()};
   renderWard=render;
   const goBeforeV110=go;
-  go=function(id){if(id==='wardrobe'){draft=clone(saved);draft.suit='daily-pink';draft.previewSuit='daily-pink';active='suit';suitGroup='daily';panelOpen=false}goBeforeV110(id)};
+  go=function(id){if(id==='wardrobe'){draft=clone(saved);active='top';panelOpen=true;draft.mode='piece';startPieceMode('top')}goBeforeV110(id)};
   document.addEventListener('click',e=>{
     const q=s=>e.target.closest(s);
     if(q('[data-v110-back]')){go('home');return}

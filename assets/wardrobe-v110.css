@@ -214,3 +214,17 @@ body.v97WardrobeOpen .bottom{
 body.v97WardrobeOpen .bottom,
 body.v97WardrobeOpen .bottom button,
 body.v97WardrobeOpen .bottom b{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
+
+
+/* v120 clean wardrobe stage: generated base art + real controls only. */
+#wardrobe .v110Stage:before,
+#wardrobe .v110Stage:after{display:none!important;content:none!important}
+#wardrobe .v110Stage.v110OriginalUI .v110Title,
+#wardrobe .v110Stage.v110OriginalUI .v110Hint{display:none!important}
+#wardrobe .v110LayeredStage,
+#wardrobe .v110DrawerOpen .v110LayeredStage{transform:none!important;-webkit-mask-image:none!important;mask-image:none!important;background:#fff7f5!important}
+#wardrobe .v110LayerBase{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center top!important}
+#wardrobe .v110WearLayer{transform:translateX(11.5%)!important;transform-origin:center top!important;filter:none!important}
+#wardrobe .v110Stage.v110OriginalUI .v110Side [data-v110-tab="suit"],
+#wardrobe .v110ReturnSuits{display:none!important}
+#wardrobe .v110Stage.v110OriginalUI .v110Save{right:3.5%!important;top:auto!important;bottom:8.5%!important;width:auto!important;min-width:54px!important;height:32px!important;padding:0 13px!important;opacity:1!important}
