@@ -38,6 +38,8 @@
 #wardrobe .v110DrawerOpen .v110Side{visibility:hidden;pointer-events:none}
 #wardrobe .v110DrawerOpen .v110SuitImage,
 #wardrobe .v110DrawerOpen .v110LayeredStage{transform:translateX(5.5%)}
+#wardrobe .v110DrawerOpen .v110Stage:before,
+#wardrobe .v110DrawerOpen .v110Stage:after{transform:translateX(5.5%)}
 #wardrobe .v110DrawerHead{position:sticky;z-index:6;top:-5px;display:grid;grid-template-columns:25px 1fr;align-items:center;gap:2px;min-height:36px;margin:-1px -1px 5px;padding:4px 2px;border-bottom:1px solid #f0dfe5;background:rgba(255,250,249,.98)}
 #wardrobe .v110DrawerHead button{width:25px;height:28px;padding:0;border:0;border-radius:10px;background:#f7e9ee;color:#315776;font-size:24px;font-weight:900;line-height:1}
 #wardrobe .v110DrawerHead b{min-width:0;color:#744e61;font-size:11px;line-height:1.15;text-align:center}
