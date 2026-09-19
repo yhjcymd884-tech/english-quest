@@ -238,3 +238,41 @@ body.v97WardrobeOpen .bottom b{background:transparent!important;border-color:tra
 #wardrobe .v110WearShoes{transform:translate(7%,2%) scale(.72)!important;transform-origin:65% 82%!important}
 #wardrobe .v110WearBag{transform:translate(32%,4%) scale(.72)!important;transform-origin:66% 56%!important}
 #wardrobe .v110WearAccessory{transform:translate(12%,-22%) scale(.48)!important;transform-origin:65% 27%!important}
+
+
+/* v122: per-category fit for the clean right-shifted character base. */
+#wardrobe .v110LayeredStage,
+#wardrobe .v110DrawerOpen .v110LayeredStage{
+  transform:none!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+#wardrobe .v110WearTop{transform:translate(7%,-3.8%) scale(.86)!important;transform-origin:65% 42%!important}
+#wardrobe .v110WearBottom{transform:translate(7%,-1.2%) scale(.84)!important;transform-origin:65% 49%!important}
+#wardrobe .v110WearShoes{transform:translate(8%,1.2%) scale(.68)!important;transform-origin:65% 84%!important}
+#wardrobe .v110WearBag{transform:translate(31%,3%) scale(.70)!important;transform-origin:65% 57%!important}
+#wardrobe .v110WearAccessory{transform:translate(12%,-21%) scale(.47)!important;transform-origin:65% 26%!important}
+
+/* Keep the dressing-room artwork behind the transparent fixed navigation. */
+body.v97WardrobeOpen,
+body.v97WardrobeOpen .app,
+body.v97WardrobeOpen #wardrobe.page.on,
+#wardrobe .v110Wardrobe,
+#wardrobe .v110Stage{
+  min-height:100dvh!important;
+  background-color:#fff7f5!important;
+  background-image:url("wardrobe-room-nomirror-v118.webp?v=20260919-1")!important;
+  background-position:center top!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+}
+#wardrobe .v110Stage{height:100dvh!important;aspect-ratio:auto!important}
+body.v97WardrobeOpen .bottom{
+  position:fixed!important;
+  bottom:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
