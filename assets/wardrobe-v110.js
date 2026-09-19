@@ -17,7 +17,7 @@
   };
   const allSuits=()=>Object.values(suits).flatMap(x=>x.items);
   const lists={
-    top:[['rose','玫瑰襯衫','🌸','#ef9eb6'],['sailor','水手上衣','⚓','#8db8db'],['cream','奶油針織','🧶','#f0d3a9'],['blazer','學院西裝','🎓','#9c846e'],['hoodie','粉色帽T','🎀','#e894b2'],['mint','薄荷短衫','🍃','#8fcbbc'],['black','黑色荷葉','♠️','#665963'],['snow','雪花斗篷','❄️','#c7424e']],
+    top:[['rose','玫瑰襯衫','🌸','#ef9eb6'],['sailor','水手上衣','⚓','#8db8db'],['cream','奶油針織','🧶','#f0d3a9'],['blazer','學院西裝','🎓','#9c846e'],['hoodie','粉色帽T','🎀','#e894b2'],['mint','薄荷短衫','🍃','#8fcbbc'],['black','黑色荷葉','♠️','#665963'],['snow','雪花斗篷','❄️','#c7424e'],['iceblue','冰藍蝴蝶結襯衫','🩵','#a9bfe8'],['blackvest','黑色蝴蝶結背心','🖤','#4d454a'],['academy','學院西裝外套','🎓','#303852'],['varsity','粉色棒球外套','🧸','#e8a7bb'],['whitefrill','白色荷葉短衫','🤍','#eee9e6'],['sage','森系綁帶上衣','🌿','#8c9871']],
     bottom:[['pinkSkirt','粉格短裙','🌷','#eaa1b9'],['navySkirt','海軍百褶裙','🌙','#6683a7'],['latteSkirt','奶茶格裙','🧸','#b69879'],['denimShort','牛仔短褲','🫐','#7699bb'],['creamLong','奶油長裙','🤍','#e5cfb4'],['blackSkirt','黑色百褶裙','♣️','#5c5360'],['mintSkirt','薄荷裙','🍀','#91cabb'],['redSkirt','節慶紅裙','🎄','#bd4650']],
     shoes:[['maryPink','粉色瑪莉珍','👠','#d76f91'],['loafers','棕色樂福鞋','👞','#855f4d'],['sneakers','白色球鞋','👟','#e9e7e5'],['boots','短靴','🥾','#6f554b'],['blueMary','藍色瑪莉珍','👠','#6c95bc'],['redBoots','紅色雪靴','👢','#b9434c']],
     bag:[['heart','黑色蝴蝶結包','👜','#473d43'],['tote','米白肩背包','👜','#d4b995'],['star','棕色斜背包','👜','#87644e']],
@@ -41,7 +41,7 @@
   const layerRoot='assets/wardrobe-fixed/';
   const layerThumbRoot='assets/wardrobe-piece-thumbs/';
   const layerAssets={
-    top:{rose:'top-rose-v2.webp',sailor:'top-sailor-v2.webp',cream:'top-cream-v2.webp',hoodie:'top-hoodie-v2.webp',black:'top-black-v2.webp'},
+    top:{rose:'top-rose-v2.webp',sailor:'top-sailor-v2.webp',cream:'top-cream-v2.webp',hoodie:'top-hoodie-v2.webp',black:'top-black-v2.webp',iceblue:'top-iceblue-v1.webp',blackvest:'top-blackvest-v1.webp',academy:'top-academy-v1.webp',varsity:'top-varsity-v1.webp',whitefrill:'top-whitefrill-v1.webp',sage:'top-sage-v1.webp'},
     bottom:{pinkSkirt:'bottom-pinkSkirt-v2.webp',navySkirt:'bottom-navySkirt-v2.webp',latteSkirt:'bottom-latteSkirt-v2.webp',denimShort:'bottom-denimShort-v2.webp'},
     shoes:{maryPink:'shoes-maryPink-v2.webp',loafers:'shoes-loafers-v2.webp',sneakers:'shoes-sneakers-v2.webp',boots:'shoes-boots-v2.webp'},
     bag:{heart:'bag-heart.webp',tote:'bag-tote.webp',star:'bag-star.webp'},
@@ -53,7 +53,13 @@
     sailor:'assets/wardrobe-top-scenes/top-sailor-v7.webp?v=20260919-6',
     cream:'assets/wardrobe-top-scenes/top-cream-v7.webp?v=20260919-6',
     hoodie:'assets/wardrobe-top-scenes/top-hoodie-v7.webp?v=20260919-6',
-    black:'assets/wardrobe-top-scenes/top-black-v7.webp?v=20260919-6'
+    black:'assets/wardrobe-top-scenes/top-black-v7.webp?v=20260919-6',
+    iceblue:'assets/wardrobe-top-scenes/top-iceblue-v1.webp?v=20260919-16',
+    blackvest:'assets/wardrobe-top-scenes/top-blackvest-v1.webp?v=20260919-16',
+    academy:'assets/wardrobe-top-scenes/top-academy-v1.webp?v=20260919-16',
+    varsity:'assets/wardrobe-top-scenes/top-varsity-v1.webp?v=20260919-16',
+    whitefrill:'assets/wardrobe-top-scenes/top-whitefrill-v1.webp?v=20260919-16',
+    sage:'assets/wardrobe-top-scenes/top-sage-v1.webp?v=20260919-16'
   };
   const bottomScenes={
     pinkSkirt:'assets/wardrobe-bottom-scenes/bottom-pinkSkirt-v1.webp?v=20260919-12',
