@@ -148,3 +148,23 @@ body.v97WardrobeOpen .bottom{
 #wardrobe .v110Stage:after{
   clip-path:polygon(63% 62%,100% 62%,100% 96%,63% 96%)!important;
 }
+
+/* v117: align the approved clean artwork to the source image and feather the
+   two repaired areas so there are no hard rectangular seams. */
+#wardrobe .v110Stage:before,
+#wardrobe .v110Stage:after{
+  background-image:url("wardrobe-clean-right-v1.webp?v=20260919-2")!important;
+  background-size:100% auto!important;
+  background-position:center top!important;
+  background-repeat:no-repeat!important;
+}
+#wardrobe .v110Stage:before{
+  clip-path:polygon(76% 22%,100% 22%,100% 54%,76% 54%)!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 7%,#000 24%,#000 100%)!important;
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 7%,#000 24%,#000 100%)!important;
+}
+#wardrobe .v110Stage:after{
+  clip-path:polygon(60% 59%,100% 59%,100% 100%,60% 100%)!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.12) 5%,#000 18%,#000 100%)!important;
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.12) 5%,#000 18%,#000 100%)!important;
+}
