@@ -21,7 +21,7 @@
     bottom:[['pinkSkirt','粉格短裙','🌷','#eaa1b9'],['navySkirt','海軍百褶裙','🌙','#6683a7'],['latteSkirt','奶茶格裙','🧸','#b69879'],['denimShort','牛仔短褲','🫐','#7699bb'],['creamLong','奶油長裙','🤍','#e5cfb4'],['blackSkirt','黑色百褶裙','♣️','#5c5360'],['mintSkirt','薄荷裙','🍀','#91cabb'],['redSkirt','節慶紅裙','🎄','#bd4650']],
     shoes:[['maryPink','粉色瑪莉珍','👠','#d76f91'],['loafers','棕色樂福鞋','👞','#855f4d'],['sneakers','白色球鞋','👟','#e9e7e5'],['boots','短靴','🥾','#6f554b'],['blueMary','藍色瑪莉珍','👠','#6c95bc'],['redBoots','紅色雪靴','👢','#b9434c']],
     bag:[['heart','黑色蝴蝶結包','👜','#473d43'],['tote','米白肩背包','👜','#d4b995'],['star','棕色斜背包','👜','#87644e']],
-    accessory:[['bow','黑色蝴蝶結','🎀','#3f3942'],['pearl','粉色蝴蝶結','🎀','#eaa0b7'],['beret','星月魔女帽','🌙','#76529b'],['snow','冰晶髮飾','❄️','#b8d9ed']],
+    accessory:[['bow','黃色蝴蝶結','🎀','#e6c451'],['pearl','粉色蝴蝶結','🎀','#eaa0b7'],['beret','星月魔女帽','🌙','#76529b'],['snow','冰晶髮飾','❄️','#b8d9ed']],
     pet:[['cinnamon','白色長耳狗狗','🐶','#d8edf5']]
   };
   const hairs=[['softLong','柔捲長髮'],['bob','俏麗短髮'],['bun','丸子盤髮'],['pony','高馬尾'],['twin','雙馬尾'],['sideBraid','側編髮'],['princess','公主頭'],['braid','編髮'],['wave','波浪捲']];
@@ -45,7 +45,7 @@
     bottom:{pinkSkirt:'bottom-pinkSkirt-v2.webp',navySkirt:'bottom-navySkirt-v2.webp',latteSkirt:'bottom-latteSkirt-v2.webp',denimShort:'bottom-denimShort-v2.webp'},
     shoes:{maryPink:'shoes-maryPink-v2.webp',loafers:'shoes-loafers-v2.webp',sneakers:'shoes-sneakers-v2.webp',boots:'shoes-boots-v2.webp'},
     bag:{heart:'bag-heart.webp',tote:'bag-tote.webp',star:'bag-star.webp'},
-    accessory:{bow:'accessory-bow-v2.webp',pearl:'accessory-pearl.webp',beret:'accessory-beret.webp'},
+    accessory:{bow:'accessory-bow-yellow-v3.webp',pearl:'accessory-pearl.webp',beret:'accessory-beret.webp'},
     pet:{cinnamon:''}
   };
   const topScenes={
@@ -68,14 +68,14 @@
     boots:'assets/wardrobe-shoe-scenes/shoes-boots-v1.webp?v=20260919-12'
   };
   const bagScenes={
-    heart:'assets/wardrobe-bag-scenes/bag-heart-v1.webp?v=20260919-13',
-    tote:'assets/wardrobe-bag-scenes/bag-tote-v1.webp?v=20260919-13',
-    star:'assets/wardrobe-bag-scenes/bag-star-v1.webp?v=20260919-13'
+    heart:'assets/wardrobe-bag-scenes/bag-heart-v2.webp?v=20260919-15',
+    tote:'assets/wardrobe-bag-scenes/bag-tote-v2.webp?v=20260919-15',
+    star:'assets/wardrobe-bag-scenes/bag-star-v2.webp?v=20260919-15'
   };
   const accessoryScenes={
-    bow:'assets/wardrobe-accessory-scenes/accessory-bow-v2.webp?v=20260919-14',
-    pearl:'assets/wardrobe-accessory-scenes/accessory-pearl-v1.webp?v=20260919-13',
-    beret:'assets/wardrobe-accessory-scenes/accessory-beret-v1.webp?v=20260919-13'
+    bow:'assets/wardrobe-accessory-scenes/accessory-bow-yellow-v3.webp?v=20260919-15',
+    pearl:'assets/wardrobe-accessory-scenes/accessory-bow-pink-v3.webp?v=20260919-15',
+    beret:'assets/wardrobe-accessory-scenes/accessory-beret-v2.webp?v=20260919-15'
   };
   const sceneKinds={top:topScenes,bottom:bottomScenes,shoes:shoeScenes,bag:bagScenes,accessory:accessoryScenes};
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
