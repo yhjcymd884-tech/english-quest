@@ -282,3 +282,9 @@ body.v97WardrobeOpen .bottom{
 #wardrobe .v110WearShoes{transform:translate(7.5%,.5%) scale(.36)!important;transform-origin:65% 88%!important}
 #wardrobe .v110WearBag{transform:translate(28%,1.5%) scale(.38)!important;transform-origin:74% 55%!important}
 #wardrobe .v110WearAccessory{transform:translate(10%,-8%) scale(.25)!important;transform-origin:65% 25%!important}
+
+
+/* v124: balanced fitting after on-device comparison. */
+#wardrobe .v110WearShoes{transform:translate(7.5%,.2%) scale(.51)!important;transform-origin:65% 88%!important}
+#wardrobe .v110WearBag{transform:translate(25%,1%) scale(.52)!important;transform-origin:74% 55%!important}
+#wardrobe .v110WearAccessory{transform:translate(10%,-6%) scale(.34)!important;transform-origin:65% 25%!important}
