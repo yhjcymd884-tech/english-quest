@@ -95,3 +95,34 @@ body.v97WardrobeOpen .v110Toast{bottom:78px}
 #wardrobe .v110Stage.v110OriginalUI .v110Side button.on{border-color:#ec77a3;background:linear-gradient(#f58ab1,#e86799);color:#fff;box-shadow:0 5px 12px rgba(219,76,128,.25)}
 @media(max-width:380px){#wardrobe .v110Side{width:72px;top:61px;gap:4px}#wardrobe .v110Side button{height:45px;font-size:13px}#wardrobe .v110Title{font-size:17px;padding:7px 12px}#wardrobe .v110Save{min-width:62px;height:39px}#wardrobe .v110Panel .v110Grid{gap:5px}#wardrobe .v110Panel .v110Card{height:94px}#wardrobe .v110HairGrid .v110Card{height:140px}#wardrobe .v110MakeTabs button{font-size:11px}}
 @media(max-width:380px){#wardrobe .v110Stage.v110OriginalUI .v110Side{left:2.8%;top:17.64%;width:19.1%;height:68.3%;gap:.7%}#wardrobe .v110Stage.v110OriginalUI .v110Side button{height:auto}#wardrobe .v110Stage.v110OriginalUI .v110Save{right:3.25%;top:9.3%;width:24%;height:7.1%}}
+
+
+/* v114 compact mobile wardrobe: clean right-side artwork and maximize stage. */
+#wardrobe .v110Stage:before,
+#wardrobe .v110Stage:after{
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  border-radius:0!important;
+  background-image:url("wardrobe-clean-right-v1.webp?v=20260919-1")!important;
+  background-size:100% 100%!important;
+  background-position:center top!important;
+  background-repeat:no-repeat!important;
+  filter:none!important;
+  pointer-events:none!important;
+}
+#wardrobe .v110Stage:before{
+  clip-path:polygon(69% 18%,100% 18%,100% 55%,69% 55%)!important;
+}
+#wardrobe .v110Stage:after{
+  clip-path:polygon(61% 57%,100% 57%,100% 100%,61% 100%)!important;
+}
+#wardrobe .v110Panel{
+  left:2.2%!important;
+  width:31.5%!important;
+}
+body.v97WardrobeOpen .bottom{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
