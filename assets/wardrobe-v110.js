@@ -17,9 +17,9 @@
   };
   const allSuits=()=>Object.values(suits).flatMap(x=>x.items);
   const lists={
-    top:[['rose','玫瑰襯衫','🌸','#ef9eb6'],['sailor','水手上衣','⚓','#8db8db'],['cream','奶油針織','🧶','#f0d3a9'],['blazer','學院西裝','🎓','#9c846e'],['hoodie','粉色帽T','🎀','#e894b2'],['mint','薄荷短衫','🍃','#8fcbbc'],['black','黑色荷葉','♠️','#665963'],['snow','雪花斗篷','❄️','#c7424e'],['iceblue','冰藍蝴蝶結襯衫','🩵','#a9bfe8'],['blackvest','黑色蝴蝶結背心','🖤','#4d454a'],['academy','學院西裝外套','🎓','#303852'],['varsity','粉色棒球外套','🧸','#e8a7bb'],['whitefrill','白色荷葉短衫','🤍','#eee9e6'],['sage','森系綁帶上衣','🌿','#8c9871']],
-    bottom:[['pinkSkirt','粉格短裙','🌷','#eaa1b9'],['navySkirt','海軍百褶裙','🌙','#6683a7'],['latteSkirt','奶茶格裙','🧸','#b69879'],['denimShort','牛仔短褲','🫐','#7699bb'],['creamLong','奶油長裙','🤍','#e5cfb4'],['blackSkirt','黑色百褶裙','♣️','#5c5360'],['mintSkirt','薄荷裙','🍀','#91cabb'],['redSkirt','節慶紅裙','🎄','#bd4650']],
-    shoes:[['maryPink','粉色瑪莉珍','👠','#d76f91'],['loafers','棕色樂福鞋','👞','#855f4d'],['sneakers','白色球鞋','👟','#e9e7e5'],['boots','短靴','🥾','#6f554b'],['blueMary','藍色瑪莉珍','👠','#6c95bc'],['redBoots','紅色雪靴','👢','#b9434c']],
+    top:[['rose','玫瑰襯衫','🌸','#ef9eb6'],['sailor','水手上衣','⚓','#8db8db'],['cream','奶油針織','🧶','#f0d3a9'],['blazer','學院西裝','🎓','#9c846e'],['hoodie','粉色帽T','🎀','#e894b2'],['mint','薄荷短衫','🍃','#8fcbbc'],['black','黑色荷葉','♠️','#665963'],['snow','雪花斗篷','❄️','#c7424e'],['iceblue','冰藍蝴蝶結襯衫','🩵','#a9bfe8'],['blackvest','黑色蝴蝶結背心','🖤','#4d454a'],['academy','學院西裝外套','🎓','#303852'],['varsity','粉色棒球外套','🧸','#e8a7bb'],['whitefrill','白色荷葉短衫','🤍','#eee9e6'],['sage','森系綁帶上衣','🌿','#8c9871'],['ivoryButton','奶油圓領排扣上衣','🤍','#eadcc9'],['brownPuff','可可方領蝴蝶結上衣','🤎','#8a5f4e']],
+    bottom:[['pinkSkirt','粉格短裙','🌷','#eaa1b9'],['navySkirt','海軍百褶裙','🌙','#6683a7'],['latteSkirt','奶茶格裙','🧸','#b69879'],['denimShort','牛仔短褲','🫐','#7699bb'],['creamLong','奶油長裙','🤍','#e5cfb4'],['blackSkirt','黑色百褶裙','♣️','#5c5360'],['mintSkirt','薄荷裙','🍀','#91cabb'],['redSkirt','節慶紅裙','🎄','#bd4650'],['blueRuffle','冰藍荷葉裙','🩵','#9db7e4'],['brownPlaid','可可格紋裙','🤎','#8b6657'],['grayPlaid','灰色格紋裙','🩶','#77747a'],['navySport','海軍運動百褶裙','💙','#343a63'],['denimOverall','牛仔吊帶褲','👖','#78a2ce']],
+    shoes:[['maryPink','粉色瑪莉珍','👠','#d76f91'],['loafers','棕色樂福鞋','👞','#855f4d'],['sneakers','白色球鞋','👟','#e9e7e5'],['boots','短靴','🥾','#6f554b'],['blueMary','藍色瑪莉珍','👠','#6c95bc'],['redBoots','紅色雪靴','👢','#b9434c'],['sockPinkLace','粉色蕾絲襪瑪莉珍','🎀','#e7a2b8'],['sockCreamBrown','奶油棕邊襪樂福鞋','🧦','#a07c68'],['sockBlueLace','冰藍蕾絲襪瑪莉珍','🩵','#91acd9'],['sockBlackRibbon','黑緞帶襪瑪莉珍','🖤','#4d4650'],['sockNavyKnee','海軍及膝襪樂福鞋','💙','#323a5b'],['sockBrownBow','奶油蝴蝶結襪樂福鞋','🤎','#8b6756'],['sockBlackKnee','黑色及膝襪樂福鞋','♠️','#2f2f38'],['sockPinkStripe','粉條紋襪休閒鞋','🩷','#e79ab2'],['sockPinkKnee','粉色及膝襪高筒鞋','🌸','#e68ca9'],['sockBrownCrew','棕色短襪牛津鞋','🤎','#754c3d'],['sockWhiteCrew','白色短襪休閒鞋','🤍','#dedde2'],['sockSageLace','鼠尾草蕾絲襪瑪莉珍','🌿','#899b75']],
     bag:[['heart','黑色蝴蝶結包','👜','#473d43'],['tote','米白肩背包','👜','#d4b995'],['star','棕色斜背包','👜','#87644e']],
     accessory:[['bow','黃色蝴蝶結','🎀','#e6c451'],['pearl','粉色蝴蝶結','🎀','#eaa0b7'],['beret','星月魔女帽','🌙','#76529b'],['snow','冰晶髮飾','❄️','#b8d9ed']],
     pet:[['cinnamon','白色長耳狗狗','🐶','#d8edf5']]
@@ -41,9 +41,9 @@
   const layerRoot='assets/wardrobe-fixed/';
   const layerThumbRoot='assets/wardrobe-piece-thumbs/';
   const layerAssets={
-    top:{rose:'top-rose-v2.webp',sailor:'top-sailor-v2.webp',cream:'top-cream-v2.webp',hoodie:'top-hoodie-v2.webp',black:'top-black-v2.webp',iceblue:'top-iceblue-v1.webp',blackvest:'top-blackvest-v1.webp',academy:'top-academy-v1.webp',varsity:'top-varsity-v1.webp',whitefrill:'top-whitefrill-v1.webp',sage:'top-sage-v1.webp',blazer:'top-blazer-new-v1.webp',mint:'top-mint-new-v1.webp',snow:'top-snow-new-v1.webp'},
-    bottom:{pinkSkirt:'bottom-pinkSkirt-v2.webp',navySkirt:'bottom-navySkirt-v2.webp',latteSkirt:'bottom-latteSkirt-v2.webp',denimShort:'bottom-denimShort-v2.webp',creamLong:'bottom-creamLong-new-v1.webp',blackSkirt:'bottom-blackSkirt-new-v1.webp',mintSkirt:'bottom-mintSkirt-new-v1.webp',redSkirt:'bottom-redSkirt-new-v1.webp'},
-    shoes:{maryPink:'shoes-maryPink-v2.webp',loafers:'shoes-loafers-v2.webp',sneakers:'shoes-sneakers-v2.webp',boots:'shoes-boots-v2.webp',blueMary:'shoes-blueMary-new-v1.webp',redBoots:'shoes-redBoots-new-v1.webp'},
+    top:{rose:'top-rose-v2.webp',sailor:'top-sailor-v2.webp',cream:'top-cream-v2.webp',hoodie:'top-hoodie-v2.webp',black:'top-black-v2.webp',iceblue:'top-iceblue-v1.webp',blackvest:'top-blackvest-v1.webp',academy:'top-academy-v1.webp',varsity:'top-varsity-v1.webp',whitefrill:'top-whitefrill-v1.webp',sage:'top-sage-v1.webp',blazer:'top-blazer-new-v1.webp',mint:'top-mint-new-v1.webp',snow:'top-snow-new-v1.webp',ivoryButton:'top-ivoryButton-new-v1.webp',brownPuff:'top-brownPuff-new-v1.webp'},
+    bottom:{pinkSkirt:'bottom-pinkSkirt-v2.webp',navySkirt:'bottom-navySkirt-v2.webp',latteSkirt:'bottom-latteSkirt-v2.webp',denimShort:'bottom-denimShort-v2.webp',creamLong:'bottom-creamLong-new-v1.webp',blackSkirt:'bottom-blackSkirt-new-v1.webp',mintSkirt:'bottom-mintSkirt-new-v1.webp',redSkirt:'bottom-redSkirt-new-v1.webp',blueRuffle:'bottom-blueRuffle-new-v1.webp',brownPlaid:'bottom-brownPlaid-new-v1.webp',grayPlaid:'bottom-grayPlaid-new-v1.webp',navySport:'bottom-navySport-new-v1.webp',denimOverall:'bottom-denimOverall-new-v1.webp'},
+    shoes:{maryPink:'shoes-maryPink-v2.webp',loafers:'shoes-loafers-v2.webp',sneakers:'shoes-sneakers-v2.webp',boots:'shoes-boots-v2.webp',blueMary:'shoes-blueMary-new-v1.webp',redBoots:'shoes-redBoots-new-v1.webp',sockPinkLace:'shoes-sockPinkLace-new-v1.webp',sockCreamBrown:'shoes-sockCreamBrown-new-v1.webp',sockBlueLace:'shoes-sockBlueLace-new-v1.webp',sockBlackRibbon:'shoes-sockBlackRibbon-new-v1.webp',sockNavyKnee:'shoes-sockNavyKnee-new-v1.webp',sockBrownBow:'shoes-sockBrownBow-new-v1.webp',sockBlackKnee:'shoes-sockBlackKnee-new-v1.webp',sockPinkStripe:'shoes-sockPinkStripe-new-v1.webp',sockPinkKnee:'shoes-sockPinkKnee-new-v1.webp',sockBrownCrew:'shoes-sockBrownCrew-new-v1.webp',sockWhiteCrew:'shoes-sockWhiteCrew-new-v1.webp',sockSageLace:'shoes-sockSageLace-new-v1.webp'},
     bag:{heart:'bag-heart.webp',tote:'bag-tote.webp',star:'bag-star.webp'},
     accessory:{bow:'accessory-bow-yellow-v3.webp',pearl:'accessory-pearl.webp',beret:'accessory-beret.webp'},
     pet:{cinnamon:''}
@@ -99,7 +99,9 @@
     sage:'assets/wardrobe-fitted/top-sage-scene-v1.webp?v=20260919-1',
     blazer:'assets/wardrobe-top-scenes/top-blazer-fitted-v1.webp?v=20260920-32',
     mint:'assets/wardrobe-top-scenes/top-mint-fitted-v1.webp?v=20260920-32',
-    snow:'assets/wardrobe-top-scenes/top-snow-fitted-v1.webp?v=20260920-32'
+    snow:'assets/wardrobe-top-scenes/top-snow-fitted-v1.webp?v=20260920-32',
+    ivoryButton:'assets/wardrobe-top-scenes/top-ivoryButton-fitted-v1.webp?v=20260920-34',
+    brownPuff:'assets/wardrobe-top-scenes/top-brownPuff-fitted-v1.webp?v=20260920-34'
   };
   const fittedBottomScenes={
     pinkSkirt:'assets/wardrobe-fitted/bottom-pinkSkirt-scene-v1.webp?v=20260919-1',
@@ -109,7 +111,12 @@
     creamLong:'assets/wardrobe-bottom-scenes/bottom-creamLong-fitted-v1.webp?v=20260920-32',
     blackSkirt:'assets/wardrobe-bottom-scenes/bottom-blackSkirt-fitted-v1.webp?v=20260920-32',
     mintSkirt:'assets/wardrobe-bottom-scenes/bottom-mintSkirt-fitted-v1.webp?v=20260920-32',
-    redSkirt:'assets/wardrobe-bottom-scenes/bottom-redSkirt-fitted-v1.webp?v=20260920-32'
+    redSkirt:'assets/wardrobe-bottom-scenes/bottom-redSkirt-fitted-v1.webp?v=20260920-32',
+    blueRuffle:'assets/wardrobe-bottom-scenes/bottom-blueRuffle-fitted-v1.webp?v=20260920-34',
+    brownPlaid:'assets/wardrobe-bottom-scenes/bottom-brownPlaid-fitted-v1.webp?v=20260920-34',
+    grayPlaid:'assets/wardrobe-bottom-scenes/bottom-grayPlaid-fitted-v1.webp?v=20260920-34',
+    navySport:'assets/wardrobe-bottom-scenes/bottom-navySport-fitted-v1.webp?v=20260920-34',
+    denimOverall:'assets/wardrobe-bottom-scenes/bottom-denimOverall-fitted-v1.webp?v=20260920-34'
   };
   const fittedShoeScenes={
     maryPink:'assets/wardrobe-shoe-scenes/shoes-maryPink-fitted-v2.webp?v=20260920-32',
@@ -117,7 +124,19 @@
     sneakers:'assets/wardrobe-shoe-scenes/shoes-sneakers-fitted-v2.webp?v=20260920-32',
     boots:'assets/wardrobe-shoe-scenes/shoes-boots-fitted-v2.webp?v=20260920-32',
     blueMary:'assets/wardrobe-shoe-scenes/shoes-blueMary-fitted-v1.webp?v=20260920-32',
-    redBoots:'assets/wardrobe-shoe-scenes/shoes-redBoots-fitted-v1.webp?v=20260920-32'
+    redBoots:'assets/wardrobe-shoe-scenes/shoes-redBoots-fitted-v1.webp?v=20260920-32',
+    sockPinkLace:'assets/wardrobe-shoe-scenes/shoes-sockPinkLace-fitted-v1.webp?v=20260920-34',
+    sockCreamBrown:'assets/wardrobe-shoe-scenes/shoes-sockCreamBrown-fitted-v1.webp?v=20260920-34',
+    sockBlueLace:'assets/wardrobe-shoe-scenes/shoes-sockBlueLace-fitted-v1.webp?v=20260920-34',
+    sockBlackRibbon:'assets/wardrobe-shoe-scenes/shoes-sockBlackRibbon-fitted-v1.webp?v=20260920-34',
+    sockNavyKnee:'assets/wardrobe-shoe-scenes/shoes-sockNavyKnee-fitted-v1.webp?v=20260920-34',
+    sockBrownBow:'assets/wardrobe-shoe-scenes/shoes-sockBrownBow-fitted-v1.webp?v=20260920-34',
+    sockBlackKnee:'assets/wardrobe-shoe-scenes/shoes-sockBlackKnee-fitted-v1.webp?v=20260920-34',
+    sockPinkStripe:'assets/wardrobe-shoe-scenes/shoes-sockPinkStripe-fitted-v1.webp?v=20260920-34',
+    sockPinkKnee:'assets/wardrobe-shoe-scenes/shoes-sockPinkKnee-fitted-v1.webp?v=20260920-34',
+    sockBrownCrew:'assets/wardrobe-shoe-scenes/shoes-sockBrownCrew-fitted-v1.webp?v=20260920-34',
+    sockWhiteCrew:'assets/wardrobe-shoe-scenes/shoes-sockWhiteCrew-fitted-v1.webp?v=20260920-34',
+    sockSageLace:'assets/wardrobe-shoe-scenes/shoes-sockSageLace-fitted-v1.webp?v=20260920-34'
   };
   const fittedBagScenes={
     heart:'assets/wardrobe-bag-scenes/bag-heart-fitted-v3.webp?v=20260920-32',
