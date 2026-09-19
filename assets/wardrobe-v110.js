@@ -34,7 +34,7 @@
     blush:{label:'腮紅',items:[['none','自然','○'],['rose','玫瑰','●'],['peach','蜜桃','●'],['berry','莓果','●']]},
     lip:{label:'口紅',items:[['nude','裸粉','⌣'],['berry','莓果紅','⌣'],['coral','珊瑚橘','⌣'],['rose','玫瑰粉','⌣']]}
   };
-  const labels={suit:'套裝',top:'上衣',bottom:'下身',shoes:'鞋子',bag:'包包',accessory:'飾品',hair:'髮型',makeup:'妝容',pet:'寵物'};
+  const labels={top:'上衣',bottom:'下身',shoes:'鞋子',bag:'包包',accessory:'飾品',suit:'套裝',hair:'髮型',makeup:'妝容',pet:'寵物'};
   const get=(list,id)=>list.find(x=>x[0]===id)||list[0];
   const suit=()=>allSuits().find(x=>x[0]===draft.suit)||allSuits()[0];
   const suitUrl=id=>(allSuits().find(x=>x[0]===id)||allSuits()[0])[2];
@@ -161,7 +161,7 @@
   const markSelected=(selector,value,key)=>document.querySelectorAll(selector).forEach(x=>x.classList.toggle('on',x.dataset[key]===value));
   const panelHead=title=>`<div class="v110DrawerHead"><button data-v110-panel-close aria-label="返回分類">‹</button><b>${title}</b></div>`;
   const suitPanelHtml=()=>`${panelHead('套裝選擇')}<div class="v110SuitTabs">${Object.entries(suits).map(([k,v])=>`<button data-v110-suitgroup="${k}" class="${suitGroup===k?'on':''}">${v.label}</button>`).join('')}</div><div class="v110Grid">${suits[suitGroup].items.map(x=>`<button class="v110Card ${draft.suit===x[0]?'on':''}" data-v110-suit="${x[0]}"><img src="${x[3]}" alt="${x[1]}"><span>${x[1]}</span></button>`).join('')}</div>`;
-  const piecePanelHtml=()=>{const list=lists[active]||[];return `${panelHead(labels[active]+'選擇')}<button class="v110ReturnSuits" data-v110-return-suits>返回完整套裝</button><div class="v110Grid">${list.map(x=>{const thumb=layerThumbUrl(active,x[0]);return `<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}">${thumb?`<img src="${thumb}" alt="${x[1]}">`:`<i class="v110Mini">${x[2]}</i>`}<span>${x[1]}</span></button>`}).join('')}</div>`};
+  const piecePanelHtml=()=>{const list=lists[active]||[];return `${panelHead(labels[active]+'選擇')}<div class="v110Grid">${list.map(x=>{const thumb=layerThumbUrl(active,x[0]);return `<button class="v110Card ${draft[active]===x[0]?'on':''}" data-v110-item="${active}" data-v110-value="${x[0]}">${thumb?`<img src="${thumb}" alt="${x[1]}">`:`<i class="v110Mini">${x[2]}</i>`}<span>${x[1]}</span></button>`}).join('')}</div>`};
   const updatePanel=()=>{const panel=document.querySelector('#wardrobe .v110Panel');if(panel)panel.innerHTML=active==='suit'?suitPanelHtml():piecePanelHtml()};
   const layerImage=(kind,className,label)=>{const url=layerUrl(kind,draft[kind]);return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" data-v110-value="${draft[kind]}" src="${url}" ${url?'':'hidden'} alt="${label}">`};
   const pieceBase='assets/wardrobe-base-clean-v120.webp?v=20260919-1';
