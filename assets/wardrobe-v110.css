@@ -1,8 +1,8 @@
 #wardrobe .v110Wardrobe{width:100%;min-height:100dvh;padding-bottom:0;background:#fff8f7;color:#34445d;font-family:inherit}
 #wardrobe .v110Stage{position:relative;width:100%;aspect-ratio:430/720;overflow:hidden;background:#fff4f1}
-#wardrobe .v110Stage:before,#wardrobe .v110Stage:after{content:"";position:absolute;z-index:13;inset:0;background:url("wardrobe-clean-right-v1.webp?v=20260919-1") left top/100% 100% no-repeat;pointer-events:none}
-#wardrobe .v110Stage:before{clip-path:polygon(68% 20%,100% 20%,100% 39%,68% 39%)}
-#wardrobe .v110Stage:after{clip-path:polygon(56% 55%,100% 55%,100% 83%,54% 83%,54% 66%,56% 66%)}
+#wardrobe .v110Stage:before,#wardrobe .v110Stage:after{content:"";position:absolute;z-index:13;background-image:url("wardrobe-clean-right-v1.webp?v=20260919-1");background-repeat:no-repeat;pointer-events:none;filter:drop-shadow(0 0 3px rgba(255,247,243,.9))}
+#wardrobe .v110Stage:before{right:0;top:19.5%;width:34%;height:25%;border-radius:48%;background-size:294.12% 400%;background-position:100% 26%}
+#wardrobe .v110Stage:after{right:0;top:54.5%;width:48%;height:24.5%;border-radius:48% 45% 42% 38%;background-size:208.34% 408.17%;background-position:100% 72.19%}
 #wardrobe .v110SuitImage{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
 #wardrobe .v110LayeredStage{position:absolute;inset:0;overflow:hidden;background:#fff7f5}
 #wardrobe .v110LayerBase{position:absolute;inset:0;width:100%;height:auto;display:block}
