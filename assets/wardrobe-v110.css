@@ -276,3 +276,9 @@ body.v97WardrobeOpen .bottom{
   backdrop-filter:none!important;
   -webkit-backdrop-filter:none!important;
 }
+
+
+/* v123: fitted accessory scale and anchors for the clean character base. */
+#wardrobe .v110WearShoes{transform:translate(7.5%,.5%) scale(.36)!important;transform-origin:65% 88%!important}
+#wardrobe .v110WearBag{transform:translate(28%,1.5%) scale(.38)!important;transform-origin:74% 55%!important}
+#wardrobe .v110WearAccessory{transform:translate(10%,-8%) scale(.25)!important;transform-origin:65% 25%!important}
