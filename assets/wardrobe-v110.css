@@ -126,3 +126,16 @@ body.v97WardrobeOpen .bottom{
   border:0!important;
   box-shadow:none!important;
 }
+
+
+/* v115 use the dedicated empty dressing-room artwork for clean patches. */
+#wardrobe .v110Stage:before,
+#wardrobe .v110Stage:after{
+  background-image:url("wardrobe-room-v110.webp?v=20260918-1")!important;
+}
+#wardrobe .v110Stage:before{
+  clip-path:polygon(72% 17%,100% 17%,100% 57%,72% 57%)!important;
+}
+#wardrobe .v110Stage:after{
+  clip-path:polygon(62% 56%,100% 56%,100% 100%,62% 100%)!important;
+}
