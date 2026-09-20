@@ -99,7 +99,7 @@
     sage:'assets/wardrobe-fitted/top-sage-scene-v2.webp?v=20260920-48',
     blazer:'assets/wardrobe-top-scenes/top-blazer-fitted-v1.webp?v=20260920-32',
     mint:'assets/wardrobe-top-scenes/top-mint-fitted-v1.webp?v=20260920-32',
-    snow:'assets/wardrobe-top-scenes/top-snow-fitted-v2.webp?v=20260920-49',
+    snow:'assets/wardrobe-top-scenes/top-snow-fitted-v3.webp?v=20260920-50',
     ivoryButton:'assets/wardrobe-top-scenes/top-ivoryButton-fitted-v1.webp?v=20260920-34',
     brownPuff:'assets/wardrobe-top-scenes/top-brownPuff-fitted-v1.webp?v=20260920-34'
   };
