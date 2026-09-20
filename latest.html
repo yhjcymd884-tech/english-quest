@@ -6,14 +6,14 @@
 <title>English Quest 最新版</title>
 <style>html,body{margin:0;min-height:100%;display:grid;place-items:center;background:#fff6f8;color:#a84d73;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif}.loading{text-align:center;font-weight:800}.dot{font-size:28px;animation:p 1s infinite alternate}@keyframes p{to{opacity:.35}}</style>
 </head>
-<body><div class="loading"><div class="dot">♡</div>正在開啟最新版衣櫃…</div>
+<body><div class="loading"><div class="dot">♡</div>正在開啟最新版衣櫥…</div>
 <script>
-fetch('./index.html?fresh=wearable61',{cache:'reload'})
+fetch('./index.html?fresh=wearable62',{cache:'reload'})
   .then(r=>{if(!r.ok)throw new Error('load');return r.text()})
   .then(html=>{
     html=html.replace('<head>','<head><base href="./">');
-    html=html.replace('assets/wardrobe-v110.css?v=20260920-45','assets/wardrobe-v110.css?v=wearable61');
-    html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=wearable61');
+    html=html.replace('</head>','<style>#wardrobe .v110WearBottom{clip-path:polygon(39% 35%,82% 35%,90% 50%,82% 55%,77% 62%,53% 62%,49% 55%,39% 50%)}</style></head>');
+    html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=wearable62');
     document.open();document.write(html);document.close();
   })
   .catch(()=>{document.body.innerHTML='<div class="loading">載入失敗，請重新整理一次</div>'});
