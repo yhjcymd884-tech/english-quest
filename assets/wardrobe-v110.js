@@ -1,6 +1,6 @@
 (()=>{
   const fixedLayerStyle=document.createElement('style');
-  fixedLayerStyle.textContent='#wardrobe .v110LayerBase{position:absolute!important;inset:0!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;object-position:center center!important;pointer-events:none!important;transform:none!important}#wardrobe .v110WearShoes{z-index:5!important;-webkit-mask-image:linear-gradient(to bottom,transparent 0 67%,#000 70%,#000 100%)!important;mask-image:linear-gradient(to bottom,transparent 0 67%,#000 70%,#000 100%)!important}#wardrobe .v110WearBottom{z-index:6!important}#wardrobe .v110WearBag{z-index:7!important}#wardrobe .v110WearAccessory{z-index:8!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
+  fixedLayerStyle.textContent='#wardrobe .v110LayerBase{position:absolute!important;inset:0!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;object-position:center center!important;pointer-events:none!important;transform:none!important}#wardrobe .v110WearBottom{z-index:5!important}#wardrobe .v110WearShoes{z-index:6!important;-webkit-mask-image:linear-gradient(to bottom,transparent 0 67%,#000 70%,#000 100%)!important;mask-image:linear-gradient(to bottom,transparent 0 67%,#000 70%,#000 100%)!important}#wardrobe .v110WearBag{z-index:7!important}#wardrobe .v110WearAccessory{z-index:8!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
   document.head.appendChild(fixedLayerStyle);
   /* V115 starts with only the top selected. The previous key could contain
      automatically-filled bottom/shoes from the old wardrobe implementation. */
@@ -211,7 +211,7 @@
     const className={bottom:'v110WearBottom',shoes:'v110WearShoes',bag:'v110WearBag',accessory:'v110WearAccessory'}[kind]||'';
     return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" src="${url}" alt="${labels[kind]}" ${url?'':'hidden'}>`;
   };
-  const layerOrder=['shoes','bottom','bag','accessory'];
+  const layerOrder=['bottom','shoes','bag','accessory'];
   const layeredStageHtml=()=>`<div class="v110LayeredStage"><img class="v110LayerBase" src="${activeScene()}" alt="女孩目前造型">${layerOrder.map(optionalLayerHtml).join('')}</div>`;
   const updateLayer=()=>{
     const image=document.querySelector('#wardrobe .v110LayerBase');
