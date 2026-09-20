@@ -12,7 +12,7 @@ fetch('./index.html?fresh=wearable62',{cache:'reload'})
   .then(r=>{if(!r.ok)throw new Error('load');return r.text()})
   .then(html=>{
     html=html.replace('<head>','<head><base href="./">');
-    html=html.replace('</head>','<style>#wardrobe .v110WearBottom{clip-path:polygon(39% 35%,82% 35%,90% 50%,82% 55%,77% 62%,53% 62%,49% 55%,39% 50%)}</style></head>');
+    html=html.replace('</head>','<style>#wardrobe .v110WearBottom{clip-path:polygon(39% 35%,82% 35%,90% 50%,82% 55%,77% 62%,53% 62%,49% 55%,39% 50%)}#wardrobe .v110WearShoes{transform:translate(10%,-8%) scale(1.25);transform-origin:center}</style></head>');
     html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=wearable62');
     document.open();document.write(html);document.close();
   })
