@@ -8,10 +8,11 @@
 </head>
 <body><div class="loading"><div class="dot">♡</div>正在開啟最新版衣櫃…</div>
 <script>
-fetch('./index.html?fresh=46743aab',{cache:'reload'})
+fetch('./index.html?fresh=wearable61',{cache:'reload'})
   .then(r=>{if(!r.ok)throw new Error('load');return r.text()})
   .then(html=>{
     html=html.replace('<head>','<head><base href="./">');
+    html=html.replace(/assets\\/wardrobe-v110\\.css\\?v=[^"]+/,'assets/wardrobe-v110.css?v=wearable61');
     html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=46743aab');
     document.open();document.write(html);document.close();
   })
