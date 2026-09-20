@@ -54,6 +54,8 @@
 #wardrobe .v110Card.on:after{content:'✓';position:absolute;z-index:4;right:5px;top:5px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#e85d91;color:#fff;font-weight:1000}
 #wardrobe .v110Card img{width:100%;height:100%;object-fit:contain;display:block}
 #wardrobe .v110Panel .v110Card img{width:88%;height:92%;margin:0 auto;object-fit:contain;object-position:center center}
+#wardrobe .v110Panel .v110Card[data-v110-item="top"][data-v110-value="ivoryButton"] img{transform:scale(1.25);transform-origin:center center}
+#wardrobe .v110Panel .v110Card[data-v110-item="top"][data-v110-value="brownPuff"] img{transform:scale(1.55);transform-origin:center center}
 #wardrobe .v110Panel .v110Card[data-v110-item="shoes"] img{width:100%;height:100%;transform:none;transform-origin:center center}
 #wardrobe .v110Panel .v110Card[data-v110-item="shoes"][data-v110-value="blueMary"] img{transform:scale(.86)}
 #wardrobe .v110Panel .v110Card[data-v110-item="shoes"][data-v110-value="redBoots"] img{transform:scale(.7)}
