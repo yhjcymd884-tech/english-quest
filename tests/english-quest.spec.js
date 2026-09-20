@@ -36,7 +36,7 @@ test('core pages can be opened from unified navigation', async ({ page }) => {
     ['首頁', '[data-companion120="home"]'],
     ['地圖', '#map'],
     ['衣櫥', '#wardrobe'],
-    ['寵物', '#pet']
+    ['寵物', '[data-companion120="pet"]']
   ];
   for (const [label, selector] of targets) {
     await nav.getByRole('button', { name: new RegExp(label) }).evaluate(button => button.click());
