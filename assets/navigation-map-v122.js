@@ -69,7 +69,7 @@
 
   const style=document.createElement('style');
   style.id=NAV_ID+'-style';
-  style.textContent=\`
+  style.textContent=`
     #\${NAV_ID}{
       position:fixed;z-index:2147483000;left:50%;bottom:max(7px,env(safe-area-inset-bottom));
       transform:translateX(-50%);width:min(98vw,620px);
@@ -108,7 +108,7 @@
       #\${NAV_ID} .eqNavLabel{font-size:11px;margin-bottom:4%}
       #\${NAV_ID} .eqNavIcon{font-size:25px}
     }
-  \`;
+  `;
   document.head.appendChild(style);
 
   function visible(el){
