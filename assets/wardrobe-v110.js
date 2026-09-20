@@ -1,6 +1,6 @@
 (()=>{
   const fixedLayerStyle=document.createElement('style');
-  fixedLayerStyle.textContent='#wardrobe .v110LayerBase{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;pointer-events:none!important}#wardrobe .v110WearShoes{z-index:5!important}#wardrobe .v110WearBottom{z-index:6!important}#wardrobe .v110WearBag{z-index:7!important}#wardrobe .v110WearAccessory{z-index:8!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
+  fixedLayerStyle.textContent='#wardrobe .v110LayerBase{position:absolute!important;inset:0!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;object-position:center center!important;pointer-events:none!important;transform:none!important}#wardrobe .v110WearShoes{z-index:5!important}#wardrobe .v110WearBottom{z-index:6!important}#wardrobe .v110WearBag{z-index:7!important}#wardrobe .v110WearAccessory{z-index:8!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
   document.head.appendChild(fixedLayerStyle);
   /* V115 starts with only the top selected. The previous key could contain
      automatically-filled bottom/shoes from the old wardrobe implementation. */
@@ -161,8 +161,6 @@
     if(!Object.prototype.hasOwnProperty.call(choices,draft[kind]))draft[kind]=Object.keys(choices)[0]||'';
   };
   const layerUrl=(kind,id)=>{
-    if(kind==='bottom')return fittedBottomScenes[id]||'';
-    if(kind==='shoes')return fittedShoeScenes[id]||'';
     const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260920-61`:'';
   };
   const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260920-39`:''};
@@ -205,19 +203,29 @@
     const key='1'+Number(draft.bottom==='pinkSkirt')+''+Number(draft.shoes==='loafers');
     return verifiedMixScenes[key]||'';
   };
-  const activeScene=()=>verifiedMixScene()||sceneKinds[active]?.[draft[active]]||topScene();
+  const activeScene=()=>verifiedMixScene()||topScene();
+  const stageLayerUrl=kind=>verifiedMixScene()&&['bottom','shoes'].includes(kind)?'':layerUrl(kind,draft[kind]);
   const optionalLayerHtml=kind=>{
-    const url=layerUrl(kind,draft[kind]);
+    const url=stageLayerUrl(kind);
     const className={bottom:'v110WearBottom',shoes:'v110WearShoes',bag:'v110WearBag',accessory:'v110WearAccessory'}[kind]||'';
     return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" src="${url}" alt="${labels[kind]}" ${url?'':'hidden'}>`;
   };
-  const layeredStageHtml=()=>`<div class="v110LayeredStage"><img class="v110LayerBase" src="${activeScene()}" alt="女孩目前造型"></div>`;
-  const updateLayer=(kind,id)=>{
+  const layerOrder=['shoes','bottom','bag','accessory'];
+  const layeredStageHtml=()=>`<div class="v110LayeredStage"><img class="v110LayerBase" src="${activeScene()}" alt="女孩目前造型">${layerOrder.map(optionalLayerHtml).join('')}</div>`;
+  const updateLayer=()=>{
     const image=document.querySelector('#wardrobe .v110LayerBase');
-    const url=verifiedMixScene()||sceneKinds[kind]?.[id]||topScene();
+    const url=activeScene();
     if(!image||!url)return;
     const token=++sceneToken;
-    warmImage(url).then(()=>{if(token!==sceneToken||!image.isConnected)return;image.src=url;image.hidden=false;image.alt=`女孩穿上${get(lists[kind]||[],id)[1]}`});
+    const layers=layerOrder.map(kind=>[kind,stageLayerUrl(kind)]);
+    Promise.all([warmImage(url),...layers.map(([,layer])=>warmImage(layer))]).then(()=>{
+      if(token!==sceneToken||!image.isConnected)return;
+      image.src=url;image.hidden=false;image.alt='女孩目前混搭造型';
+      layers.forEach(([kind,layer])=>{
+        const target=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!target)return;
+        target.hidden=!layer;if(layer)target.src=layer;
+      });
+    });
   };
   const toast=t=>{document.querySelector('.v110Toast')?.remove();const d=document.createElement('div');d.className='v110Toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1500)};
   const persist=()=>{saved=clone(draft);try{localStorage.setItem(KEY,JSON.stringify(saved));localStorage.setItem('englishQuestWardrobeV103',saved.suit)}catch{}const b=document.querySelector('[data-v110-save]');if(b){b.textContent='已儲存 ✓';setTimeout(()=>{if(b.isConnected)b.textContent='儲存'},1200)}toast('整套穿搭已儲存 ♡')};
