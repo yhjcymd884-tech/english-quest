@@ -2,7 +2,7 @@
   const fixedLayerStyle=document.createElement('style');
   fixedLayerStyle.textContent='#wardrobe .v110LayerBase{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;pointer-events:none!important}#wardrobe .v110WearShoes{z-index:5!important}#wardrobe .v110WearBottom{z-index:6!important}#wardrobe .v110WearBag{z-index:7!important}#wardrobe .v110WearAccessory{z-index:8!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
   document.head.appendChild(fixedLayerStyle);
-  const KEY='englishQuestWardrobeSavedV114';
+  /* V115 starts with only the top selected. The previous key could contain\n     automatically-filled bottom/shoes from the old wardrobe implementation. */\n  const KEY='englishQuestWardrobeSavedV115';
   const clone=o=>JSON.parse(JSON.stringify(o));
   const defaults={mode:'piece',suit:'daily-pink',previewSuit:'daily-pink',top:'rose',bottom:'',shoes:'',bag:'',accessory:'',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:''};
   let saved=clone(defaults),draft=clone(defaults),active='top',suitGroup='daily',hairPane='style',makeTab='brow',panelOpen=true;
