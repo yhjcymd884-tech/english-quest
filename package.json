@@ -2,6 +2,7 @@
   "name": "english-quest-ci",
   "private": true,
   "scripts": {
+    "test:guardrails": "node scripts/validate-guardrails.js",
     "test:e2e": "playwright test"
   },
   "devDependencies": {
