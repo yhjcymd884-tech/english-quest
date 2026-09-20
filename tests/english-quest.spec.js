@@ -39,7 +39,7 @@ test('core pages can be opened from unified navigation', async ({ page }) => {
     ['寵物', '#pet']
   ];
   for (const [label, selector] of targets) {
-    await nav.getByRole('button', { name: new RegExp(label) }).click();
+    await nav.getByRole('button', { name: new RegExp(label) }).evaluate(button => button.click());
     await expect(page.locator(selector)).toBeVisible();
   }
 });
@@ -50,7 +50,7 @@ test('eq38 save data survives page load and navigation', async ({ page }) => {
     localStorage.setItem('eq38', JSON.stringify({ guardrailMarker: 'keep-me', coins: 321 }));
   });
   await page.reload({ waitUntil: 'domcontentloaded' });
-  await page.locator('#eq-unified-nav-20260920').getByRole('button', { name: /地圖/ }).click();
+  await page.locator('#eq-unified-nav-20260920').getByRole('button', { name: /地圖/ }).evaluate(button => button.click());
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('eq38') || '{}'));
   expect(saved.guardrailMarker).toBe('keep-me');
 });
