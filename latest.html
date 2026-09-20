@@ -12,7 +12,7 @@ fetch('./index.html?fresh=wearable61',{cache:'reload'})
   .then(r=>{if(!r.ok)throw new Error('load');return r.text()})
   .then(html=>{
     html=html.replace('<head>','<head><base href="./">');
-    html=html.replace(/assets\\/wardrobe-v110\\.css\\?v=[^"]+/,'assets/wardrobe-v110.css?v=wearable61');
+    html=html.replace('assets/wardrobe-v110.css?v=20260920-45','assets/wardrobe-v110.css?v=wearable61');
     html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=wearable61');
     document.open();document.write(html);document.close();
   })
