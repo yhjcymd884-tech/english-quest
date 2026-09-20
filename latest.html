@@ -13,7 +13,7 @@ fetch('./index.html?fresh=wearable61',{cache:'reload'})
   .then(html=>{
     html=html.replace('<head>','<head><base href="./">');
     html=html.replace(/assets\\/wardrobe-v110\\.css\\?v=[^"]+/,'assets/wardrobe-v110.css?v=wearable61');
-    html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=46743aab');
+    html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=wearable61');
     document.open();document.write(html);document.close();
   })
   .catch(()=>{document.body.innerHTML='<div class="loading">載入失敗，請重新整理一次</div>'});
