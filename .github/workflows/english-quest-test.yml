@@ -11,7 +11,27 @@ permissions:
   contents: read
 
 jobs:
+  guardrails:
+    name: Five merge guardrails
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch main baseline
+        run: git fetch origin main --force
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run integrity, size, syntax, navigation marker and eq38 checks
+        run: npm run test:guardrails
+
   playwright:
+    name: Core UI and eq38 tests
+    needs: guardrails
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -21,9 +41,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Run UI tests
