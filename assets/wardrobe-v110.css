@@ -311,3 +311,14 @@ body.v97WardrobeOpen .bottom{
 
 /* v127: align the shoe sole with the character's toe line. */
 #wardrobe .v110WearShoes{transform:translate(7.5%,1.2%) scale(.58) scaleX(1.24)!important;transform-origin:65% 91%!important}
+
+
+/* v128: garment-only bottom and shoe layers; no cropped scene windows. */
+#wardrobe .v110WearBottom{
+  clip-path:none!important;
+}
+#wardrobe .v110WearShoes{
+  clip-path:none!important;
+  transform:translate(8%,0%) scale(1.6) scaleX(1.45)!important;
+  transform-origin:65% 88%!important;
+}
