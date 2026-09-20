@@ -194,7 +194,18 @@
   const updatePanel=()=>{const panel=document.querySelector('#wardrobe .v110Panel');if(panel)panel.innerHTML=active==='suit'?suitPanelHtml():piecePanelHtml()};
   const pieceBase='assets/wardrobe-base-clean-v120.webp?v=20260919-1';
   const topScene=()=>fittedTopScenes[draft.top]||pieceBase;
-  const activeScene=()=>sceneKinds[active]?.[draft[active]]||topScene();
+  const verifiedMixScenes={
+    '100':'assets/wardrobe-fitted/top-cream-scene-v1.webp?v=20260920-63',
+    '110':'assets/mix-lab/top-cream-bottom-pink-fused-preview-v2.webp?v=20260920-63',
+    '101':'assets/mix-lab/top-cream-shoes-loafers-fused-v1.webp?v=20260920-63',
+    '111':'assets/mix-lab/top-cream-bottom-pink-shoes-loafers-fused-preview-v1.webp?v=20260920-63'
+  };
+  const verifiedMixScene=()=>{
+    if(draft.top!=='cream'||!['','pinkSkirt'].includes(draft.bottom)||!['','loafers'].includes(draft.shoes))return '';
+    const key='1'+Number(draft.bottom==='pinkSkirt')+''+Number(draft.shoes==='loafers');
+    return verifiedMixScenes[key]||'';
+  };
+  const activeScene=()=>verifiedMixScene()||sceneKinds[active]?.[draft[active]]||topScene();
   const optionalLayerHtml=kind=>{
     const url=layerUrl(kind,draft[kind]);
     const className={bottom:'v110WearBottom',shoes:'v110WearShoes',bag:'v110WearBag',accessory:'v110WearAccessory'}[kind]||'';
@@ -203,7 +214,7 @@
   const layeredStageHtml=()=>`<div class="v110LayeredStage"><img class="v110LayerBase" src="${activeScene()}" alt="女孩目前造型"></div>`;
   const updateLayer=(kind,id)=>{
     const image=document.querySelector('#wardrobe .v110LayerBase');
-    const url=sceneKinds[kind]?.[id]||topScene();
+    const url=verifiedMixScene()||sceneKinds[kind]?.[id]||topScene();
     if(!image||!url)return;
     const token=++sceneToken;
     warmImage(url).then(()=>{if(token!==sceneToken||!image.isConnected)return;image.src=url;image.hidden=false;image.alt=`女孩穿上${get(lists[kind]||[],id)[1]}`});
