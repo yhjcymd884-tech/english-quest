@@ -161,8 +161,8 @@
     if(!Object.prototype.hasOwnProperty.call(choices,draft[kind]))draft[kind]=Object.keys(choices)[0]||'';
   };
   const layerUrl=(kind,id)=>{
-    if(kind==='bottom'){const file=layerAssets.bottom?.[id];return file?`${layerRoot}${file}?v=20260920-64`:'';}
-    if(kind==='shoes'){const file=fixedShoeAssets[id];return file?`${fixedLayerRoot}${file}?v=20260920-61`:''}
+    if(kind==='bottom')return fittedBottomScenes[id]||'';
+    if(kind==='shoes')return fittedShoeScenes[id]||'';
     const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260920-61`:'';
   };
   const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260920-39`:''};
