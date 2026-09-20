@@ -41,7 +41,7 @@
   const layerRoot='assets/wardrobe-fixed/';
   const layerThumbRoot='assets/wardrobe-piece-thumbs/';
   const layerAssets={
-    top:{rose:'top-rose-clean-v3.webp',sailor:'top-sailor-clean-v3.webp',cream:'top-cream-clean-v3.webp',hoodie:'top-hoodie-clean-v3.webp',black:'top-black-v2.webp',iceblue:'top-iceblue-clean-v2.webp',blackvest:'top-blackvest-clean-v2.webp',varsity:'top-varsity-clean-v2.webp',whitefrill:'top-whitefrill-clean-v2.webp',sage:'top-sage-clean-v2.webp',blazer:'top-blazer-clean-v2.webp',mint:'top-mint-new-v1.webp',snow:'top-snow-new-v1.webp',ivoryButton:'top-ivoryButton-new-v1.webp',brownPuff:'top-brownPuff-new-v1.webp'},
+    top:{rose:'top-rose-clean-v3.webp',sailor:'top-sailor-clean-v3.webp',cream:'top-cream-clean-v3.webp',hoodie:'top-hoodie-clean-v3.webp',black:'top-black-v2.webp',iceblue:'top-iceblue-clean-v2.webp',blackvest:'top-blackvest-clean-v2.webp',varsity:'top-varsity-clean-v2.webp',whitefrill:'top-whitefrill-clean-v2.webp',sage:'top-sage-clean-v2.webp',blazer:'top-blazer-clean-v2.webp',mint:'top-mint-new-v1.webp',snow:'top-snow-new-v1.webp',ivoryButton:'top-ivoryButton-clean-v2.webp',brownPuff:'top-brownPuff-clean-v2.webp'},
     bottom:{pinkSkirt:'bottom-pinkSkirt-v2.webp',navySkirt:'bottom-navySkirt-v2.webp',latteSkirt:'bottom-latteSkirt-v2.webp',denimShort:'bottom-denimShort-v2.webp',creamLong:'bottom-creamLong-new-v1.webp',blackSkirt:'bottom-blackSkirt-new-v1.webp',mintSkirt:'bottom-mintSkirt-new-v1.webp',redSkirt:'bottom-redSkirt-new-v1.webp',blueRuffle:'bottom-blueRuffle-new-v1.webp',brownPlaid:'bottom-brownPlaid-new-v1.webp',grayPlaid:'bottom-grayPlaid-new-v1.webp',navySport:'bottom-navySport-new-v1.webp',denimOverall:'bottom-denimOverall-new-v1.webp'},
     shoes:{maryPink:'shoes-maryPink-v2.webp',loafers:'shoes-loafers-v2.webp',sneakers:'shoes-sneakers-v2.webp',boots:'shoes-boots-v2.webp',blueMary:'shoes-blueMary-new-v1.webp',redBoots:'shoes-redBoots-new-v1.webp',sockPinkLace:'shoes-sockPinkLace-new-v1.webp',sockCreamBrown:'shoes-sockCreamBrown-new-v1.webp',sockBlueLace:'shoes-sockBlueLace-new-v1.webp',sockBlackRibbon:'shoes-sockBlackRibbon-new-v1.webp',sockNavyKnee:'shoes-sockNavyKnee-new-v1.webp',sockBrownBow:'shoes-sockBrownBow-new-v1.webp',sockBlackKnee:'shoes-sockBlackKnee-new-v1.webp',sockPinkStripe:'shoes-sockPinkStripe-new-v1.webp',sockPinkKnee:'shoes-sockPinkKnee-new-v1.webp',sockBrownCrew:'shoes-sockBrownCrew-new-v1.webp',sockWhiteCrew:'shoes-sockWhiteCrew-new-v1.webp',sockSageLace:'shoes-sockSageLace-new-v1.webp'},
     bag:{heart:'bag-heart.webp',tote:'bag-tote.webp',star:'bag-star.webp'},
@@ -155,7 +155,7 @@
     draft[kind]=Object.keys(layerAssets[kind]||{})[0]||'';
   };
   const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260919-11`:''};
-  const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260920-38`:''};
+  const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260920-39`:''};
   Object.keys(layerAssets).forEach(kind=>{
     if(lists[kind])lists[kind]=lists[kind].filter(x=>Object.prototype.hasOwnProperty.call(layerAssets[kind],x[0]));
     const fallback=Object.keys(layerAssets[kind])[0];
