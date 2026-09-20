@@ -1,6 +1,6 @@
 (()=>{
   const fixedLayerStyle=document.createElement('style');
-  fixedLayerStyle.textContent='#wardrobe .v110LayerBase{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;transform:none!important;transform-origin:center center!important;pointer-events:none!important}#wardrobe .v110WearShoes{z-index:5!important}#wardrobe .v110WearBottom{z-index:6!important}#wardrobe .v110WearBag{z-index:7!important}#wardrobe .v110WearAccessory{z-index:8!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
+  fixedLayerStyle.textContent='#wardrobe .v110LayerBase{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;pointer-events:none!important}#wardrobe .v110WearShoes{z-index:5!important}#wardrobe .v110WearBottom{z-index:6!important}#wardrobe .v110WearBag{z-index:7!important}#wardrobe .v110WearAccessory{z-index:8!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
   document.head.appendChild(fixedLayerStyle);
   const KEY='englishQuestWardrobeSavedV113';
   const clone=o=>JSON.parse(JSON.stringify(o));
@@ -38,7 +38,7 @@
   const get=(list,id)=>list.find(x=>x[0]===id)||list[0];
   const suit=()=>allSuits().find(x=>x[0]===draft.suit)||allSuits()[0];
   const suitUrl=id=>(allSuits().find(x=>x[0]===id)||allSuits()[0])[2];
-  const layerRoot='assets/wardrobe-mix-layers/';
+  const layerRoot='assets/wardrobe-fixed/';
   const layerThumbRoot='assets/wardrobe-piece-thumbs/';
   const layerAssets={
     top:{rose:'top-rose-clean-v3.webp',sailor:'top-sailor-clean-v3.webp',cream:'top-cream-clean-v3.webp',hoodie:'top-hoodie-clean-v3.webp',black:'top-black-v2.webp',iceblue:'top-iceblue-clean-v2.webp',blackvest:'top-blackvest-clean-v2.webp',varsity:'top-varsity-clean-v2.webp',whitefrill:'top-whitefrill-clean-v2.webp',sage:'top-sage-clean-v2.webp',blazer:'top-blazer-clean-v2.webp',mint:'top-mint-new-v1.webp',snow:'top-snow-new-v1.webp',ivoryButton:'top-ivoryButton-clean-v2.webp',brownPuff:'top-brownPuff-clean-v2.webp'},
@@ -156,7 +156,7 @@
     if(optionalPieceKinds.includes(kind)&&draft[kind]==='')return;
     if(!Object.prototype.hasOwnProperty.call(choices,draft[kind]))draft[kind]=Object.keys(choices)[0]||'';
   };
-  const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260920-52`:''};
+  const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260920-54`:''};
   const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260920-39`:''};
   Object.keys(layerAssets).forEach(kind=>{
     if(lists[kind])lists[kind]=lists[kind].filter(x=>Object.prototype.hasOwnProperty.call(layerAssets[kind],x[0]));
