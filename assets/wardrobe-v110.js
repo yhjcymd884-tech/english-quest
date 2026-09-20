@@ -200,13 +200,11 @@
     const className={bottom:'v110WearBottom',shoes:'v110WearShoes',bag:'v110WearBag',accessory:'v110WearAccessory'}[kind]||'';
     return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" src="${url}" alt="${labels[kind]}" ${url?'':'hidden'}>`;
   };
-  const layeredStageHtml=()=>`<div class="v110LayeredStage"><img class="v110LayerBase" src="${topScene()}" alt="女孩目前造型">${optionalPieceKinds.map(optionalLayerHtml).join('')}</div>`;
+  const layeredStageHtml=()=>`<div class="v110LayeredStage"><img class="v110LayerBase" src="${activeScene()}" alt="女孩目前造型"></div>`;
   const updateLayer=(kind,id)=>{
-    const isTop=kind==='top';
-    const image=document.querySelector(isTop?'#wardrobe .v110LayerBase':`#wardrobe [data-v110-layer="${kind}"]`);
-    const url=isTop?topScene():layerUrl(kind,id);
-    if(!image)return;
-    if(!url){image.hidden=true;image.removeAttribute('src');return}
+    const image=document.querySelector('#wardrobe .v110LayerBase');
+    const url=sceneKinds[kind]?.[id]||topScene();
+    if(!image||!url)return;
     const token=++sceneToken;
     warmImage(url).then(()=>{if(token!==sceneToken||!image.isConnected)return;image.src=url;image.hidden=false;image.alt=`女孩穿上${get(lists[kind]||[],id)[1]}`});
   };
