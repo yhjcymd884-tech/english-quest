@@ -161,7 +161,10 @@
     if(!Object.prototype.hasOwnProperty.call(choices,draft[kind]))draft[kind]=Object.keys(choices)[0]||'';
   };
   const layerUrl=(kind,id)=>{
-    if(kind==='shoes')return fittedShoeScenes[id]||'';
+    if(kind==='shoes'){
+      const scene=fittedShoeScenes[id]||'';
+      return scene?`${scene}&fit=20260920-70`:'';
+    }
     const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260920-61`:'';
   };
   const layerThumbUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerThumbRoot}${file}?v=20260920-39`:''};
