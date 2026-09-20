@@ -1,6 +1,6 @@
 (()=>{
   const fixedLayerStyle=document.createElement('style');
-  fixedLayerStyle.textContent='#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;pointer-events:none!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
+  fixedLayerStyle.textContent='#wardrobe .v110LayerBase{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;transform:none!important;transform-origin:center center!important;pointer-events:none!important}#wardrobe .v110WearShoes{z-index:5!important}#wardrobe .v110WearBottom{z-index:6!important}#wardrobe .v110WearBag{z-index:7!important}#wardrobe .v110WearAccessory{z-index:8!important}#wardrobe .v110WearLayer[hidden]{display:none!important}';
   document.head.appendChild(fixedLayerStyle);
   const KEY='englishQuestWardrobeSavedV113';
   const clone=o=>JSON.parse(JSON.stringify(o));
@@ -150,8 +150,10 @@
   };
   const sceneKinds={top:fittedTopScenes,bottom:fittedBottomScenes,shoes:fittedShoeScenes,bag:fittedBagScenes,accessory:fittedAccessoryScenes};
   const pieceKinds=['top','bottom','shoes','bag','accessory'];
+  const optionalPieceKinds=['bag','accessory'];
   const startPieceMode=kind=>{
     const choices=layerAssets[kind]||{};
+    if(optionalPieceKinds.includes(kind)&&draft[kind]==='')return;
     if(!Object.prototype.hasOwnProperty.call(choices,draft[kind]))draft[kind]=Object.keys(choices)[0]||'';
   };
   const layerUrl=(kind,id)=>{const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260920-52`:''};
@@ -159,8 +161,8 @@
   Object.keys(layerAssets).forEach(kind=>{
     if(lists[kind])lists[kind]=lists[kind].filter(x=>Object.prototype.hasOwnProperty.call(layerAssets[kind],x[0]));
     const fallback=Object.keys(layerAssets[kind])[0];
-    if(!Object.prototype.hasOwnProperty.call(layerAssets[kind],draft[kind]))draft[kind]=fallback;
-    if(!Object.prototype.hasOwnProperty.call(layerAssets[kind],saved[kind]))saved[kind]=fallback;
+    if(!(optionalPieceKinds.includes(kind)&&draft[kind]==='')&&!Object.prototype.hasOwnProperty.call(layerAssets[kind],draft[kind]))draft[kind]=fallback;
+    if(!(optionalPieceKinds.includes(kind)&&saved[kind]==='')&&!Object.prototype.hasOwnProperty.call(layerAssets[kind],saved[kind]))saved[kind]=fallback;
   });
   const imageCache=new Map();let previewToken=0,sceneToken=0;
   const warmImage=url=>{
