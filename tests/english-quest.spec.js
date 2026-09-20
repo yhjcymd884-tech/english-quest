@@ -33,7 +33,7 @@ test('core pages can be opened from unified navigation', async ({ page }) => {
   await page.goto('/', { waitUntil: 'domcontentloaded' });
   const nav = page.locator('#eq-unified-nav-20260920');
   const targets = [
-    ['首頁', '#home'],
+    ['首頁', '[data-companion120="home"]'],
     ['地圖', '#map'],
     ['衣櫥', '#wardrobe'],
     ['寵物', '#pet']
