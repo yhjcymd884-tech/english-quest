@@ -11,12 +11,12 @@ module.exports = defineConfig({
     screenshot: 'only-on-failure'
   },
   projects: [
-    { name: 'mobile-chromium', use: { ...devices['iPhone 13'] } },
+    { name: 'mobile-chromium', use: { ...devices['iPhone 13'], browserName: 'chromium' } },
     { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'] } }
   ],
   webServer: {
     command: 'python3 -m http.server 4173 --bind 127.0.0.1',
-    url: 'http://127.0.0.1:4173',
+    url: 'http://127.0.0.1:4173/index.html',
     reuseExistingServer: !process.env.CI
   }
 });
