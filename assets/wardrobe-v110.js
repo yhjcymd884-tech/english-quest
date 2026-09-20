@@ -89,7 +89,7 @@
     rose:'assets/wardrobe-fitted/top-rose-scene-v3.webp?v=20260919-2',
     sailor:'assets/wardrobe-fitted/top-sailor-scene-v1.webp?v=20260919-1',
     cream:'assets/wardrobe-fitted/top-cream-scene-v1.webp?v=20260919-1',
-    hoodie:'assets/wardrobe-fitted/top-hoodie-scene-v1.webp?v=20260919-1',
+    hoodie:'assets/wardrobe-fitted/top-hoodie-scene-v2.webp?v=20260920-49',
     black:'assets/wardrobe-fitted/top-black-scene-v1.webp?v=20260919-1',
     iceblue:'assets/wardrobe-fitted/top-iceblue-scene-v1.webp?v=20260919-1',
     blackvest:'assets/wardrobe-fitted/top-blackvest-scene-v1.webp?v=20260919-1',
@@ -99,7 +99,7 @@
     sage:'assets/wardrobe-fitted/top-sage-scene-v2.webp?v=20260920-48',
     blazer:'assets/wardrobe-top-scenes/top-blazer-fitted-v1.webp?v=20260920-32',
     mint:'assets/wardrobe-top-scenes/top-mint-fitted-v1.webp?v=20260920-32',
-    snow:'assets/wardrobe-top-scenes/top-snow-fitted-v1.webp?v=20260920-32',
+    snow:'assets/wardrobe-top-scenes/top-snow-fitted-v2.webp?v=20260920-49',
     ivoryButton:'assets/wardrobe-top-scenes/top-ivoryButton-fitted-v1.webp?v=20260920-34',
     brownPuff:'assets/wardrobe-top-scenes/top-brownPuff-fitted-v1.webp?v=20260920-34'
   };
