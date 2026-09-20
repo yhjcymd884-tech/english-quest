@@ -139,3 +139,5 @@ function refreshLabels(){
 function init(){refreshLabels();const screen=document.getElementById('grammarForest119');if(screen)new MutationObserver(refreshLabels).observe(screen,{childList:true,subtree:false})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
+
+(()=>{const s=document.createElement('script');s.src='assets/navigation-map-v122.js';document.head.appendChild(s)})();
