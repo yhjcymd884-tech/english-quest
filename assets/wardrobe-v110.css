@@ -330,3 +330,16 @@ body.v97WardrobeOpen .bottom{
   transform:translate(7.5%,1.2%) scale(.58) scaleX(1.24)!important;
   transform-origin:65% 91%!important;
 }
+
+
+/* v130: true fitted scenes at their native character scale. No displacement or enlargement. */
+#wardrobe .v110WearBottom{
+  transform:none!important;
+  transform-origin:center!important;
+  clip-path:polygon(53% 35%,76% 35%,83% 45%,82% 57%,76% 65%,70% 66%,67% 52%,64% 66%,57% 65%,52% 57%,48% 45%)!important;
+}
+#wardrobe .v110WearShoes{
+  transform:none!important;
+  transform-origin:center!important;
+  clip-path:polygon(57% 56%,75% 56%,78% 72%,80% 90%,74% 94%,67% 91%,64% 94%,57% 94%,54% 90%,56% 72%)!important;
+}
