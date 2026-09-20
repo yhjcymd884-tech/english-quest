@@ -1,17 +1,29 @@
 const { test, expect } = require('@playwright/test');
 
-test('English Quest loads without uncaught page errors', async ({ page }) => {
-  const errors = [];
-  page.on('pageerror', e => errors.push(e.message));
-  await page.goto('/', { waitUntil: 'domcontentloaded' });
+async function openGame(page) {
+  const diagnostics = [];
+  page.on('console', msg => {
+    if (msg.type() === 'error') diagnostics.push(`console: ${msg.text()}`);
+  });
+  page.on('pageerror', e => diagnostics.push(`pageerror: ${e.message}`));
+  page.on('requestfailed', req => diagnostics.push(`requestfailed: ${req.url()} :: ${req.failure()?.errorText || 'unknown'}`));
+
+  const response = await page.goto('/index.html', { waitUntil: 'networkidle' });
+  expect(response, 'index.html should return a response').not.toBeNull();
+  expect(response.ok(), `index.html HTTP status: ${response.status()}`).toBeTruthy();
   await expect(page.locator('body')).toBeVisible();
-  expect(errors).toEqual([]);
+  return diagnostics;
+}
+
+test('English Quest loads without uncaught page errors', async ({ page }) => {
+  const diagnostics = await openGame(page);
+  expect(diagnostics).toEqual([]);
 });
 
 test('unified five-button navigation exists and is clickable', async ({ page }) => {
-  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  await openGame(page);
   const nav = page.locator('#eq-unified-nav-20260920');
-  await expect(nav).toBeVisible();
+  await expect(nav).toBeVisible({ timeout: 15000 });
   const labels = ['首頁', '地圖', '衣櫥', '寵物', '我的'];
   for (const label of labels) {
     const button = nav.getByRole('button', { name: new RegExp(label) });
@@ -22,17 +34,17 @@ test('unified five-button navigation exists and is clickable', async ({ page }) 
 });
 
 test('main game feature entries are present', async ({ page }) => {
-  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  await openGame(page);
   const body = page.locator('body');
   for (const label of ['文法筆記', '錯題本', '文法大會考', '字彙大會考']) {
-    await expect(body).toContainText(label);
+    await expect(body).toContainText(label, { timeout: 15000 });
   }
 });
 
 test('navigation buttons do not overlap each other', async ({ page }) => {
-  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  await openGame(page);
   const buttons = page.locator('#eq-unified-nav-20260920 button');
-  await expect(buttons).toHaveCount(5);
+  await expect(buttons).toHaveCount(5, { timeout: 15000 });
   const boxes = await buttons.evaluateAll(els => els.map(el => {
     const r = el.getBoundingClientRect();
     return { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height };
