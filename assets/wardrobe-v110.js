@@ -89,7 +89,7 @@
     rose:'assets/wardrobe-fitted/top-rose-scene-v3.webp?v=20260919-2',
     sailor:'assets/wardrobe-fitted/top-sailor-scene-v1.webp?v=20260919-1',
     cream:'assets/wardrobe-fitted/top-cream-scene-v1.webp?v=20260919-1',
-    hoodie:'assets/wardrobe-fitted/top-hoodie-scene-v2.webp?v=20260920-49',
+    hoodie:'assets/wardrobe-fitted/top-hoodie-scene-v3.webp?v=20260920-51',
     black:'assets/wardrobe-fitted/top-black-scene-v1.webp?v=20260919-1',
     iceblue:'assets/wardrobe-fitted/top-iceblue-scene-v1.webp?v=20260919-1',
     blackvest:'assets/wardrobe-fitted/top-blackvest-scene-v1.webp?v=20260919-1',
