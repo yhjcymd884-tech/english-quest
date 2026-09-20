@@ -322,3 +322,11 @@ body.v97WardrobeOpen .bottom{
   transform:translate(8%,0%) scale(1.6) scaleX(1.45)!important;
   transform-origin:65% 88%!important;
 }
+
+
+/* v129 safety rollback: remove the oversized shoe experiment while fitted assets are rebuilt. */
+#wardrobe .v110WearShoes{
+  clip-path:none!important;
+  transform:translate(7.5%,1.2%) scale(.58) scaleX(1.24)!important;
+  transform-origin:65% 91%!important;
+}
