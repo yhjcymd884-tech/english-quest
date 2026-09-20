@@ -3,11 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="refresh" content="0;url=./?repair=20260920-1938">
-<title>正在開啟 English Quest</title>
+<title>English Quest 最新版</title>
 <style>html,body{margin:0;min-height:100%;display:grid;place-items:center;background:#fff6f8;color:#a84d73;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif}.loading{text-align:center;font-weight:800}.dot{font-size:28px;animation:p 1s infinite alternate}@keyframes p{to{opacity:.35}}</style>
 </head>
-<body><div class="loading"><div class="dot">♡</div>正在開啟新衣櫃…</div>
-<script>location.replace('./?repair=20260920-1938');</script>
+<body><div class="loading"><div class="dot">♡</div>正在開啟完整新衣櫃…</div>
+<script>
+fetch('https://raw.githubusercontent.com/yhjcymd884-tech/english-quest/7d4d11daec2039d9cfae8706172a81810dc1497c/index.html',{cache:'no-store'})
+ .then(r=>{if(!r.ok)throw new Error('load');return r.text()})
+ .then(html=>{
+   html=html.replace('<head>','<head><base href="https://yhjcymd884-tech.github.io/english-quest/">');
+   html=html.replace(/assets\/wardrobe-v110\.css\?v=[^"]+/,'assets/wardrobe-v110.css?v=wearable63');
+   html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=wearable63');
+   document.open();document.write(html);document.close();
+ })
+ .catch(()=>{document.body.innerHTML='<div class="loading">載入失敗，請按右下角重新整理一次</div>'});
+</script>
 </body>
 </html>
