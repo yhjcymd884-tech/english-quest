@@ -13,6 +13,7 @@
 #wardrobe .v110WearShoes{z-index:8}
 #wardrobe .v110WearBag{z-index:9}
 #wardrobe .v110WearAccessory{z-index:10}
+#wardrobe .v110WearBottom{clip-path:polygon(39% 35%,82% 35%,90% 50%,82% 55%,77% 62%,53% 62%,49% 55%,39% 50%)}
 #wardrobe .v110Room{position:absolute;inset:0;background:url("wardrobe-room-v110.webp?v=20260918-1") center/cover no-repeat}
 #wardrobe .v110Room:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,248,249,.22),transparent 28%,transparent 72%,rgba(255,248,249,.14));pointer-events:none}
 #wardrobe .v110Avatar{position:absolute;z-index:2;left:16%;right:2%;top:5.5%;bottom:0;display:grid;place-items:end center}
