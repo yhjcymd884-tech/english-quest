@@ -96,7 +96,7 @@
     academy:'assets/wardrobe-fitted/top-academy-scene-v1.webp?v=20260919-1',
     varsity:'assets/wardrobe-fitted/top-varsity-scene-v1.webp?v=20260919-1',
     whitefrill:'assets/wardrobe-fitted/top-whitefrill-scene-v1.webp?v=20260919-1',
-    sage:'assets/wardrobe-fitted/top-sage-scene-v1.webp?v=20260919-1',
+    sage:'assets/wardrobe-fitted/top-sage-scene-v2.webp?v=20260920-48',
     blazer:'assets/wardrobe-top-scenes/top-blazer-fitted-v1.webp?v=20260920-32',
     mint:'assets/wardrobe-top-scenes/top-mint-fitted-v1.webp?v=20260920-32',
     snow:'assets/wardrobe-top-scenes/top-snow-fitted-v1.webp?v=20260920-32',
