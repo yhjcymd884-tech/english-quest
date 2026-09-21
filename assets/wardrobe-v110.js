@@ -213,7 +213,18 @@
     '111':'assets/mix-lab/top-cream-bottom-pink-shoes-loafers-fused-preview-v1.webp?v=20260920-63'
   };
   const verifiedMixScene=()=>{
+    // These states use one fully rendered image, exactly like mix-lab.html and
+    // mix-accessory-lab.html. No garment overlay, crop, translation or scale.
+    if(draft.top==='academy'&&draft.bottom==='denimShort'&&draft.shoes==='loafers'&&draft.bag==='tote'&&!draft.accessory){
+      return 'assets/mix-lab/top-academy-bottom-denim-shoes-loafers-bag-tote-fused-v1.webp?v=20260921-1';
+    }
     if(draft.top!=='cream'||!['','pinkSkirt'].includes(draft.bottom)||!['','loafers'].includes(draft.shoes))return '';
+    if(draft.bottom==='pinkSkirt'&&draft.shoes==='loafers'){
+      if(draft.bag==='tote'&&draft.accessory==='pearl')return 'assets/mix-lab/full-outfit-bag-tote-pearl-necklace-fused-v1.webp?v=20260921-1';
+      if(draft.bag==='tote'&&!draft.accessory)return 'assets/mix-lab/full-outfit-bag-tote-fused-v1.webp?v=20260921-1';
+      if(!draft.bag&&draft.accessory==='pearl')return 'assets/mix-lab/full-outfit-pearl-necklace-fused-v1.webp?v=20260921-1';
+    }
+    if(draft.bag||draft.accessory)return '';
     const key='1'+Number(draft.bottom==='pinkSkirt')+''+Number(draft.shoes==='loafers');
     return verifiedMixScenes[key]||'';
   };
@@ -229,7 +240,7 @@
   const bottomFit=()=> '0';
   const layerStyle=()=>'';
   const stageLayerUrl=kind=>{
-    if(verifiedMixScene()&&['bottom','shoes'].includes(kind))return '';
+    if(verifiedMixScene()&&['bottom','shoes','bag','accessory'].includes(kind))return '';
     if(kind==='topFront')return topScene();
     return layerUrl(kind,draft[kind]);
   };
