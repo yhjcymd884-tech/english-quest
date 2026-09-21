@@ -1,6 +1,6 @@
 (()=>{
   const fixedLayerStyle=document.createElement('style');
-  fixedLayerStyle.textContent='#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110LayerBase{position:absolute!important;inset:0!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;object-position:center center!important;pointer-events:none!important;transform:none!important;transform-origin:center!important;filter:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearShoes{z-index:5!important;clip-path:inset(67% 0 0 0)!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom{z-index:6!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="short"]{clip-path:polygon(52% 40.5%,75% 40.5%,83% 49%,80% 53%,48% 53%,46% 49%)!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="long"]{clip-path:polygon(53% 40.5%,75% 40.5%,74% 48%,80% 58%,91% 69%,82% 74%,53% 74%,38% 70%,42% 55%,47% 45%)!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="0"]{clip-path:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110TopFront{z-index:7!important;clip-path:polygon(72% 30%,78% 31%,89% 54%,84% 58%,78% 54%,72% 40%)!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBag{z-index:8!important;clip-path:none!important;transform:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearAccessory{z-index:9!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearLayer[hidden]{display:none!important}';
+  fixedLayerStyle.textContent='#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110LayerBase{position:absolute!important;inset:0!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;object-position:center center!important;pointer-events:none!important;transform:none!important;transform-origin:center!important;filter:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearShoes{z-index:5!important;clip-path:inset(67% 0 0 0)!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom{z-index:6!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="short"]{clip-path:polygon(64.5% 44.8%,84% 44.8%,95.6% 58%,53.1% 58%,53.1% 49%)!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="long"]{clip-path:polygon(53% 40.5%,75% 40.5%,74% 48%,80% 58%,91% 69%,82% 74%,53% 74%,38% 70%,42% 55%,47% 45%)!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="0"]{clip-path:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110TopFront{z-index:7!important;clip-path:polygon(72% 30%,78% 31%,89% 54%,84% 58%,78% 54%,72% 40%)!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBag{z-index:8!important;clip-path:none!important;transform:none!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearAccessory{z-index:9!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearLayer[hidden]{display:none!important}';
   document.head.appendChild(fixedLayerStyle);
   /* V115 starts with only the top selected. The previous key could contain
      automatically-filled bottom/shoes from the old wardrobe implementation. */
@@ -168,8 +168,8 @@
       return scene?`${scene}&fit=20260920-70`:'';
     }
     if(kind==='bag'){
-      const scene=fittedBagScenes[id]||'';
-      return scene?`${scene}&fit=20260921-1`:'';
+      const file=layerAssets.bag[id]||'';
+      return file?`${layerRoot}${file}?v=20260921-3`:'';
     }
     if(kind==='bottom'&&(fittedShortBottoms.has(id)||fittedLongBottoms.has(id))){
       const scene=fittedBottomScenes[id]||'';
@@ -225,7 +225,7 @@
     star:svgMask('<path fill="white" d="M750 575L790 565L825 625L820 680L785 700L750 670L735 620Z"/><path fill="none" stroke="white" stroke-width="18" d="M790 665L815 815M815 670L875 815"/><rect fill="white" x="755" y="790" width="185" height="150" rx="24"/>')
   };
   const bottomFit=id=>fittedShortBottoms.has(id)?'short':fittedLongBottoms.has(id)?'long':'0';
-  const layerStyle=(kind,id)=>kind==='bag'&&bagMasks[id]?`-webkit-mask-image:${bagMasks[id]};mask-image:${bagMasks[id]}`:'';
+  const layerStyle=()=>'';
   const stageLayerUrl=kind=>{
     if(verifiedMixScene()&&['bottom','shoes'].includes(kind))return '';
     if(kind==='topFront')return topScene();
@@ -255,8 +255,8 @@
         target.dataset.v110Piece=piece;
         if(kind==='bottom')target.dataset.v110Fitbottom=bottomFit(draft.bottom);
         if(kind==='bag'){
-          target.style.setProperty('-webkit-mask-image',bagMasks[piece]||'none');
-          target.style.setProperty('mask-image',bagMasks[piece]||'none');
+          target.style.setProperty('-webkit-mask-image','none');
+          target.style.setProperty('mask-image','none');
         }
         target.hidden=!layer;if(layer)target.src=layer;
       });
