@@ -1,6 +1,6 @@
 (()=>{
   const fixedLayerStyle=document.createElement('style');
-  fixedLayerStyle.textContent='#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110LayerBase{position:absolute!important;inset:0!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;object-position:center center!important;pointer-events:none!important;transform:none!important;transform-origin:center!important;filter:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearShoes{z-index:5!important;clip-path:inset(67% 0 0 0)!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom{z-index:6!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="1"]{clip-path:polygon(52% 38%,75% 38%,83% 49%,80% 53%,48% 53%,46% 49%)!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom:not([data-v110-fitbottom="1"]){clip-path:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBag{z-index:7!important;clip-path:none!important;transform:none!important;-webkit-mask-image:radial-gradient(ellipse 19% 13% at 84% 56%,#000 54%,transparent 82%)!important;mask-image:radial-gradient(ellipse 19% 13% at 84% 56%,#000 54%,transparent 82%)!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearAccessory{z-index:8!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearLayer[hidden]{display:none!important}';
+  fixedLayerStyle.textContent='#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110LayerBase{position:absolute!important;inset:0!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:fill!important;object-position:center center!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearLayer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:fill!important;object-position:center center!important;pointer-events:none!important;transform:none!important;transform-origin:center!important;filter:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearShoes{z-index:5!important;clip-path:inset(67% 0 0 0)!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom{z-index:6!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="short"]{clip-path:polygon(52% 40.5%,75% 40.5%,83% 49%,80% 53%,48% 53%,46% 49%)!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="long"]{clip-path:polygon(53% 40%,75% 40%,80% 47%,91% 69%,82% 74%,53% 74%,38% 70%,42% 55%,47% 45%)!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBottom[data-v110-fitbottom="0"]{clip-path:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110TopFront{z-index:7!important;clip-path:polygon(68% 29%,78% 31%,91% 55%,84% 65%,71% 56%)!important;-webkit-mask-image:none!important;mask-image:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearBag{z-index:8!important;clip-path:none!important;transform:none!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearAccessory{z-index:9!important}#wardrobe .v110Stage.v110OriginalUI .v110LayeredStage .v110WearLayer[hidden]{display:none!important}';
   document.head.appendChild(fixedLayerStyle);
   /* V115 starts with only the top selected. The previous key could contain
      automatically-filled bottom/shoes from the old wardrobe implementation. */
@@ -123,6 +123,7 @@
     denimOverall:'assets/wardrobe-bottom-scenes/bottom-denimOverall-fitted-v1.webp?v=20260920-34'
   };
   const fittedShortBottoms=new Set(['pinkSkirt','navySkirt','latteSkirt','denimShort','blackSkirt','mintSkirt','redSkirt','blueRuffle','brownPlaid','grayPlaid','navySport']);
+  const fittedLongBottoms=new Set(['creamLong']);
   const fittedShoeScenes={
     maryPink:'assets/wardrobe-shoe-scenes/shoes-maryPink-fitted-v2.webp?v=20260920-32',
     loafers:'assets/wardrobe-shoe-scenes/shoes-loafers-fitted-v2.webp?v=20260920-32',
@@ -170,7 +171,7 @@
       const scene=fittedBagScenes[id]||'';
       return scene?`${scene}&fit=20260921-1`:'';
     }
-    if(kind==='bottom'&&fittedShortBottoms.has(id)){
+    if(kind==='bottom'&&(fittedShortBottoms.has(id)||fittedLongBottoms.has(id))){
       const scene=fittedBottomScenes[id]||'';
       return scene?`${scene}&fit=20260921-2`:'';
     }
@@ -217,17 +218,27 @@
     return verifiedMixScenes[key]||'';
   };
   const activeScene=()=>verifiedMixScene()||topScene();
+  const svgMask=body=>`url(data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 941 1672">${body}</svg>`)})`;
+  const bagMasks={
+    heart:svgMask('<path fill="white" d="M750 560L790 550L825 605L825 650L795 675L755 655L735 605Z"/><path fill="none" stroke="white" stroke-width="18" d="M770 635L720 675M805 640L845 680"/><rect fill="white" x="665" y="660" width="225" height="150" rx="25"/>'),
+    tote:svgMask('<path fill="white" d="M755 760L790 750L830 815L842 865L820 900L780 885L750 830Z"/><path fill="none" stroke="white" stroke-width="18" d="M800 865L735 940M825 875L870 945"/><rect fill="white" x="675" y="925" width="245" height="180" rx="30"/>'),
+    star:svgMask('<path fill="white" d="M750 575L790 565L825 625L820 680L785 700L750 670L735 620Z"/><path fill="none" stroke="white" stroke-width="18" d="M790 665L815 815M815 670L875 815"/><rect fill="white" x="755" y="790" width="185" height="150" rx="24"/>')
+  };
+  const bottomFit=id=>fittedShortBottoms.has(id)?'short':fittedLongBottoms.has(id)?'long':'0';
+  const layerStyle=(kind,id)=>kind==='bag'&&bagMasks[id]?`-webkit-mask-image:${bagMasks[id]};mask-image:${bagMasks[id]}`:'';
   const stageLayerUrl=kind=>{
     if(verifiedMixScene()&&['bottom','shoes'].includes(kind))return '';
+    if(kind==='topFront')return topScene();
     return layerUrl(kind,draft[kind]);
   };
   const optionalLayerHtml=kind=>{
     const url=stageLayerUrl(kind);
-    const className={bottomSkin:'v110BottomSkin',bottom:'v110WearBottom',shoes:'v110WearShoes',bag:'v110WearBag',accessory:'v110WearAccessory'}[kind]||'';
-    const fitBottom=kind==='bottom'&&fittedShortBottoms.has(draft.bottom)?'1':'0';
-    return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" data-v110-fitbottom="${fitBottom}" src="${url}" alt="${labels[kind]}" ${url?'':'hidden'}>`;
+    const className={topFront:'v110TopFront',bottom:'v110WearBottom',shoes:'v110WearShoes',bag:'v110WearBag',accessory:'v110WearAccessory'}[kind]||'';
+    const piece=kind==='topFront'?draft.top:(draft[kind]||'');
+    const fitBottom=kind==='bottom'?bottomFit(draft.bottom):'0';
+    return `<img class="v110WearLayer ${className}" data-v110-layer="${kind}" data-v110-piece="${piece}" data-v110-fitbottom="${fitBottom}" style="${layerStyle(kind,piece)}" src="${url}" alt="${kind==='topFront'?'上衣前景':labels[kind]}" ${url?'':'hidden'}>`;
   };
-  const layerOrder=['shoes','bottom','bag','accessory'];
+  const layerOrder=['shoes','bottom','topFront','bag','accessory'];
   const layeredStageHtml=()=>`<div class="v110LayeredStage"><img class="v110LayerBase" src="${activeScene()}" alt="女孩目前造型">${layerOrder.map(optionalLayerHtml).join('')}</div>`;
   const updateLayer=()=>{
     const image=document.querySelector('#wardrobe .v110LayerBase');
@@ -240,7 +251,13 @@
       image.src=url;image.hidden=false;image.alt='女孩目前混搭造型';
       layers.forEach(([kind,layer])=>{
         const target=document.querySelector(`#wardrobe [data-v110-layer="${kind}"]`);if(!target)return;
-        if(kind==='bottom')target.dataset.v110Fitbottom=fittedShortBottoms.has(draft.bottom)?'1':'0';
+        const piece=kind==='topFront'?draft.top:(draft[kind]||'');
+        target.dataset.v110Piece=piece;
+        if(kind==='bottom')target.dataset.v110Fitbottom=bottomFit(draft.bottom);
+        if(kind==='bag'){
+          target.style.setProperty('-webkit-mask-image',bagMasks[piece]||'none');
+          target.style.setProperty('mask-image',bagMasks[piece]||'none');
+        }
         target.hidden=!layer;if(layer)target.src=layer;
       });
     });
