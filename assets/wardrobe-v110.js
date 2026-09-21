@@ -5,10 +5,19 @@
   /* V115 starts with only the top selected. The previous key could contain
      automatically-filled bottom/shoes from the old wardrobe implementation. */
   const KEY='englishQuestWardrobeSavedV115';
+  const FUSED_BOOT_KEY='englishQuestWardrobeFusedBootV1';
   const clone=o=>JSON.parse(JSON.stringify(o));
   const defaults={mode:'piece',suit:'daily-pink',previewSuit:'daily-pink',top:'rose',bottom:'',shoes:'',bag:'',accessory:'',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:''};
+  const fusedBoot={...defaults,top:'blazer',bottom:'denimShort',shoes:'loafers',bag:'tote',accessory:''};
   let saved=clone(defaults),draft=clone(defaults),active='top',suitGroup='daily',hairPane='style',makeTab='brow',panelOpen=true;
-  try{const x=JSON.parse(localStorage.getItem(KEY)||'null');if(x)saved={...defaults,...x,makeup:{...defaults.makeup,...(x.makeup||{})}}}catch{}
+  try{
+    const x=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(localStorage.getItem(FUSED_BOOT_KEY)!=='1'){
+      saved=clone(fusedBoot);
+      localStorage.setItem(KEY,JSON.stringify(saved));
+      localStorage.setItem(FUSED_BOOT_KEY,'1');
+    }else if(x)saved={...defaults,...x,makeup:{...defaults.makeup,...(x.makeup||{})}};
+  }catch{}
   draft=clone(saved);
   const suits={
     daily:{label:'日常',items:[['daily-pink','粉色格紋','assets/wardrobe-daily-pink-v107.jpeg?v=20260918-1','assets/wardrobe-thumbs/daily-pink.webp?v=20260918-2'],['daily-latte','奶茶套裝','assets/wardrobe-daily-latte-v107.jpeg?v=20260918-1','assets/wardrobe-thumbs/daily-latte.webp?v=20260918-2'],['daily-blue','藍色洋裝','assets/wardrobe-daily-blue-v107.jpeg?v=20260918-1','assets/wardrobe-thumbs/daily-blue.webp?v=20260918-2'],['daily-black','黑色洋裝','assets/wardrobe-daily-black-v107.jpeg?v=20260918-1','assets/wardrobe-thumbs/daily-black.webp?v=20260918-2']]},
@@ -215,7 +224,7 @@
   const verifiedMixScene=()=>{
     // These states use one fully rendered image, exactly like mix-lab.html and
     // mix-accessory-lab.html. No garment overlay, crop, translation or scale.
-    if(draft.top==='academy'&&draft.bottom==='denimShort'&&draft.shoes==='loafers'&&draft.bag==='tote'&&!draft.accessory){
+    if(['academy','blazer'].includes(draft.top)&&draft.bottom==='denimShort'&&draft.shoes==='loafers'&&draft.bag==='tote'&&!draft.accessory){
       return 'assets/mix-lab/top-academy-bottom-denim-shoes-loafers-bag-tote-fused-v1.webp?v=20260921-1';
     }
     if(draft.top!=='cream'||!['','pinkSkirt'].includes(draft.bottom)||!['','loafers'].includes(draft.shoes))return '';
