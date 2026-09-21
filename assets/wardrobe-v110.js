@@ -270,6 +270,16 @@
     mintSkirt:'assets/mix-lab/top-hoodie-bottom-mintSkirt-fused-v1.webp?v=hoodiebottoms-v1',
     redSkirt:'assets/mix-lab/top-hoodie-bottom-redSkirt-fused-v1.webp?v=hoodiebottoms-v1'
   };
+  const mintBottomScenes={
+    pinkSkirt:'assets/mix-lab/top-mint-bottom-pinkSkirt-fused-v1.webp?v=mintbottoms-v1',
+    navySkirt:'assets/mix-lab/top-mint-bottom-navySkirt-fused-v1.webp?v=mintbottoms-v1',
+    latteSkirt:'assets/mix-lab/top-mint-bottom-latteSkirt-fused-v1.webp?v=mintbottoms-v1',
+    denimShort:'assets/mix-lab/top-mint-bottom-denimShort-fused-v1.webp?v=mintbottoms-v1',
+    creamLong:'assets/mix-lab/top-mint-bottom-creamLong-fused-v1.webp?v=mintbottoms-v1',
+    blackSkirt:'assets/mix-lab/top-mint-bottom-blackSkirt-fused-v1.webp?v=mintbottoms-v1',
+    mintSkirt:'assets/mix-lab/top-mint-bottom-mintSkirt-fused-v1.webp?v=mintbottoms-v1',
+    redSkirt:'assets/mix-lab/top-mint-bottom-redSkirt-fused-v1.webp?v=mintbottoms-v1'
+  };
   const verifiedMixScene=()=>{
     // These states use one fully rendered image, exactly like mix-lab.html and
     // mix-accessory-lab.html. No garment overlay, crop, translation or scale.
@@ -287,6 +297,9 @@
     }
     if(draft.top==='hoodie'&&!draft.shoes&&!draft.bag&&!draft.accessory){
       return hoodieBottomScenes[draft.bottom]||'';
+    }
+    if(draft.top==='mint'&&!draft.shoes&&!draft.bag&&!draft.accessory){
+      return mintBottomScenes[draft.bottom]||'';
     }
     if(['academy','blazer'].includes(draft.top)&&draft.bottom==='denimShort'&&draft.shoes==='loafers'&&draft.bag==='tote'&&!draft.accessory){
       return 'assets/mix-lab/top-academy-bottom-denim-shoes-loafers-bag-tote-fused-v1.webp?v=20260921-1';
