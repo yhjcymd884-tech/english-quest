@@ -224,7 +224,11 @@
     pinkSkirt:'assets/mix-lab/top-rose-bottom-pinkSkirt-fused-v1.webp?v=rosebottoms-v1',
     navySkirt:'assets/mix-lab/top-rose-bottom-navySkirt-fused-v1.webp?v=rosebottoms-v1',
     latteSkirt:'assets/mix-lab/top-rose-bottom-latteSkirt-fused-v1.webp?v=rosebottoms-v1',
-    denimShort:'assets/mix-lab/top-rose-bottom-denimShort-fused-v1.webp?v=rosebottoms-v1'
+    denimShort:'assets/mix-lab/top-rose-bottom-denimShort-fused-v1.webp?v=rosebottoms-v1',
+    creamLong:'assets/mix-lab/top-rose-bottom-creamLong-fused-v1.webp?v=rosebottoms-v2',
+    blackSkirt:'assets/mix-lab/top-rose-bottom-blackSkirt-fused-v1.webp?v=rosebottoms-v2',
+    mintSkirt:'assets/mix-lab/top-rose-bottom-mintSkirt-fused-v1.webp?v=rosebottoms-v2',
+    redSkirt:'assets/mix-lab/top-rose-bottom-redSkirt-fused-v1.webp?v=rosebottoms-v2'
   };
   const verifiedMixScene=()=>{
     // These states use one fully rendered image, exactly like mix-lab.html and
