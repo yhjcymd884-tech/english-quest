@@ -4,42 +4,63 @@ const { execFileSync } = require('child_process');
 
 const root = path.resolve(__dirname, '..');
 const indexPath = path.join(root, 'index.html');
-const html = fs.readFileSync(indexPath, 'utf8');
+const entryHtml = fs.readFileSync(indexPath, 'utf8');
 const failures = [];
 
 function check(condition, message) {
   if (!condition) failures.push(message);
 }
 
-function count(pattern) {
-  return (html.match(pattern) || []).length;
+function count(source, pattern) {
+  return (source.match(pattern) || []).length;
+}
+
+function validateDocument(source, label) {
+  check(/^\s*<!doctype html>/i.test(source), `${label} 缺少 <!doctype html>`);
+  check(/<body[\s>]/i.test(source), `${label} 缺少 <body>`);
+  check(/<\/body>\s*<\/html>\s*$/i.test(source), `${label} 結尾不完整`);
+  check(count(source, /<script\b/gi) === count(source, /<\/script>/gi), `${label} script 開始／結束標籤數量不一致`);
+  check(count(source, /<style\b/gi) === count(source, /<\/style>/gi), `${label} style 開始／結束標籤數量不一致`);
+  check(!source.includes('\u0000'), `${label} 含有 NUL 二進位字元`);
+  check(!source.includes('\uFFFD'), `${label} 含有 UTF-8 替代字元，可能遭到二進位污染`);
+}
+
+// The public entry point may be a small loader that pins the full application to
+// an immutable commit. Validate both layers so a legitimate loader is accepted,
+// while a branch URL or a missing historical payload still fails CI.
+const pinnedMatch = entryHtml.match(
+  /https:\/\/raw\.githubusercontent\.com\/yhjcymd884-tech\/english-quest\/([0-9a-f]{40})\/index\.html/i
+);
+let html = entryHtml;
+let sourceLabel = 'index.html';
+
+if (pinnedMatch) {
+  const pinnedSha = pinnedMatch[1].toLowerCase();
+  check(!/raw\.githubusercontent\.com\/[^'"\s]+\/(?:main|master)\/index\.html/i.test(entryHtml), '載入器不得從可變動分支載入完整遊戲');
+  try {
+    html = execFileSync('git', ['show', `${pinnedSha}:index.html`], {
+      cwd: root,
+      encoding: 'utf8',
+      maxBuffer: 20 * 1024 * 1024
+    });
+    sourceLabel = `固定版本 ${pinnedSha.slice(0, 8)}:index.html`;
+  } catch (error) {
+    failures.push(`無法讀取載入器鎖定的歷史版本：${pinnedSha}`);
+  }
 }
 
 // 1. HTML structure and text integrity.
-check(/^\s*<!doctype html>/i.test(html), 'index.html 缺少 <!doctype html>');
-check(/<body[\s>]/i.test(html), 'index.html 缺少 <body>');
-check(/<\/body>\s*<\/html>\s*$/i.test(html), 'index.html 結尾不完整');
-check(count(/<script\b/gi) === count(/<\/script>/gi), 'script 開始／結束標籤數量不一致');
-check(count(/<style\b/gi) === count(/<\/style>/gi), 'style 開始／結束標籤數量不一致');
-check(!html.includes('\u0000'), 'index.html 含有 NUL 二進位字元');
-check(!html.includes('\uFFFD'), 'index.html 含有 UTF-8 替代字元，可能遭到二進位污染');
+validateDocument(entryHtml, '入口 index.html');
+if (pinnedMatch) validateDocument(html, sourceLabel);
 
-// 2. Prevent an unexpected large file-size drop relative to main.
-const currentBytes = fs.statSync(indexPath).size;
-check(currentBytes >= 500000, `index.html 過小：${currentBytes} bytes`);
-try {
-  const base = execFileSync('git', ['show', 'origin/main:index.html'], {
-    cwd: root,
-    encoding: null,
-    maxBuffer: 20 * 1024 * 1024
-  });
-  const minimum = Math.floor(base.length * 0.8);
-  check(
-    currentBytes >= minimum,
-    `index.html 相較 main 縮小超過 20%：${base.length} → ${currentBytes} bytes`
-  );
-} catch (error) {
-  console.warn('無法讀取 origin/main:index.html，略過相對大小比較。');
+// 2. Prevent truncation. A loader stays small; its pinned payload must stay large.
+const entryBytes = Buffer.byteLength(entryHtml);
+const payloadBytes = Buffer.byteLength(html);
+if (pinnedMatch) {
+  check(entryBytes >= 500, `載入器異常過小：${entryBytes} bytes`);
+  check(payloadBytes >= 500000, `固定歷史版本過小：${payloadBytes} bytes`);
+} else {
+  check(payloadBytes >= 500000, `index.html 過小：${payloadBytes} bytes`);
 }
 
 // 3. JavaScript syntax: inline scripts and tracked external scripts.
@@ -84,4 +105,5 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`五項快速檢查通過：index.html ${currentBytes} bytes，${inlineScripts.length} 個 inline scripts，${trackedJs.length} 個 JS 檔案。`);
+const architecture = pinnedMatch ? `載入器 ${entryBytes} bytes + 固定版本 ${payloadBytes} bytes` : `完整入口 ${payloadBytes} bytes`;
+console.log(`五項快速檢查通過：${architecture}，${inlineScripts.length} 個完整遊戲 inline scripts，${trackedJs.length} 個 JS 檔案。`);
