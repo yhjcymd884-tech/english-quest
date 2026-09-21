@@ -171,9 +171,9 @@
       const file=layerAssets.bag[id]||'';
       return file?`${layerRoot}${file}?v=20260921-3`:'';
     }
-    if(kind==='bottom'&&(fittedShortBottoms.has(id)||fittedLongBottoms.has(id))){
-      const scene=fittedBottomScenes[id]||'';
-      return scene?`${scene}&fit=20260921-2`:'';
+    if(kind==='bottom'){
+      const file=layerAssets.bottom[id]||'';
+      return file?`${layerRoot}${file}?v=20260921-4`:'';
     }
     const file=layerAssets[kind]?.[id];return file?`${layerRoot}${file}?v=20260920-61`:'';
   };
@@ -224,7 +224,9 @@
     tote:svgMask('<path fill="white" d="M755 760L790 750L830 815L842 865L820 900L780 885L750 830Z"/><path fill="none" stroke="white" stroke-width="18" d="M800 865L735 940M825 875L870 945"/><rect fill="white" x="675" y="925" width="245" height="180" rx="30"/>'),
     star:svgMask('<path fill="white" d="M750 575L790 565L825 625L820 680L785 700L750 670L735 620Z"/><path fill="none" stroke="white" stroke-width="18" d="M790 665L815 815M815 670L875 815"/><rect fill="white" x="755" y="790" width="185" height="150" rx="24"/>')
   };
-  const bottomFit=id=>fittedShortBottoms.has(id)?'short':fittedLongBottoms.has(id)?'long':'0';
+  // Bottom assets are already aligned transparent garment layers. Never crop a
+  // full fitted scene here: its camisole/shorts leak out at the waist seams.
+  const bottomFit=()=> '0';
   const layerStyle=()=>'';
   const stageLayerUrl=kind=>{
     if(verifiedMixScene()&&['bottom','shoes'].includes(kind))return '';
