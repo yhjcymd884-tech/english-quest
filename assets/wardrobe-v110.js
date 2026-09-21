@@ -5,17 +5,16 @@
   /* V115 starts with only the top selected. The previous key could contain
      automatically-filled bottom/shoes from the old wardrobe implementation. */
   const KEY='englishQuestWardrobeSavedV115';
-  const FUSED_BOOT_KEY='englishQuestWardrobeFusedBootV1';
+  const CLEAN_START_KEY='englishQuestWardrobeCleanStartV1';
   const clone=o=>JSON.parse(JSON.stringify(o));
   const defaults={mode:'piece',suit:'daily-pink',previewSuit:'daily-pink',top:'rose',bottom:'',shoes:'',bag:'',accessory:'',hair:'softLong',hairColor:'#9a705f',makeup:{brow:'soft',iris:'brown',lash:'long',shadow:'peach',blush:'rose',lip:'berry'},pet:''};
-  const fusedBoot={...defaults,top:'blazer',bottom:'denimShort',shoes:'loafers',bag:'tote',accessory:''};
   let saved=clone(defaults),draft=clone(defaults),active='top',suitGroup='daily',hairPane='style',makeTab='brow',panelOpen=true;
   try{
     const x=JSON.parse(localStorage.getItem(KEY)||'null');
-    if(localStorage.getItem(FUSED_BOOT_KEY)!=='1'){
-      saved=clone(fusedBoot);
+    if(localStorage.getItem(CLEAN_START_KEY)!=='1'){
+      saved=clone(defaults);
       localStorage.setItem(KEY,JSON.stringify(saved));
-      localStorage.setItem(FUSED_BOOT_KEY,'1');
+      localStorage.setItem(CLEAN_START_KEY,'1');
     }else if(x)saved={...defaults,...x,makeup:{...defaults.makeup,...(x.makeup||{})}};
   }catch{}
   draft=clone(saved);
