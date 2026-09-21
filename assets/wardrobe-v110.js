@@ -220,9 +220,18 @@
     '101':'assets/mix-lab/top-cream-shoes-loafers-fused-v1.webp?v=20260920-63',
     '111':'assets/mix-lab/top-cream-bottom-pink-shoes-loafers-fused-preview-v1.webp?v=20260920-63'
   };
+  const roseBottomScenes={
+    pinkSkirt:'assets/mix-lab/top-rose-bottom-pinkSkirt-fused-v1.webp?v=rosebottoms-v1',
+    navySkirt:'assets/mix-lab/top-rose-bottom-navySkirt-fused-v1.webp?v=rosebottoms-v1',
+    latteSkirt:'assets/mix-lab/top-rose-bottom-latteSkirt-fused-v1.webp?v=rosebottoms-v1',
+    denimShort:'assets/mix-lab/top-rose-bottom-denimShort-fused-v1.webp?v=rosebottoms-v1'
+  };
   const verifiedMixScene=()=>{
     // These states use one fully rendered image, exactly like mix-lab.html and
     // mix-accessory-lab.html. No garment overlay, crop, translation or scale.
+    if(draft.top==='rose'&&!draft.shoes&&!draft.bag&&!draft.accessory){
+      return roseBottomScenes[draft.bottom]||'';
+    }
     if(['academy','blazer'].includes(draft.top)&&draft.bottom==='denimShort'&&draft.shoes==='loafers'&&draft.bag==='tote'&&!draft.accessory){
       return 'assets/mix-lab/top-academy-bottom-denim-shoes-loafers-bag-tote-fused-v1.webp?v=20260921-1';
     }
