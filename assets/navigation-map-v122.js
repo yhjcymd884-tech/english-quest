@@ -153,7 +153,10 @@
       const b=document.createElement('button');
       b.className='eqNavBtn';b.type='button';b.setAttribute('aria-label',item.label);
       b.style.setProperty('--tone',item.tone);b.style.setProperty('--edge',item.edge);
-      b.innerHTML='<span class="eqNavSticker"><span class="eqNavIcon">'+item.icon+'</span><span class="eqNavLabel">'+item.label+'</span></span>';
+      const sticker=document.createElement('span');sticker.className='eqNavSticker';
+      const icon=document.createElement('span');icon.className='eqNavIcon';icon.textContent=item.icon;
+      const label=document.createElement('span');label.className='eqNavLabel';label.textContent=item.label;
+      sticker.append(icon,label);b.appendChild(sticker);
       b.addEventListener('click',()=>clickExisting(item.label,item.key));
       nav.appendChild(b);
     });
