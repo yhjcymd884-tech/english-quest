@@ -1,0 +1,33 @@
+name: Security Scan
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Dependency audit
+        run: npm audit --audit-level=high --omit=optional
+      - name: Static browser security scan
+        run: node scripts/security-scan.js
+      - name: Confirm production source maps are absent
+        run: |
+          if git ls-files | grep -E '\\.map$'; then
+            echo "Tracked source maps are not allowed in the public repository."
+            exit 1
+          fi
