@@ -17,12 +17,14 @@ for(const file of files){
  }
 }
 const allow=new Set(['index.html:document-write','latest.html:document-write','scripts/validate-guardrails.js:new-function']);
-const unexpected=findings.filter(x=>!allow.has(x.file+':'+x.id));
+const isDevHttp=x=>x.id==='http-resource'&&x.file==='playwright.config.js';
+const isSvgNamespace=x=>x.id==='http-resource'&&x.file==='assets/wardrobe-v110.js';
+const unexpected=findings.filter(x=>!allow.has(x.file+':'+x.id)&&!isDevHttp(x)&&!isSvgNamespace(x));
 const blocking=unexpected.filter(x=>x.level==='block');
 const summary=[
  '# Browser security scan','',
  '| Severity | Rule | File | Line | Status |','|---|---|---|---:|---|',
- ...findings.map(x=>`| ${x.level} | ${x.id} | \`${x.file}\` | ${x.line} | ${allow.has(x.file+':'+x.id)?'temporary allowlist':'review'} |`),
+ ...findings.map(x=>`| ${x.level} | ${x.id} | \`${x.file}\` | ${x.line} | ${allow.has(x.file+':'+x.id)?'temporary allowlist':isDevHttp(x)?'localhost test server':isSvgNamespace(x)?'SVG namespace (not network)':'review'} |`),
  '',`Scanned **${files.length}** browser-code files. Blocking findings: **${blocking.length}**.`
 ].join('\n');
 console.log(summary);
