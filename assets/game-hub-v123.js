@@ -38,7 +38,7 @@ const noteData=[
  ['cost / spend / take','三者都可表示「花費」，但主詞與句型不同。','物 + cost + 金錢；人 + spend + 時間／錢 + on N.／V-ing；It takes + 人 + 時間 + to V.','how much、how long、時間或金額','It takes me 20 minutes to walk there.','我走到那裡需要二十分鐘。']
 ];
 page('grammarNotes123',images.notes,`<div class="hub123NotesPanel"></div>${noteData.map((n,i)=>`<button class="hub123Tap hub123NoteTab" data-hub123-note="${i}" style="left:4.5%;top:${25+i*4.8}%;width:27%;height:4.7%" aria-label="${n[0]}">${n[0]}</button>`).join('')}`);
-function showNote(i=0){const n=noteData[i],p=$('#grammarNotes123 .hub123NotesPanel');if(!p)return;all('[data-hub123-note]').forEach((b,j)=>b.classList.toggle('selected',i===j));p.innerHTML=`<h2>${esc(n[0])}</h2><h3>什麼時候使用？</h3><p>${esc(n[1])}</p><h3>句型</h3><p>${esc(n[2])}</p><h3>常見時間線索</h3><p>${esc(n[3])}</p><h3>例句</h3><p class="example">${esc(n[4])}<br>${esc(n[5])}</p>`}
+function showNote(i=0){const n=noteData[i],p=$('#grammarNotes123 .hub123NotesPanel');if(!p)return;all('[data-hub123-note]').forEach((b,j)=>b.classList.toggle('selected',i===j));p.replaceChildren();const add=(tag,text,cls)=>{const el=document.createElement(tag);if(cls)el.className=cls;el.textContent=text;p.appendChild(el);return el};add('h2',n[0]);add('h3','什麼時候使用？');add('p',n[1]);add('h3','句型');add('p',n[2]);add('h3','常見時間線索');add('p',n[3]);add('h3','例句');const example=add('p','', 'example');example.append(document.createTextNode(n[4]),document.createElement('br'),document.createTextNode(n[5]))}
 
 page('wrongBook123',images.wrong,`<div class="hub123WrongPanel"></div>`);
 let wrongTab='grammar';
