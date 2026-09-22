@@ -76,7 +76,10 @@
     const root=document.querySelector('.v118Battle');
     if(!root)return;
     root.querySelector('.v118Feedback')?.remove();
-    root.insertAdjacentHTML('beforeend','<div class="v118Feedback">'+esc(text)+'</div>');
+    const feedback=document.createElement('div');
+    feedback.className='v118Feedback';
+    feedback.textContent=String(text??'');
+    root.appendChild(feedback);
   }
   function showResult(win,message){
     const box=document.getElementById('gamebox');
