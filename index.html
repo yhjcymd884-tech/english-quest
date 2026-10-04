@@ -2,21 +2,36 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>English Quest</title>
-<style>html,body{margin:0;min-height:100%;display:grid;place-items:center;background:#fff6f8;color:#a84d73;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif}.loading{text-align:center;font-weight:800}.dot{font-size:28px;animation:p 1s infinite alternate}@keyframes p{to{opacity:.35}}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>English Quest 已搬家</title>
+<style>body{margin:0;background:#fff6f8;color:#553a48;font-family:system-ui,sans-serif;line-height:1.7}main{max-width:36rem;margin:12vh auto;padding:1.5rem}h1{font-size:1.6rem}a,button{display:inline-block;margin:.5rem .5rem .5rem 0;padding:.8rem 1.1rem;border:0;border-radius:.7rem;background:#934569;color:white;text-decoration:none;font:inherit;cursor:pointer}button{background:#675765}p{margin:1rem 0}small{display:block}</style>
 </head>
-<body><div class="loading"><div class="dot">♡</div>正在開啟完整新衣櫃…</div>
+<body>
+<main>
+<h1>English Quest 已搬家</h1>
+<p>請從新網址進入正式網站，首頁與衣櫥都在新站。</p>
+<a href="https://jacn22025-spec.github.io/english-quest-deploy/">開啟正式網站</a>
+<p>如果你曾在這個舊網址遊玩，可以先下載此裝置的學習進度備份。舊站進度不會自動帶到新網址。</p>
+<button id="backup" type="button">下載舊站進度備份</button>
+<small id="status" role="status">此操作只下載備份，不會刪除或修改此裝置的進度。</small>
+</main>
 <script>
-fetch('https://raw.githubusercontent.com/yhjcymd884-tech/english-quest/afe01e535a4214f6231925561e71238fc9cfd9ee/index.html',{cache:'no-store'})
- .then(r=>{if(!r.ok)throw new Error('load');return r.text()})
- .then(html=>{
-   html=html.replace('<head>','<head><base href="https://yhjcymd884-tech.github.io/english-quest/">');
-   html=html.replace(/assets\/wardrobe-v110\.css\?v=[^"]+/,'assets/wardrobe-v110.css?v=mintbottoms-v1');
-   html=html.replace(/assets\/wardrobe-v110\.js\?v=[^"]+/,'assets/wardrobe-v110.js?v=blackbottoms-v1');
-   document.open();document.write(html);document.close();
- })
- .catch(()=>{document.body.innerHTML='<div class="loading">載入失敗，請按右下角重新整理一次</div>'});
+'use strict';
+document.getElementById('backup').addEventListener('click', function () {
+  const status = document.getElementById('status');
+  try {
+    const raw = localStorage.getItem('eq38');
+    if (raw === null) { status.textContent = '此裝置沒有找到舊站進度。'; return; }
+    const backup = {schema:1, origin:location.origin, key:'eq38', exportedAt:new Date().toISOString(), raw};
+    const url = URL.createObjectURL(new Blob([JSON.stringify(backup, null, 2)], {type:'application/json'}));
+    const link = document.createElement('a');
+    link.href = url; link.download = 'english-quest-old-eq38-backup.json';
+    document.body.appendChild(link); link.click(); link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    status.textContent = '已下載備份。此裝置的原進度仍完整保留。';
+  } catch (_) { status.textContent = '無法讀取此裝置的進度，請稍後再試。'; }
+});
 </script>
 </body>
 </html>
