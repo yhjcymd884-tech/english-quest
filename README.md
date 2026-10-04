@@ -1,11 +1,7 @@
-# English Quest original public site
+# English Quest — retired repository
 
-This repository is retired. The current public release is at:
-https://jacn22025-spec.github.io/english-quest-deploy/
+The old website is closed. This repository no longer contains a website entry point, game assets, or progress-export functionality.
 
-The retirement page offers an optional local export of existing eq38 progress.
-It does not erase browser storage or send progress to a server. Progress is not
-automatically migrated across origins; the downloaded file is a recovery backup.
+The current production site is maintained separately at https://jacn22025-spec.github.io/english-quest-deploy/.
 
-Development continues in the private source repository. This public repository
-contains only the retirement page, this README, and .nojekyll.
+Removing the current files does not purge retained historical commits or GitHub caches.
